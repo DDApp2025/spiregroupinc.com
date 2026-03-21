@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <title>Technology Stack — Spire Group Inc.</title>
+  <meta name="description" content="The full technology stack behind Spire Group Inc.'s clinical SaaS platforms: React Native, .NET, Python, AWS, Claude API, PostgreSQL, MongoDB, and more." />
+  <link rel="canonical" href="https://spiregroupinc.com/stack.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Spire Group Inc." />
+  <meta property="og:title" content="Technology Stack — Spire Group Inc." />
+  <meta property="og:description" content="The full production technology stack behind Spire Group Inc.'s clinical SaaS platforms: React Native, .NET, Python, AWS, Claude API, PostgreSQL, MongoDB, and more." />
+  <meta property="og:url" content="https://spiregroupinc.com/stack.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Technology Stack — Spire Group Inc." />
+  <meta name="twitter:description" content="The full production technology stack behind Spire Group Inc.'s clinical SaaS platforms: React Native, .NET, Python, AWS, Claude API, PostgreSQL, MongoDB, and more." />
+  <meta name="robots" content="index, follow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink: #0a0a0f; --paper: #f5f3ee; --cream: #ede9e0;
+      --steel: #1c2333; --accent: #b8470b; --accent2: #2a4a6b;
+      --muted: #6b6558; --rule: rgba(10,10,15,0.12);
+      --mono: 'DM Mono', monospace; --serif: 'Cormorant Garamond', Georgia, serif; --sans: 'Syne', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--paper); color: var(--ink); font-family: var(--serif); font-size: 18px; line-height: 1.6; overflow-x: hidden; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 3rem; background: rgba(245,243,238,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--rule); }
+    .nav-logo { font-family: var(--mono); font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); text-decoration: none; }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--ink); }
+    .nav-cta { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--paper); background: var(--ink); padding: 0.55rem 1.2rem; text-decoration: none; transition: background 0.2s; }
+    .nav-cta:hover { background: var(--accent); }
+
+    .page-hero { padding: 10rem 5rem 5rem; background: var(--cream); border-bottom: 1px solid var(--rule); }
+    .eyebrow { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.8rem; }
+    .eyebrow::before { content: ''; display: inline-block; width: 1.5rem; height: 1px; background: var(--accent); }
+    h1 { font-family: var(--serif); font-size: clamp(2.5rem, 4vw, 3.8rem); font-weight: 300; line-height: 1.1; color: var(--ink); margin-bottom: 1.5rem; }
+    h1 em { font-style: italic; color: var(--accent2); }
+    .lead { font-size: 1.05rem; font-weight: 300; color: var(--muted); line-height: 1.8; max-width: 65ch; }
+
+    /* STACK CATEGORY */
+    .stack-category-block { border-bottom: 1px solid var(--rule); }
+    .stack-category-block:last-child { border-bottom: none; }
+    .stack-cat-header {
+      display: grid; grid-template-columns: 220px 1fr;
+      border-bottom: 1px solid var(--rule);
+      background: var(--ink);
+    }
+    .stack-cat-label { padding: 1.25rem 2rem 1.25rem 5rem; font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(245,243,238,0.4); display: flex; align-items: center; border-right: 1px solid rgba(255,255,255,0.08); }
+    .stack-cat-title { padding: 1.25rem 2.5rem; font-family: var(--sans); font-size: 1rem; font-weight: 700; color: var(--paper); display: flex; align-items: center; }
+
+    .stack-items { display: grid; grid-template-columns: repeat(3, 1fr); }
+    .stack-item { padding: 2.5rem; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); background: var(--paper); }
+    .stack-item:nth-child(3n) { border-right: none; }
+    .stack-item-name { font-family: var(--sans); font-size: 1.05rem; font-weight: 800; color: var(--ink); margin-bottom: 0.5rem; }
+    .stack-item-role { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
+    .stack-item-desc { font-family: var(--mono); font-size: 0.63rem; color: var(--muted); line-height: 1.75; }
+    .stack-item-atg { display: inline-block; font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--paper); background: var(--accent2); padding: 0.2rem 0.5rem; margin-top: 0.75rem; }
+
+    /* PHILOSOPHY */
+    .philosophy { padding: 6rem 5rem; background: var(--steel); }
+    .philosophy h2 { font-family: var(--serif); font-size: clamp(1.8rem, 2.5vw, 2.5rem); font-weight: 300; color: var(--paper); margin-bottom: 3rem; }
+    .philosophy h2 em { font-style: italic; color: rgba(184,71,11,0.85); }
+    .principles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1px solid rgba(255,255,255,0.08); }
+    .principle { padding: 2.5rem; border-right: 1px solid rgba(255,255,255,0.08); }
+    .principle:last-child { border-right: none; }
+    .principle-num { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.15em; color: rgba(184,71,11,0.7); margin-bottom: 1rem; }
+    .principle-title { font-family: var(--serif); font-size: 1.2rem; font-weight: 600; color: var(--paper); margin-bottom: 0.75rem; }
+    .principle-desc { font-family: var(--mono); font-size: 0.63rem; color: rgba(245,243,238,0.45); line-height: 1.8; }
+
+    /* CTA */
+    .page-cta { background: var(--cream); padding: 6rem 5rem; text-align: center; }
+    .page-cta h2 { font-family: var(--serif); font-size: clamp(2rem, 3vw, 2.8rem); font-weight: 300; color: var(--ink); margin-bottom: 1rem; }
+    .page-cta h2 em { font-style: italic; color: var(--accent2); }
+    .page-cta p { font-family: var(--mono); font-size: 0.7rem; color: var(--muted); margin-bottom: 2.5rem; }
+    .btn-primary { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--paper); background: var(--ink); padding: 0.85rem 2rem; text-decoration: none; display: inline-block; }
+    .btn-primary:hover { background: var(--accent); }
+
+    footer { background: var(--ink); padding: 2rem 5rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.05); }
+    .footer-copy { font-family: var(--mono); font-size: 0.62rem; color: rgba(255,255,255,0.2); }
+    .footer-note { font-family: var(--mono); font-size: 0.62rem; color: rgba(255,255,255,0.2); }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .page-hero .eyebrow { animation: fadeUp 0.6s ease 0.1s both; }
+    .page-hero h1 { animation: fadeUp 0.6s ease 0.2s both; }
+    .page-hero .lead { animation: fadeUp 0.6s ease 0.35s both; }
+
+    @media (max-width: 1024px) {
+      nav { padding: 1rem 1.5rem; } .nav-links { display: none; }
+      .page-hero { padding: 8rem 2.5rem 4rem; }
+      .stack-cat-header { grid-template-columns: 160px 1fr; }
+      .stack-cat-label { padding: 1.25rem 1.5rem; }
+      .stack-items { grid-template-columns: 1fr 1fr; }
+      .stack-item:nth-child(3n) { border-right: 1px solid var(--rule); }
+      .stack-item:nth-child(2n) { border-right: none; }
+      .philosophy { padding: 5rem 2.5rem; }
+      .principles { grid-template-columns: 1fr; }
+      .principle { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+      .principle:last-child { border-bottom: none; }
+      .page-cta { padding: 5rem 2.5rem; }
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 2rem 1.5rem; }
+    }
+    @media (max-width: 640px) {
+      .stack-cat-header { grid-template-columns: 1fr; }
+      .stack-cat-label { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); padding: 1rem 1.5rem; }
+      .stack-items { grid-template-columns: 1fr; }
+      .stack-item { border-right: none; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html"><span>Spire</span> Group Inc.</a>
+  <ul class="nav-links">
+    <li><a href="what-we-build.html">What We Build</a></li>
+    <li><a href="case-study.html">Case Study</a></li>
+    <li><a href="stack.html" class="active">Stack</a></li>
+    <li><a href="credentials.html">Credentials</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+  <a class="nav-cta" href="contact.html">Start a Project</a>
+</nav>
+
+<div class="page-hero">
+  <div class="eyebrow">Technology</div>
+  <h1>The <em>stack</em></h1>
+  <p class="lead">Every technology in our stack is there because we've used it in production, under real clinical constraints, in a real operating platform. These aren't evaluations or preference — they're decisions made and lived with for two years.</p>
+</div>
+
+<!-- MOBILE -->
+<div class="stack-category-block">
+  <div class="stack-cat-header">
+    <div class="stack-cat-label">01 — Mobile</div>
+    <div class="stack-cat-title">Patient & Provider Applications</div>
+  </div>
+  <div class="stack-items">
+    <div class="stack-item">
+      <div class="stack-item-name">React Native</div>
+      <div class="stack-item-role">Primary Mobile Framework</div>
+      <div class="stack-item-desc">iOS and Android from a single codebase. Chosen for clinical apps where parity between platforms is a compliance requirement, not a preference. Full App Store and Google Play submission experience.</div>
+      <span class="stack-item-atg">ATG Patient App · ATG Provider App</span>
+    </div>
+    <div class="stack-item">
+      <div class="stack-item-name">TestFlight</div>
+      <div class="stack-item-role">iOS Beta Distribution</div>
+      <div class="stack-item-desc">Internal and external beta distribution for iOS builds. Used throughout ATG's provider onboarding testing cycle before public release.</div>
+      <span class="stack-item-atg">ATG Testing Pipeline</span>
+    </div>
+    <div class="stack-item">
+      <div class="stack-item-name">Stripe SDK</div>
+      <div class="stack-item-role">In-App Payments</div>
+      <div class="stack-item-desc">Patient payment processing, provider payout management, and platform fee collection — all PCI-compliant with no sensitive card data touching application servers.</div>
+      <span class="stack-item-atg">ATG Payments · ToothFairyPay</span>
+    </div>
+  </div>
+</div>
+
+<!-- BACKEND -->
+<div class="stack-category-block">
+  <div class="stack-cat-header">
+    <div class="stack-cat-label">02 — Backend</div>
+    <div class="stack-cat-title">API & Business Logic</div>
+  </div>
+  <div class="stack-items">
+    <div class="stack-item">
+      <div class="stack-item-name">.NET / C#</div>
+      <div class="stack-item-role">Core API Layer</div>
+      <div class="stack-item-desc">Enterprise-grade backend for the ATG clinical API. Chosen for its strong typing, performance characteristics, and robust ecosystem for healthcare-adjacent applications. Role-based access control, HIPAA-aware data handling.</div>
+      <span class="stack-item-atg">ATG Core API</span>
+    </div>
+    <div class="stack-item">
+      <div class="stack-item-name">Node.js</div>
+      <div class="stack-item-role">Agent Orchestration & Webhooks</div>
+      <div class="stack-item-desc">Agent pipeline orchestration, real-time webhook processing, and lightweight API services. Used extensively in the ATG autonomous agent system and the vehicle wholesale platform.</div>
+      <span class="stack-item-atg">ATG Agents · Vehicle System · FriendLinq</span>
+    </div>
+    <div class="stack-item">
+      <div class="stack-item-name">Python / Flask</div>
+      <div class="stack-item-role">AI Engines & Data Pipelines</div>
+      <div class="stack-item-desc">AI simulation engines, NPI verification pipelines, data enrichment agents, analytics, and any workload requiring rapid ML prototyping. The Protoscent e-commerce platform and ATG AI engines both run on Flask.</div>
+      <span class="stack-item-atg">ATG AI Engine · Protoscent CMS</span>
+    </div>
+  </div>
+</div>
+
+<!-- INFRASTRUCTURE -->
+<div class="stack-category-block">
+  <div class="stack-cat-header">
+    <div class="stack-cat-label">03 — Infrastructure</div>
+    <div class="stack-cat-title">Cloud & Deployment</div>
+  </div>
+  <div class="stack-items">
+    <div class="stack-item">
+      <div class="stack-item-name">AWS</div>
+      <div class="stack-item-role">Primary Cloud Infrastructure</div>
+      <div class="stack-item-desc">EC2, S3, RDS across N. Virginia and Ohio regions. HIPAA-eligible service configuration for ATG. Separate environments for clinical data and agent automation workloads. PM2 process management for persistent services.</div>
+      <span class="stack-item-atg">ATG · FriendLinq · Protoscent · Vehicle Agent</span>
+    </div>
+    <div class="stack-item">
+      <div class="stack-item-name">Cloudflare Workers</div>
+      <div class="stack-item-role">Edge Proxy & API Security</div>
+      <div class="stack-item-desc">CORS proxy for the ATG AI chat widget — keeping API keys server-side and away from the browser. Lightweight edge functions for rate limiting and request routing.</div>
+      <span class="stack-item-atg">ATG Chat Proxy (atg-chat-proxy)</span>
+    </div>
+    <div class="stack-item">
+      <div class="stack-item-name">GitHub Pages</div>
+      <div class="stack-item-role">Static Site Deployment</div>
+      <div class="stack-item-desc">Fast, reliable static hosting for the ATG marketing site and this site. Combined with structured SEO implementation: schema markup, Open Graph, Twitter Cards, sitemap, robots.txt, and llms.txt.</div>
+      <span class="stack-item-atg">aestheticstogo.com · spiregroupinc.com</span>
+    </div>
+  </div>
+</div>
+
+<!-- AI -->
+<div class="stack-category-block">
+  <div class="stack-cat-header">
+    <div class="stack-cat-label">04 — AI & Intelligence</div>
+    <div class="stack-cat-title">Machine Learning & Language Models</div>
+  </div>
+  <div class="stack-items">
+    <div class="stack-item">
+      <div class="stack-item-name">Claude API</div>
+      <div class="stack-item-role">LLM Backbone</div>
+      <div class="stack-item-desc">Powers the ATG medical AI assistant, the Forge agent's personalized message generation, the Intel agent's prospect research, and the Closer agent's lead handling. Custom system prompting with clinical guardrails.</div>
+      <span class="stack-item-atg">ATG Medical AI · All 7 Agents</span>
+    </div>
+    <div class="stack-item">
+      <div class="stack-item-name">MediaPipe + OpenCV</div>
+      <div class="stack-item-role">Facial AI & Simulation</div>
+      <div class="stack-item-desc">Core of the ATG procedure simulation engine. MediaPipe handles facial landmark detection and mesh analysis; OpenCV handles image processing. The combination delivers real-time treatment previews in under 3 seconds.</div>
+      <span class="stack-item-atg">ATG Procedure Simulation</span>
+    </div>
+    <div class="stack-item">
+      <div class="stack-item-name">DALL-E 3 / Stability AI</div>
+      <div class="stack-item-role">Generative Image Creation</div>
+      <div class="stack-item-desc">The Forge agent uses both for autonomous marketing asset generation — creating provider-facing and patient-facing visual content without human creative intervention.</div>
+      <span class="stack-item-atg">ATG Forge Agent · Media Generation</span>
+    </div>
+  </div>
+</div>
+
+<!-- DATA -->
+<div class="stack-category-block">
+  <div class="stack-cat-header">
+    <div class="stack-cat-label">05 — Data</div>
+    <div class="stack-cat-title">Storage & Database</div>
+  </div>
+  <div class="stack-items">
+    <div class="stack-item">
+      <div class="stack-item-name">PostgreSQL</div>
+      <div class="stack-item-role">Relational Clinical Data</div>
+      <div class="stack-item-desc">Clinical records, provider profiles, appointment data, credentialing status, and financial transactions — structured relational data where integrity and auditability are requirements, not preferences.</div>
+      <span class="stack-item-atg">ATG Core Data · Vehicle System</span>
+    </div>
+    <div class="stack-item">
+      <div class="stack-item-name">MongoDB</div>
+      <div class="stack-item-role">Document Store</div>
+      <div class="stack-item-desc">Agent state management, outreach logs, conversation history, and flexible schema workloads. Used where document-oriented structure fits better than rigid relational tables.</div>
+      <span class="stack-item-atg">ATG Agent Data · FriendLinq</span>
+    </div>
+    <div class="stack-item">
+      <div class="stack-item-name">Excel / CSV Pipelines</div>
+      <div class="stack-item-role">Agent Data Exchange</div>
+      <div class="stack-item-desc">Deliberate choice for the agent system's shared data layer — keeping the pipeline auditable, human-readable, and debuggable. Agents read and write shared workbooks; the Command agent surfaces results as dashboard reports.</div>
+      <span class="stack-item-atg">ATG Agent Pipeline (all 7 agents)</span>
+    </div>
+  </div>
+</div>
+
+<!-- AUTOMATION -->
+<div class="stack-category-block">
+  <div class="stack-cat-header">
+    <div class="stack-cat-label">06 — Automation & Outreach</div>
+    <div class="stack-cat-title">Agent Tools & Marketing Infrastructure</div>
+  </div>
+  <div class="stack-items">
+    <div class="stack-item">
+      <div class="stack-item-name">Brevo</div>
+      <div class="stack-item-role">Email Automation</div>
+      <div class="stack-item-desc">Transactional and sequence email for ATG provider outreach. Integrated with the Dispatch agent for scheduled send, rate limiting, and deliverability management.</div>
+      <span class="stack-item-atg">ATG Dispatch Agent</span>
+    </div>
+    <div class="stack-item">
+      <div class="stack-item-name">ManyChat</div>
+      <div class="stack-item-role">Instagram DM Automation</div>
+      <div class="stack-item-desc">Instagram direct message automation for the Dispatch agent's Instagram outreach channel. Rule-based flows for initial contact and response routing.</div>
+      <span class="stack-item-atg">ATG Dispatch Agent</span>
+    </div>
+    <div class="stack-item">
+      <div class="stack-item-name">Zapier + Formspree</div>
+      <div class="stack-item-role">Webhook Orchestration</div>
+      <div class="stack-item-desc">Connects inbound provider applications (via Formspree on the ATG website) to the Sentinel agent's monitoring pipeline. Triggers alerts for hot leads and routes to Excel tracking sheets.</div>
+      <span class="stack-item-atg">ATG Sentinel Agent · Provider Applications</span>
+    </div>
+  </div>
+</div>
+
+<!-- PHILOSOPHY -->
+<div class="philosophy">
+  <h2>Three principles that drive every <em>stack decision</em></h2>
+  <div class="principles">
+    <div class="principle">
+      <div class="principle-num">01</div>
+      <div class="principle-title">Production-proven, not evaluated</div>
+      <div class="principle-desc">Every tool in this stack has run in a live clinical platform under real-world conditions. We don't recommend technology we haven't operated ourselves at production scale.</div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">02</div>
+      <div class="principle-title">Compliance-first architecture</div>
+      <div class="principle-desc">HIPAA-awareness isn't a layer you add. It's a constraint that shapes technology selection from the beginning. Every infrastructure choice is made with data sensitivity, auditability, and access control in view.</div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">03</div>
+      <div class="principle-title">Auditability over cleverness</div>
+      <div class="principle-desc">In clinical systems, the ability to trace what happened — and why — matters more than technical elegance. We choose boring, auditable patterns over clever, opaque ones. Every agent writes to a log. Every decision leaves a record.</div>
+    </div>
+  </div>
+</div>
+
+<div class="page-cta">
+  <h2>Questions about our <em>approach?</em></h2>
+  <p>We're happy to discuss architecture decisions and technology choices for your clinical platform.</p>
+  <a class="btn-primary" href="contact.html">Get in Touch</a>
+</div>
+
+<footer>
+  <div class="footer-copy">© 2025 Spire Group Inc. — Las Vegas, Nevada.</div>
+  <div class="footer-note">Patent Pending · Trademark Filed · Copyrights Registered</div>
+</footer>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://spiregroupinc.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Technology Stack", "item": "https://spiregroupinc.com/stack.html"}
+  ]
+}
+</script>
+
+</body>
+</html>

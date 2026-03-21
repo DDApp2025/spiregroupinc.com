@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <title>Case Study: Aesthetics To Go — Spire Group Inc.</title>
+  <meta name="description" content="How Infotech Inc. designed and built Aesthetics To Go — a fully autonomous AI-powered clinical operating system for mobile aesthetic treatment delivery. Two years. Zero physical locations. Patent pending." />
+  <link rel="canonical" href="https://spiregroupinc.com/case-study.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Spire Group Inc." />
+  <meta property="og:title" content="Case Study: Aesthetics To Go — Spire Group Inc." />
+  <meta property="og:description" content="How Spire Group Inc. designed and built Aesthetics To Go — a fully autonomous AI-powered clinical operating system for mobile aesthetic treatment delivery. Two years. Patent pending." />
+  <meta property="og:url" content="https://spiregroupinc.com/case-study.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Case Study: Aesthetics To Go — Spire Group Inc." />
+  <meta name="twitter:description" content="How Spire Group Inc. designed and built Aesthetics To Go — a fully autonomous AI-powered clinical operating system for mobile aesthetic treatment delivery. Two years. Patent pending." />
+  <meta name="robots" content="index, follow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink: #0a0a0f; --paper: #f5f3ee; --cream: #ede9e0;
+      --steel: #1c2333; --accent: #b8470b; --accent2: #2a4a6b;
+      --muted: #6b6558; --rule: rgba(10,10,15,0.12);
+      --mono: 'DM Mono', monospace;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Syne', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--paper); color: var(--ink); font-family: var(--serif); font-size: 18px; line-height: 1.6; overflow-x: hidden; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 3rem; background: rgba(245,243,238,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--rule); }
+    .nav-logo { font-family: var(--mono); font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); text-decoration: none; }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--ink); }
+    .nav-cta { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--paper); background: var(--ink); padding: 0.55rem 1.2rem; text-decoration: none; transition: background 0.2s; }
+    .nav-cta:hover { background: var(--accent); }
+
+    /* DARK HERO */
+    .cs-hero {
+      background: var(--steel);
+      padding: 10rem 5rem 6rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .cs-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 80% 20%, rgba(43,74,107,0.5) 0%, transparent 55%),
+                  radial-gradient(ellipse at 10% 80%, rgba(184,71,11,0.2) 0%, transparent 50%);
+    }
+    .cs-hero-inner { position: relative; z-index: 1; }
+    .eyebrow { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(184,71,11,0.9); margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.8rem; }
+    .eyebrow::before { content: ''; display: inline-block; width: 1.5rem; height: 1px; background: rgba(184,71,11,0.9); }
+    h1 { font-family: var(--serif); font-size: clamp(2.5rem, 4.5vw, 4rem); font-weight: 300; line-height: 1.1; color: var(--paper); margin-bottom: 1.5rem; }
+    h1 em { font-style: italic; color: rgba(184,71,11,0.85); }
+    .cs-hero-meta {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border: 1px solid rgba(255,255,255,0.1);
+      margin-top: 4rem;
+    }
+    .cs-meta-item { padding: 1.75rem 2rem; border-right: 1px solid rgba(255,255,255,0.1); }
+    .cs-meta-item:last-child { border-right: none; }
+    .cs-meta-label { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(245,243,238,0.3); margin-bottom: 0.5rem; }
+    .cs-meta-value { font-family: var(--serif); font-size: 1.05rem; color: rgba(245,243,238,0.85); line-height: 1.4; }
+
+    /* NARRATIVE SECTIONS */
+    .narrative { padding: 6rem 5rem; border-bottom: 1px solid var(--rule); }
+    .narrative:nth-child(odd) { background: var(--paper); }
+    .narrative:nth-child(even) { background: var(--cream); }
+    .narrative-layout { display: grid; grid-template-columns: 260px 1fr; gap: 5rem; align-items: start; }
+    .narrative-label { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); line-height: 1.6; padding-top: 0.4rem; position: sticky; top: 7rem; }
+    h2 { font-family: var(--serif); font-size: clamp(1.8rem, 2.8vw, 2.4rem); font-weight: 300; line-height: 1.2; color: var(--ink); margin-bottom: 1.5rem; }
+    h2 em { font-style: italic; color: var(--accent2); }
+    .narrative-body p { font-size: 1rem; font-weight: 300; color: var(--muted); line-height: 1.9; margin-bottom: 1.25rem; max-width: 68ch; }
+    .narrative-body p strong { color: var(--ink); font-weight: 600; }
+    .narrative-body p:last-child { margin-bottom: 0; }
+
+    /* FEATURE GRID */
+    .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1px solid var(--rule); margin-top: 3rem; }
+    .feature-card { padding: 2rem; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+    .feature-card:nth-child(3n) { border-right: none; }
+    .feature-label { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.6rem; }
+    .feature-title { font-family: var(--sans); font-size: 0.9rem; font-weight: 700; color: var(--ink); margin-bottom: 0.5rem; }
+    .feature-desc { font-family: var(--mono); font-size: 0.62rem; color: var(--muted); line-height: 1.75; }
+
+    /* AGENT TABLE */
+    .agent-table { width: 100%; border-collapse: collapse; border: 1px solid var(--rule); margin-top: 2.5rem; }
+    .agent-table th { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); background: var(--cream); padding: 0.85rem 1.25rem; text-align: left; border-bottom: 1px solid var(--rule); }
+    .agent-table td { font-family: var(--mono); font-size: 0.65rem; color: var(--ink); padding: 1rem 1.25rem; border-bottom: 1px solid var(--rule); vertical-align: top; line-height: 1.6; }
+    .agent-table tr:last-child td { border-bottom: none; }
+    .agent-table tr:hover td { background: rgba(10,10,15,0.02); }
+    .agent-name { font-weight: 500; color: var(--accent2); }
+
+    /* TIMELINE */
+    .timeline { display: flex; flex-direction: column; gap: 0; border: 1px solid var(--rule); margin-top: 2.5rem; }
+    .timeline-item { display: grid; grid-template-columns: 180px 1fr; border-bottom: 1px solid var(--rule); }
+    .timeline-item:last-child { border-bottom: none; }
+    .timeline-period { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.1em; color: var(--accent); padding: 1.25rem 1.5rem; border-right: 1px solid var(--rule); background: var(--cream); display: flex; align-items: flex-start; }
+    .timeline-content { padding: 1.25rem 1.5rem; }
+    .timeline-event { font-family: var(--sans); font-size: 0.85rem; font-weight: 700; color: var(--ink); margin-bottom: 0.3rem; }
+    .timeline-detail { font-family: var(--mono); font-size: 0.62rem; color: var(--muted); line-height: 1.65; }
+
+    /* PATENT CALLOUT */
+    .patent-callout {
+      background: var(--accent2);
+      padding: 3rem 4rem;
+      margin-top: 3rem;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
+    .patent-badge { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.1); padding: 0.5rem 1rem; white-space: nowrap; }
+    .patent-text h3 { font-family: var(--serif); font-size: 1.3rem; font-weight: 400; color: var(--paper); margin-bottom: 0.4rem; }
+    .patent-text p { font-family: var(--mono); font-size: 0.65rem; color: rgba(245,243,238,0.55); line-height: 1.7; }
+
+    /* VISIT BAR */
+    .visit-bar { background: var(--ink); padding: 3rem 5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 2rem; }
+    .visit-text h3 { font-family: var(--serif); font-size: 1.5rem; font-weight: 300; color: var(--paper); margin-bottom: 0.3rem; }
+    .visit-text p { font-family: var(--mono); font-size: 0.65rem; color: rgba(245,243,238,0.4); }
+    .btn-light { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink); background: var(--paper); padding: 0.85rem 2rem; text-decoration: none; transition: background 0.2s; display: inline-block; }
+    .btn-light:hover { background: var(--cream); }
+
+    /* CTA */
+    .page-cta { background: var(--cream); padding: 6rem 5rem; text-align: center; border-top: 1px solid var(--rule); }
+    .page-cta h2 { font-family: var(--serif); font-size: clamp(2rem, 3vw, 2.8rem); font-weight: 300; color: var(--ink); margin-bottom: 1rem; }
+    .page-cta h2 em { font-style: italic; color: var(--accent2); }
+    .page-cta p { font-family: var(--mono); font-size: 0.7rem; color: var(--muted); margin-bottom: 2.5rem; max-width: 55ch; margin-left: auto; margin-right: auto; line-height: 1.8; }
+    .btn-primary { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--paper); background: var(--ink); padding: 0.85rem 2rem; text-decoration: none; transition: background 0.2s; display: inline-block; }
+    .btn-primary:hover { background: var(--accent); }
+
+    footer { background: var(--ink); padding: 2rem 5rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.05); }
+    .footer-copy { font-family: var(--mono); font-size: 0.62rem; color: rgba(255,255,255,0.2); }
+    .footer-note { font-family: var(--mono); font-size: 0.62rem; color: rgba(255,255,255,0.2); }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .cs-hero .eyebrow { animation: fadeUp 0.6s ease 0.1s both; }
+    .cs-hero h1 { animation: fadeUp 0.6s ease 0.25s both; }
+    .cs-hero-meta { animation: fadeUp 0.6s ease 0.4s both; }
+
+    @media (max-width: 1024px) {
+      nav { padding: 1rem 1.5rem; } .nav-links { display: none; }
+      .cs-hero { padding: 8rem 2.5rem 4rem; }
+      .cs-hero-meta { grid-template-columns: 1fr 1fr; }
+      .cs-meta-item:nth-child(2) { border-right: none; }
+      .narrative { padding: 4rem 2.5rem; }
+      .narrative-layout { grid-template-columns: 1fr; gap: 2rem; }
+      .narrative-label { position: static; }
+      .feature-grid { grid-template-columns: 1fr 1fr; }
+      .timeline-item { grid-template-columns: 140px 1fr; }
+      .visit-bar { padding: 3rem 2.5rem; }
+      .page-cta { padding: 5rem 2.5rem; }
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 2rem 1.5rem; }
+      .patent-callout { grid-template-columns: 1fr; gap: 1.5rem; padding: 2.5rem; }
+    }
+    @media (max-width: 640px) {
+      .cs-hero-meta { grid-template-columns: 1fr; }
+      .cs-meta-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
+      .feature-grid { grid-template-columns: 1fr; }
+      .feature-card:nth-child(3n) { border-right: 1px solid var(--rule); }
+      .timeline-item { grid-template-columns: 1fr; }
+      .timeline-period { border-right: none; border-bottom: 1px solid var(--rule); }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html"><span>Spire</span> Group Inc.</a>
+  <ul class="nav-links">
+    <li><a href="what-we-build.html">What We Build</a></li>
+    <li><a href="case-study.html" class="active">Case Study</a></li>
+    <li><a href="stack.html">Stack</a></li>
+    <li><a href="credentials.html">Credentials</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+  <a class="nav-cta" href="contact.html">Start a Project</a>
+</nav>
+
+<!-- HERO -->
+<div class="cs-hero">
+  <div class="cs-hero-inner">
+    <div class="eyebrow">Flagship Case Study</div>
+    <h1>Aesthetics <em>To Go —</em><br/>a clinical OS built from nothing.</h1>
+    <div class="cs-hero-meta">
+      <div class="cs-meta-item">
+        <div class="cs-meta-label">Platform Type</div>
+        <div class="cs-meta-value">AI Clinical Operating System</div>
+      </div>
+      <div class="cs-meta-item">
+        <div class="cs-meta-label">Development Time</div>
+        <div class="cs-meta-value">2+ Years, Ongoing</div>
+      </div>
+      <div class="cs-meta-item">
+        <div class="cs-meta-label">Physical Locations</div>
+        <div class="cs-meta-value">Zero — 100% Mobile Delivery</div>
+      </div>
+      <div class="cs-meta-item">
+        <div class="cs-meta-label">IP Status</div>
+        <div class="cs-meta-value">Patent Pending · TM Filed · © Registered</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- THE PROBLEM -->
+<div class="narrative">
+  <div class="narrative-layout">
+    <div class="narrative-label">The Problem</div>
+    <div class="narrative-body">
+      <h2>What happens when the clinic <em>comes to you?</em></h2>
+      <p>Aesthetic treatment — Botox, dermal fillers, hair restoration — has historically required a physical clinic or med spa. Patients drive to appointments. Providers work fixed locations. The infrastructure assumption is a building.</p>
+      <p>Aesthetics To Go was founded on a different premise: vetted, credentialed aesthetic providers traveling directly to patients — at home, at the office, wherever they prefer. No waiting rooms. No clinic overhead. Clinical-grade treatment delivered on the patient's terms.</p>
+      <p><strong>The technical challenge was building the operating system that makes this safe, scalable, and regulatorily defensible — with no prior model to follow.</strong> Every process that a physical clinic handles through physical infrastructure had to be reimagined as software: credentialing, consent, scheduling, route optimization, inventory, clinical documentation, and compliance.</p>
+    </div>
+  </div>
+</div>
+
+<!-- THE PLATFORM -->
+<div class="narrative">
+  <div class="narrative-layout">
+    <div class="narrative-label">The Platform</div>
+    <div class="narrative-body">
+      <h2>Eight systems. <em>One operating layer.</em></h2>
+      <p>The ATG platform is not a scheduling app with some clinical features added. It's a full clinical operating system with eight integrated subsystems — each built from scratch, each designed to work together as a single operating layer for mobile aesthetic delivery.</p>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-label">AI Engine</div>
+          <div class="feature-title">Procedure Simulation</div>
+          <div class="feature-desc">Patients see predicted treatment results in 3 seconds using a facial AI built on MediaPipe and custom ML pipelines. The #1 conversion tool in provider demos — and a genuine clinical differentiator.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-label">Operations</div>
+          <div class="feature-title">Smart Scheduling & Route Optimization</div>
+          <div class="feature-desc">Real-time routing engine that optimizes provider daily appointment sequences by location, treatment duration, and supply requirements — maximizing capacity without wasted drive time.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-label">Clinical AI</div>
+          <div class="feature-title">Medical AI Assistant</div>
+          <div class="feature-desc">Context-aware AI assistant embedded in the patient-facing platform, operating within defined clinical protocols. Powered by the Claude API with custom system prompting and conversation management.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-label">Intelligence</div>
+          <div class="feature-title">Treatment Recommendations</div>
+          <div class="feature-desc">Recommendation engine that factors patient history, contraindications, provider credentials, and clinical best practices into personalized treatment suggestions.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-label">Compliance</div>
+          <div class="feature-title">Provider Credentialing</div>
+          <div class="feature-desc">NPI verification against NPPES, license validation, independent contractor agreement management, HIPAA BAA execution, and consent tracking — all in-platform, all auditable.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-label">Supply Chain</div>
+          <div class="feature-title">Inventory Control</div>
+          <div class="feature-desc">Procedure-linked inventory management. The system knows what each appointment requires and flags supply gaps before the provider departs — eliminating wasted appointments.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- THE AGENT SYSTEM -->
+<div class="narrative">
+  <div class="narrative-layout">
+    <div class="narrative-label">The Agent System</div>
+    <div class="narrative-body">
+      <h2>Seven agents. <em>One autonomous pipeline.</em></h2>
+      <p>Building the platform was phase one. Getting providers onto it — and patients booking through it — is the ongoing operational challenge. Rather than a traditional marketing and sales team, we built a seven-agent autonomous system that runs provider acquisition 24/7.</p>
+      <p>Each agent has a single, well-defined job. They communicate through shared data infrastructure, not direct agent-to-agent messaging — keeping the system auditable, debuggable, and reliable. The conductor (Command) surfaces results to a daily dashboard requiring approximately 30–60 minutes of human review per day.</p>
+      <table class="agent-table">
+        <thead>
+          <tr>
+            <th>Agent</th>
+            <th>Job</th>
+            <th>Tools</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="agent-name">Scout</span></td>
+            <td>Find and verify aesthetic providers with accurate contact information</td>
+            <td>Apify, Instagram scraping, NPI registry, LinkedIn</td>
+          </tr>
+          <tr>
+            <td><span class="agent-name">Intel</span></td>
+            <td>Research each prospect: specialties, practice type, pain points, outreach angle</td>
+            <td>Web search, Claude API, social profile analysis</td>
+          </tr>
+          <tr>
+            <td><span class="agent-name">Forge</span></td>
+            <td>Generate personalized multi-channel outreach messages and media assets</td>
+            <td>Claude API, DALL-E 3, Stability AI, ElevenLabs, FFmpeg</td>
+          </tr>
+          <tr>
+            <td><span class="agent-name">Dispatch</span></td>
+            <td>Send messages across all channels on schedule with platform-specific rate limiting</td>
+            <td>Brevo, ManyChat, PhantomBuster, Instagram DM</td>
+          </tr>
+          <tr>
+            <td><span class="agent-name">Sentinel</span></td>
+            <td>Monitor all inbound responses, classify by intent, route hot leads for immediate action</td>
+            <td>Zapier webhooks, Gmail, Instagram monitoring, Brevo</td>
+          </tr>
+          <tr>
+            <td><span class="agent-name">Closer</span></td>
+            <td>Handle warm and hot leads — draft replies, book demo calls, manage objections</td>
+            <td>Claude API, Google Calendar, Calendly, email</td>
+          </tr>
+          <tr>
+            <td><span class="agent-name">Command</span></td>
+            <td>Aggregate results, generate daily reports, surface decisions requiring human input</td>
+            <td>Excel/CSV dashboards, Zapier, email digest</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- DEVELOPMENT TIMELINE -->
+<div class="narrative">
+  <div class="narrative-layout">
+    <div class="narrative-label">Development Timeline</div>
+    <div class="narrative-body">
+      <h2>Two years of <em>deliberate construction.</em></h2>
+      <p>ATG was not built in a sprint. Every layer was designed, built, tested, and iterated — with IP protection filed as the platform matured. This is the condensed sequence.</p>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-period">Year 1 — Foundation</div>
+          <div class="timeline-content">
+            <div class="timeline-event">Platform Architecture & Core App</div>
+            <div class="timeline-detail">React Native patient and provider apps. .NET backend API. AWS infrastructure. Core scheduling, booking, and provider profile systems. Brand and domain established.</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-period">Year 1 — Intelligence</div>
+          <div class="timeline-content">
+            <div class="timeline-event">AI Simulation Engine & Medical AI</div>
+            <div class="timeline-detail">Facial procedure simulation built using MediaPipe and custom ML pipeline. Treatment recommendation engine. Claude API integration for the medical AI assistant. Clinical protocol design with CMO Dr. Deborah Kessler Hudak.</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-period">Year 1–2 — Compliance</div>
+          <div class="timeline-content">
+            <div class="timeline-event">Credentialing, HIPAA & Legal Framework</div>
+            <div class="timeline-detail">NPI verification pipeline. License validation workflows. HIPAA-aware data architecture. BAAs, provider IC agreements, consent management. Medical director oversight structure. Corporate IP framework established.</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-period">Year 2 — IP Protection</div>
+          <div class="timeline-content">
+            <div class="timeline-event">Patent, Trademark & Copyright Filings</div>
+            <div class="timeline-detail">Provisional patent #63970174 filed with USPTO. Trademark applications filed in Classes 44 and 9. Copyright deposits submitted for source code, UI designs, and documentation through the U.S. Copyright Office.</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-period">Year 2 — Growth</div>
+          <div class="timeline-content">
+            <div class="timeline-event">7-Agent Autonomous Marketing System</div>
+            <div class="timeline-detail">Scout through Command pipeline deployed. 242-provider database built. Multi-channel outreach across Instagram, email, and LinkedIn. Google Search Console, Bing Webmaster Tools, Google Business Profile configured. Full SEO implementation on aestheticstogo.com.</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-period">Ongoing</div>
+          <div class="timeline-content">
+            <div class="timeline-event">Live Operation & Continuous Development</div>
+            <div class="timeline-detail">Platform live at aestheticstogo.com. Las Vegas launch market active. Provider acquisition pipeline running. Inventory system, route optimization, and AI features in continuous iteration.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="patent-callout">
+        <div class="patent-badge">Patent Pending #63970174</div>
+        <div class="patent-text">
+          <h3>Novel Inventions — Filed with the USPTO</h3>
+          <p>The provisional patent covers the core inventions in the ATG platform: the AI-powered clinical scheduling engine, real-time route optimization for mobile provider delivery, and the procedure simulation system. Filing under Infotech Inc. as inventor and assignee.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VISIT BAR -->
+<div class="visit-bar">
+  <div class="visit-text">
+    <h3>See the platform live</h3>
+    <p>Aesthetics To Go is operational. The website, the provider application, and the AI chat assistant are live.</p>
+  </div>
+  <a class="btn-light" href="https://aestheticstogo.com" target="_blank" rel="noopener">Visit aestheticstogo.com →</a>
+</div>
+
+<!-- CTA -->
+<div class="page-cta">
+  <h2>Ready to build something <em>like this?</em></h2>
+  <p>We take on a small number of client engagements for clinical and healthcare SaaS development. If you're serious about building in this space, let's talk.</p>
+  <a class="btn-primary" href="contact.html">Start a Conversation</a>
+</div>
+
+<footer>
+  <div class="footer-copy">© 2025 Spire Group Inc. — Las Vegas, Nevada.</div>
+  <div class="footer-note">Patent Pending · Trademark Filed · Copyrights Registered</div>
+</footer>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://spiregroupinc.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Case Study", "item": "https://spiregroupinc.com/case-study.html"}
+  ]
+}
+</script>
+
+</body>
+</html>

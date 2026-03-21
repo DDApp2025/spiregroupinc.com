@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <title>About — Spire Group Inc.</title>
+  <meta name="description" content="Spire Group Inc. is a clinical SaaS and AI development company based in Las Vegas, Nevada. We design and build AI-powered healthcare platforms — and operate them." />
+  <link rel="canonical" href="https://spiregroupinc.com/about.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Spire Group Inc." />
+  <meta property="og:title" content="About — Spire Group Inc." />
+  <meta property="og:description" content="Spire Group Inc. is a clinical SaaS and AI development company based in Las Vegas, Nevada. We design, build, and operate AI-powered healthcare platforms." />
+  <meta property="og:url" content="https://spiregroupinc.com/about.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="About — Spire Group Inc." />
+  <meta name="twitter:description" content="Spire Group Inc. is a clinical SaaS and AI development company based in Las Vegas, Nevada. We design, build, and operate AI-powered healthcare platforms." />
+  <meta name="robots" content="index, follow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink: #0a0a0f; --paper: #f5f3ee; --cream: #ede9e0;
+      --steel: #1c2333; --accent: #b8470b; --accent2: #2a4a6b;
+      --muted: #6b6558; --rule: rgba(10,10,15,0.12);
+      --mono: 'DM Mono', monospace; --serif: 'Cormorant Garamond', Georgia, serif; --sans: 'Syne', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--paper); color: var(--ink); font-family: var(--serif); font-size: 18px; line-height: 1.6; overflow-x: hidden; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 3rem; background: rgba(245,243,238,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--rule); }
+    .nav-logo { font-family: var(--mono); font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); text-decoration: none; }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--ink); }
+    .nav-cta { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--paper); background: var(--ink); padding: 0.55rem 1.2rem; text-decoration: none; transition: background 0.2s; }
+    .nav-cta:hover { background: var(--accent); }
+
+    /* HERO */
+    .page-hero { padding: 10rem 5rem 6rem; background: var(--cream); border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: end; }
+    .eyebrow { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.8rem; }
+    .eyebrow::before { content: ''; display: inline-block; width: 1.5rem; height: 1px; background: var(--accent); }
+    h1 { font-family: var(--serif); font-size: clamp(2.5rem, 4vw, 3.8rem); font-weight: 300; line-height: 1.1; color: var(--ink); }
+    h1 em { font-style: italic; color: var(--accent2); }
+    .hero-right-text p { font-size: 1.05rem; font-weight: 300; color: var(--muted); line-height: 1.85; margin-bottom: 1.25rem; }
+    .hero-right-text p strong { color: var(--ink); font-weight: 600; }
+
+    /* COMPANY PROFILE */
+    .profile { padding: 6rem 5rem; border-bottom: 1px solid var(--rule); }
+    .profile-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; }
+    h2 { font-family: var(--serif); font-size: clamp(1.8rem, 2.8vw, 2.5rem); font-weight: 300; line-height: 1.2; color: var(--ink); margin-bottom: 1.5rem; }
+    h2 em { font-style: italic; color: var(--accent2); }
+    .profile-text p { font-size: 1rem; font-weight: 300; color: var(--muted); line-height: 1.9; margin-bottom: 1.25rem; max-width: 60ch; }
+    .profile-text p strong { color: var(--ink); font-weight: 600; }
+    .profile-numbers { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--rule); align-content: start; }
+    .num-item { padding: 2rem; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+    .num-item:nth-child(2n) { border-right: none; }
+    .num-val { font-family: var(--sans); font-size: 2.2rem; font-weight: 800; color: var(--ink); line-height: 1; margin-bottom: 0.5rem; }
+    .num-label { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); line-height: 1.5; }
+
+    /* WHAT MAKES US DIFFERENT */
+    .different { padding: 6rem 5rem; background: var(--steel); }
+    .different h2 { color: var(--paper); margin-bottom: 3rem; }
+    .different h2 em { color: rgba(184,71,11,0.85); }
+    .diff-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; border: 1px solid rgba(255,255,255,0.08); }
+    .diff-item { padding: 3rem; border-right: 1px solid rgba(255,255,255,0.08); border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .diff-item:nth-child(2n) { border-right: none; }
+    .diff-num { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.15em; color: rgba(184,71,11,0.7); margin-bottom: 1rem; }
+    .diff-title { font-family: var(--serif); font-size: 1.3rem; font-weight: 600; color: var(--paper); margin-bottom: 0.75rem; }
+    .diff-desc { font-family: var(--mono); font-size: 0.65rem; color: rgba(245,243,238,0.45); line-height: 1.8; }
+
+    /* PLATFORMS BUILT */
+    .platforms { padding: 6rem 5rem; background: var(--cream); border-top: 1px solid var(--rule); }
+    .platforms h2 { margin-bottom: 3rem; }
+    .platform-list { display: flex; flex-direction: column; gap: 0; border: 1px solid var(--rule); }
+    .platform-row { display: grid; grid-template-columns: 220px 1fr auto; align-items: center; padding: 1.75rem 2rem; border-bottom: 1px solid var(--rule); background: var(--paper); gap: 2rem; }
+    .platform-row:last-child { border-bottom: none; }
+    .platform-row:hover { background: rgba(10,10,15,0.02); }
+    .platform-name { font-family: var(--sans); font-size: 0.95rem; font-weight: 800; color: var(--ink); }
+    .platform-domain { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.1em; color: var(--accent2); margin-top: 0.2rem; }
+    .platform-desc { font-family: var(--mono); font-size: 0.63rem; color: var(--muted); line-height: 1.65; }
+    .platform-status { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.3rem 0.75rem; white-space: nowrap; }
+    .status-live { color: #2a6a2a; background: #e8f5e8; border: 1px solid #c5e8c5; }
+    .status-active { color: var(--accent2); background: rgba(42,74,107,0.08); border: 1px solid rgba(42,74,107,0.2); }
+
+    /* LEADERSHIP -->
+    .leadership { padding: 6rem 5rem; border-top: 1px solid var(--rule); }
+    .leadership h2 { margin-bottom: 3rem; }
+    .leader-card { display: grid; grid-template-columns: auto 1fr; gap: 2.5rem; align-items: start; padding: 2.5rem; border: 1px solid var(--rule); max-width: 700px; }
+    .leader-initial { width: 72px; height: 72px; background: var(--accent2); display: flex; align-items: center; justify-content: center; font-family: var(--sans); font-size: 1.5rem; font-weight: 800; color: var(--paper); flex-shrink: 0; }
+    .leader-name { font-family: var(--sans); font-size: 1.1rem; font-weight: 800; color: var(--ink); margin-bottom: 0.2rem; }
+    .leader-title { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
+    .leader-bio { font-family: var(--mono); font-size: 0.65rem; color: var(--muted); line-height: 1.75; }
+
+    /* CTA */
+    .page-cta { background: var(--ink); padding: 6rem 5rem; text-align: center; }
+    .page-cta h2 { font-family: var(--serif); font-size: clamp(2rem, 3vw, 2.8rem); font-weight: 300; color: var(--paper); margin-bottom: 1rem; }
+    .page-cta h2 em { font-style: italic; color: rgba(184,71,11,0.9); }
+    .page-cta p { font-family: var(--mono); font-size: 0.7rem; color: rgba(245,243,238,0.4); margin-bottom: 2.5rem; }
+    .btn-primary { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--paper); background: var(--accent); padding: 0.85rem 2rem; text-decoration: none; display: inline-block; }
+    .btn-primary:hover { background: #9a3a08; }
+
+    footer { background: var(--ink); padding: 2rem 5rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.05); }
+    .footer-copy { font-family: var(--mono); font-size: 0.62rem; color: rgba(255,255,255,0.2); }
+    .footer-note { font-family: var(--mono); font-size: 0.62rem; color: rgba(255,255,255,0.2); }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .page-hero .eyebrow { animation: fadeUp 0.6s ease 0.1s both; }
+    .page-hero h1 { animation: fadeUp 0.6s ease 0.2s both; }
+
+    @media (max-width: 1024px) {
+      nav { padding: 1rem 1.5rem; } .nav-links { display: none; }
+      .page-hero { padding: 8rem 2.5rem 4rem; grid-template-columns: 1fr; gap: 3rem; }
+      .profile { padding: 5rem 2.5rem; }
+      .profile-layout { grid-template-columns: 1fr; gap: 3rem; }
+      .different { padding: 5rem 2.5rem; }
+      .diff-grid { grid-template-columns: 1fr; }
+      .diff-item { border-right: none; }
+      .platforms { padding: 5rem 2.5rem; }
+      .platform-row { grid-template-columns: 1fr; gap: 0.75rem; }
+      .leadership { padding: 5rem 2.5rem; }
+      .page-cta { padding: 5rem 2.5rem; }
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html"><span>Spire</span> Group Inc.</a>
+  <ul class="nav-links">
+    <li><a href="what-we-build.html">What We Build</a></li>
+    <li><a href="case-study.html">Case Study</a></li>
+    <li><a href="stack.html">Stack</a></li>
+    <li><a href="credentials.html">Credentials</a></li>
+    <li><a href="about.html" class="active">About</a></li>
+  </ul>
+  <a class="nav-cta" href="contact.html">Start a Project</a>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-left">
+    <div class="eyebrow">About Spire Group Inc.</div>
+    <h1>Built by an engineer<br/>who <em>operates</em><br/>what he builds.</h1>
+  </div>
+  <div class="hero-right-text">
+    <p>Spire Group Inc. is a technology development company based in Las Vegas, Nevada. We specialize in AI-powered clinical and healthcare SaaS platforms — complex, multi-stakeholder systems that require deep technical architecture, regulatory awareness, and real operational understanding.</p>
+    <p><strong>We don't consult on what to build. We build it — and we operate it.</strong> Aesthetics To Go is the evidence: a two-year investment in clinical AI technology that is now a live, protected, continuously improving platform.</p>
+  </div>
+</div>
+
+<!-- COMPANY PROFILE -->
+<div class="profile">
+  <div class="profile-layout">
+    <div class="profile-text">
+      <h2>A development firm that <em>carries the weight</em> of its own work</h2>
+      <p>Most software development firms hand off a deliverable and move on. Their accountability ends at launch. Ours doesn't — because we operate our own platform in the same environment we build for clients.</p>
+      <p>When we make an architectural decision in the ATG platform, we live with the consequences. When we design a HIPAA-aware data model, we're the ones responsible if it's wrong. When we build a credentialing workflow, real providers and patients depend on it working correctly.</p>
+      <p>That operational accountability shapes how we approach every engagement. <strong>We build for the long run, because we've been running our own platform for two years and plan to run it for many more.</strong></p>
+      <p>Infotech Inc. operates through two entities: Infotech Inc. handles all development, IP, and technology work; Spire Group Inc. manages app store developer accounts. Both are controlled by the same founding engineer who built ATG from the ground up.</p>
+    </div>
+    <div class="profile-numbers">
+      <div class="num-item">
+        <div class="num-val">2+</div>
+        <div class="num-label">Years building clinical AI platforms</div>
+      </div>
+      <div class="num-item">
+        <div class="num-val">5+</div>
+        <div class="num-label">Production platforms deployed and operating</div>
+      </div>
+      <div class="num-item">
+        <div class="num-val">3</div>
+        <div class="num-label">Active IP filings with USPTO and Copyright Office</div>
+      </div>
+      <div class="num-item">
+        <div class="num-val">7</div>
+        <div class="num-label">AI agents in autonomous daily operation</div>
+      </div>
+      <div class="num-item">
+        <div class="num-val">242</div>
+        <div class="num-label">Verified provider contacts in the ATG pipeline</div>
+      </div>
+      <div class="num-item">
+        <div class="num-val">AWS</div>
+        <div class="num-label">HIPAA-architecture across multiple production environments</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DIFFERENT -->
+<div class="different">
+  <h2>What makes us <em>different</em></h2>
+  <div class="diff-grid">
+    <div class="diff-item">
+      <div class="diff-num">01</div>
+      <div class="diff-title">We operate what we build</div>
+      <div class="diff-desc">Aesthetics To Go isn't a client project we handed off. It's our own platform, running live, under our operational responsibility. That means every design decision we make for clients is one we've already tested on ourselves.</div>
+    </div>
+    <div class="diff-item">
+      <div class="diff-num">02</div>
+      <div class="diff-title">Full-stack means full-stack</div>
+      <div class="diff-desc">React Native to .NET backend to Python AI engines to AWS infrastructure to autonomous agent pipelines — one engineer who has built and connected every layer. No handoffs between frontend and backend teams. No architecture gaps.</div>
+    </div>
+    <div class="diff-item">
+      <div class="diff-num">03</div>
+      <div class="diff-title">Clinical domain knowledge</div>
+      <div class="diff-desc">We understand NPI verification, HIPAA BAAs, independent contractor compliance, CMO oversight requirements, provider credentialing workflows, and informed consent management — because we built systems around all of them.</div>
+    </div>
+    <div class="diff-item">
+      <div class="diff-num">04</div>
+      <div class="diff-title">AI that works in production</div>
+      <div class="diff-desc">The ATG medical AI assistant, the procedure simulation engine, and the 7-agent autonomous marketing system are all running in a live environment — not in a demo, not in a sandbox. Production AI under real clinical constraints.</div>
+    </div>
+  </div>
+</div>
+
+<!-- PLATFORMS BUILT -->
+<div class="platforms">
+  <h2>Platforms <em>built and operating</em></h2>
+  <div class="platform-list">
+    <div class="platform-row">
+      <div>
+        <div class="platform-name">Aesthetics To Go</div>
+        <div class="platform-domain">aestheticstogo.com</div>
+      </div>
+      <div class="platform-desc">AI-powered clinical operating system for mobile aesthetic treatment delivery. React Native apps, .NET backend, AWS infrastructure, 7-agent autonomous system, procedure simulation engine, provider credentialing, HIPAA-aware architecture. Patent pending.</div>
+      <div class="platform-status status-live">Live</div>
+    </div>
+    <div class="platform-row">
+      <div>
+        <div class="platform-name">FriendLinq</div>
+        <div class="platform-domain">Senior social platform</div>
+      </div>
+      <div class="platform-desc">Social connectivity platform for senior users. Node.js backend, Angular frontend, MongoDB, AWS Lightsail. Full authentication, profile management, and social features. PM2 process management.</div>
+      <div class="platform-status status-active">Active</div>
+    </div>
+    <div class="platform-row">
+      <div>
+        <div class="platform-name">Protoscent</div>
+        <div class="platform-domain">protoscent.com</div>
+      </div>
+      <div class="platform-desc">Fragrance e-commerce platform. Python/Flask backend, AWS EC2, PostgreSQL. CMS and Page Content Editor built for non-technical product management. Stripe payment integration.</div>
+      <div class="platform-status status-active">Active</div>
+    </div>
+    <div class="platform-row">
+      <div>
+        <div class="platform-name">Vehicle Wholesale Agent</div>
+        <div class="platform-domain">Autonomous sourcing system</div>
+      </div>
+      <div class="platform-desc">Node.js/React/PostgreSQL platform that scrapes Facebook Marketplace and Craigslist for wholesale vehicle deals. BlackBook valuation integration. Automated spread analysis and lead scoring.</div>
+      <div class="platform-status status-active">Active</div>
+    </div>
+    <div class="platform-row">
+      <div>
+        <div class="platform-name">ToothFairyPay</div>
+        <div class="platform-domain">iOS — App Store</div>
+      </div>
+      <div class="platform-desc">Family allowance and chore reward management app. React Native, Stripe integration, TestFlight distribution, App Store submission. Parent and child account management with reward tracking.</div>
+      <div class="platform-status status-active">Active</div>
+    </div>
+  </div>
+</div>
+
+<!-- LEADERSHIP -->
+<div class="leadership">
+  <h2>Leadership</h2>
+  <div class="leader-card">
+    <div class="leader-initial">RS</div>
+    <div>
+      <div class="leader-name">Robert Smith</div>
+      <div class="leader-title">President, COO &amp; CTO — Spire Group Inc. / Infotech Inc.</div>
+      <div class="leader-bio">Full-stack engineer and entrepreneur with hands-on experience across React Native, .NET, Node.js, Python/Flask, Angular, AWS, PostgreSQL, MongoDB, and Claude AI. Built and continues to operate five production platforms spanning clinical SaaS, e-commerce, social media, fintech, and autonomous data systems. Provisional patent holder and IP registrant for the ATG platform. Operates Infotech Inc. and Spire Group Inc.</div>
+    </div>
+  </div>
+</div>
+
+<div class="page-cta">
+  <h2>Let's build something <em>that matters.</em></h2>
+  <p>We take on a small number of client engagements. Reach out to discuss your project.</p>
+  <a class="btn-primary" href="contact.html">Start a Conversation</a>
+</div>
+
+<footer>
+  <div class="footer-copy">© 2025 Spire Group Inc. — Las Vegas, Nevada.</div>
+  <div class="footer-note">Patent Pending · Trademark Filed · Copyrights Registered</div>
+</footer>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://spiregroupinc.com/"},
+    {"@type": "ListItem", "position": 2, "name": "About", "item": "https://spiregroupinc.com/about.html"}
+  ]
+}
+</script>
+
+</body>
+</html>

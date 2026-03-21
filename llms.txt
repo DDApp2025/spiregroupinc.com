@@ -1,0 +1,25 @@
+# Spire Group Inc.
+
+Spire Group Inc. is a clinical SaaS and AI healthcare platform development firm based in Las Vegas, Nevada.
+
+## What We Build
+
+We design, develop, and deploy AI-powered clinical and healthcare SaaS platforms. Our specialization is multi-stakeholder clinical systems requiring HIPAA-aware architecture, AI integration, provider credentialing, mobile-first delivery, and autonomous agent systems.
+
+## Flagship Platform
+
+Aesthetics To Go (aestheticstogo.com) is our flagship platform — a fully autonomous AI-powered clinical operating system connecting patients with vetted independent aesthetic providers who travel directly to patients. The platform includes smart scheduling, real-time route optimization, AI procedure simulation, treatment recommendations, a medical AI assistant, provider credentialing, inventory control, and a 7-agent autonomous marketing system.
+
+## Technology
+
+React Native · .NET · Python/Flask · AWS (HIPAA-architecture) · Claude API · PostgreSQL · MongoDB · Node.js · Cloudflare Workers · MediaPipe/OpenCV · GitHub Pages
+
+## IP Filings (ATG platform — filed under Infotech Inc.)
+
+Provisional Patent #63970174 (USPTO) · Trademark Classes 44 & 9 (USPTO) · Copyright Deposits (U.S. Copyright Office)
+
+## Contact
+
+Email: info@spiregroupinc.com
+Phone: (702) 278-8005
+Location: Las Vegas, Nevada

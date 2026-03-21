@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <title>Spire Group Inc. — Clinical SaaS & AI Healthcare Platform Development</title>
+  <meta name="description" content="Spire Group Inc. designs and builds AI-powered clinical platforms. Our flagship — Aesthetics To Go — is a fully autonomous clinical operating system connecting patients with credentialed providers." />
+  <link rel="canonical" href="https://spiregroupinc.com/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Spire Group Inc." />
+  <meta property="og:title" content="Spire Group Inc. — Clinical SaaS &amp; AI Healthcare Platform Development" />
+  <meta property="og:description" content="Spire Group Inc. designs and builds AI-powered clinical platforms. Our flagship — Aesthetics To Go — is a fully autonomous clinical operating system connecting patients with credentialed providers." />
+  <meta property="og:url" content="https://spiregroupinc.com/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Spire Group Inc. — Clinical SaaS &amp; AI Healthcare Platform Development" />
+  <meta name="twitter:description" content="Spire Group Inc. designs and builds AI-powered clinical platforms. Our flagship — Aesthetics To Go — is a fully autonomous clinical operating system connecting patients with credentialed providers." />
+  <meta name="robots" content="index, follow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:       #0a0a0f;
+      --paper:     #f5f3ee;
+      --cream:     #ede9e0;
+      --steel:     #1c2333;
+      --accent:    #b8470b;
+      --accent2:   #2a4a6b;
+      --muted:     #6b6558;
+      --rule:      rgba(10,10,15,0.12);
+      --mono: 'DM Mono', monospace;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Syne', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--serif);
+      font-size: 18px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.25rem 3rem;
+      background: rgba(245,243,238,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--rule);
+    }
+    .nav-logo {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-cta {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--paper);
+      background: var(--ink);
+      padding: 0.55rem 1.2rem;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--accent); }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 5rem;
+      overflow: hidden;
+    }
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 6rem 4rem 6rem 5rem;
+      position: relative;
+    }
+    .hero-left::after {
+      content: '';
+      position: absolute; right: 0; top: 15%; bottom: 15%;
+      width: 1px;
+      background: var(--rule);
+    }
+    .hero-eyebrow {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.8rem;
+      display: flex; align-items: center; gap: 0.8rem;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: inline-block; width: 2rem; height: 1px;
+      background: var(--accent);
+    }
+    h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.8rem, 4.5vw, 4.2rem);
+      font-weight: 300;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin-bottom: 2rem;
+    }
+    h1 em {
+      font-style: italic;
+      color: var(--accent2);
+    }
+    .hero-sub {
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.75;
+      max-width: 44ch;
+      margin-bottom: 3rem;
+    }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--paper);
+      background: var(--ink);
+      padding: 0.85rem 2rem;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: var(--accent); }
+    .btn-ghost {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink);
+      border: 1px solid var(--ink);
+      padding: 0.85rem 2rem;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-ghost:hover { background: var(--ink); color: var(--paper); }
+
+    .hero-right {
+      background: var(--steel);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 6rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-right::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 70% 30%, rgba(43,74,107,0.4) 0%, transparent 60%),
+                  radial-gradient(ellipse at 20% 80%, rgba(184,71,11,0.15) 0%, transparent 50%);
+    }
+    .platform-card {
+      position: relative; z-index: 1;
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 2.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .platform-card-label {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 0.5rem;
+    }
+    .platform-card-title {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 300;
+      color: #fff;
+      margin-bottom: 0.75rem;
+    }
+    .platform-card-desc {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.5);
+    }
+    .stat-row {
+      position: relative; z-index: 1;
+      display: grid; grid-template-columns: 1fr 1fr 1fr;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-top: none;
+    }
+    .stat-item {
+      padding: 1.5rem;
+      border-right: 1px solid rgba(255,255,255,0.1);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-num {
+      font-family: var(--sans);
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+    .stat-label {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+    }
+
+    /* ─── SECTION BASE ─── */
+    section { padding: 7rem 5rem; }
+    .section-eyebrow {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.2rem;
+      display: flex; align-items: center; gap: 0.8rem;
+    }
+    .section-eyebrow::before {
+      content: '';
+      display: inline-block; width: 1.5rem; height: 1px;
+      background: var(--accent);
+    }
+    h2 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 300;
+      line-height: 1.15;
+      color: var(--ink);
+      margin-bottom: 1.5rem;
+    }
+    h2 em { font-style: italic; color: var(--accent2); }
+    .section-lead {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 60ch;
+    }
+
+    /* ─── WHAT WE BUILD ─── */
+    #what { background: var(--cream); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      margin-top: 4rem;
+      border: 1px solid var(--rule);
+    }
+    .service-card {
+      padding: 2.5rem;
+      border-right: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      transition: background 0.25s;
+    }
+    .service-card:hover { background: rgba(10,10,15,0.03); }
+    .service-card:nth-child(3n) { border-right: none; }
+    .service-num {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      color: var(--accent);
+      letter-spacing: 0.15em;
+      margin-bottom: 1.2rem;
+    }
+    .service-title {
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 0.75rem;
+      line-height: 1.3;
+    }
+    .service-desc {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      line-height: 1.85;
+      color: var(--muted);
+    }
+
+    /* ─── CASE STUDY ─── */
+    #casestudy {
+      background: var(--ink);
+      color: var(--paper);
+      padding: 7rem 5rem;
+    }
+    #casestudy .section-eyebrow { color: rgba(184,71,11,0.9); }
+    #casestudy .section-eyebrow::before { background: rgba(184,71,11,0.9); }
+    #casestudy h2 { color: var(--paper); }
+    #casestudy h2 em { color: rgba(184,71,11,0.9); }
+    #casestudy .section-lead { color: rgba(245,243,238,0.55); }
+
+    .case-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 5rem;
+      margin-top: 4rem;
+      align-items: start;
+    }
+    .case-meta { display: flex; flex-direction: column; gap: 2rem; }
+    .case-meta-item {}
+    .case-meta-label {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(245,243,238,0.3);
+      margin-bottom: 0.4rem;
+    }
+    .case-meta-value {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      color: rgba(245,243,238,0.85);
+      line-height: 1.4;
+    }
+    .divider-rule {
+      height: 1px;
+      background: rgba(245,243,238,0.1);
+      margin: 1rem 0;
+    }
+
+    .case-features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .case-feature {
+      padding: 2rem;
+      border-right: 1px solid rgba(255,255,255,0.08);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .case-feature:nth-child(2n) { border-right: none; }
+    .case-feature-icon {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(184,71,11,0.8);
+      margin-bottom: 0.6rem;
+    }
+    .case-feature-title {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 600;
+      color: rgba(245,243,238,0.9);
+      margin-bottom: 0.5rem;
+    }
+    .case-feature-desc {
+      font-family: var(--mono);
+      font-size: 0.63rem;
+      line-height: 1.8;
+      color: rgba(245,243,238,0.4);
+    }
+
+    /* ─── TECH STACK ─── */
+    #stack { background: var(--paper); }
+    .stack-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border: 1px solid var(--rule);
+      margin-top: 4rem;
+    }
+    .stack-item {
+      padding: 2rem 1.75rem;
+      border-right: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+    }
+    .stack-item:nth-child(4n) { border-right: none; }
+    .stack-category {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+    .stack-name {
+      font-family: var(--sans);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 0.3rem;
+    }
+    .stack-detail {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ─── CREDENTIALS ─── */
+    #ip { background: var(--cream); }
+    .ip-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      margin-top: 4rem;
+      align-items: start;
+    }
+    .ip-text p {
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.85;
+      margin-bottom: 1.5rem;
+    }
+    .ip-protections { display: flex; flex-direction: column; gap: 1.5rem; }
+    .ip-item {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1.25rem;
+      align-items: start;
+      padding: 1.5rem;
+      border: 1px solid var(--rule);
+      background: var(--paper);
+    }
+    .ip-badge {
+      font-family: var(--mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--paper);
+      background: var(--accent2);
+      padding: 0.3rem 0.6rem;
+      white-space: nowrap;
+      margin-top: 0.15rem;
+    }
+    .ip-item-title {
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 0.3rem;
+    }
+    .ip-item-desc {
+      font-family: var(--mono);
+      font-size: 0.63rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ─── ABOUT ─── */
+    #about { background: var(--paper); }
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 6rem;
+      margin-top: 3rem;
+      align-items: center;
+    }
+    .about-text p {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.85;
+      margin-bottom: 1.25rem;
+    }
+    .about-text p strong {
+      color: var(--ink);
+      font-weight: 600;
+    }
+    .about-numbers {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border: 1px solid var(--rule);
+    }
+    .about-num-item {
+      padding: 2.5rem 2rem;
+      border-right: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+    }
+    .about-num-item:nth-child(2n) { border-right: none; }
+    .about-num {
+      font-family: var(--sans);
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--ink);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+    .about-num-label {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* ─── CONTACT ─── */
+    #contact {
+      background: var(--steel);
+      color: var(--paper);
+      text-align: center;
+      padding: 8rem 5rem;
+    }
+    #contact .section-eyebrow {
+      justify-content: center;
+      color: rgba(184,71,11,0.9);
+    }
+    #contact .section-eyebrow::before { background: rgba(184,71,11,0.9); }
+    #contact h2 { color: var(--paper); max-width: 20ch; margin: 0 auto 1.5rem; }
+    #contact h2 em { color: rgba(184,71,11,0.9); }
+    #contact .section-lead {
+      color: rgba(245,243,238,0.5);
+      margin: 0 auto 3rem;
+      max-width: 55ch;
+    }
+    .contact-info {
+      display: flex;
+      justify-content: center;
+      gap: 4rem;
+      margin-top: 4rem;
+      flex-wrap: wrap;
+    }
+    .contact-item {}
+    .contact-label {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(245,243,238,0.3);
+      margin-bottom: 0.4rem;
+    }
+    .contact-value {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      color: rgba(245,243,238,0.85);
+    }
+    .contact-value a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .contact-value a:hover { color: #fff; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--ink);
+      padding: 2rem 5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    .footer-copy {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      color: rgba(255,255,255,0.2);
+      letter-spacing: 0.08em;
+    }
+    .footer-note {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      color: rgba(255,255,255,0.2);
+      letter-spacing: 0.08em;
+    }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-eyebrow  { animation: fadeUp 0.7s ease 0.1s both; }
+    h1             { animation: fadeUp 0.7s ease 0.25s both; }
+    .hero-sub      { animation: fadeUp 0.7s ease 0.4s both; }
+    .hero-actions  { animation: fadeUp 0.7s ease 0.55s both; }
+    .platform-card { animation: fadeUp 0.7s ease 0.3s both; }
+    .stat-row      { animation: fadeUp 0.7s ease 0.5s both; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-left::after { display: none; }
+      .hero-right { min-height: 50vh; }
+      section { padding: 5rem 2.5rem; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .case-layout { grid-template-columns: 1fr; gap: 3rem; }
+      .stack-grid { grid-template-columns: 1fr 1fr; }
+      .ip-layout { grid-template-columns: 1fr; gap: 3rem; }
+      .about-layout { grid-template-columns: 1fr; gap: 3rem; }
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .hero-left { padding: 5rem 2rem 3rem; }
+      .hero-right { padding: 3rem 2rem; }
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+    @media (max-width: 640px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .stack-grid { grid-template-columns: 1fr 1fr; }
+      .case-features { grid-template-columns: 1fr; }
+      .case-feature:nth-child(2n) { border-right: 1px solid rgba(255,255,255,0.08); }
+      .about-numbers { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="index.html"><span>Spire</span> Group Inc.</a>
+  <ul class="nav-links">
+    <li><a href="what-we-build.html">What We Build</a></li>
+    <li><a href="case-study.html">Case Study</a></li>
+    <li><a href="stack.html">Stack</a></li>
+    <li><a href="credentials.html">Credentials</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+  <a class="nav-cta" href="contact.html">Start a Project</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Clinical SaaS &amp; AI Healthcare Platforms</div>
+    <h1>We build <em>intelligent</em> clinical systems — and operate them.</h1>
+    <p class="hero-sub">
+      Infotech Inc. designs, engineers, and deploys AI-powered healthcare platforms. Our flagship — Aesthetics To Go — is a fully autonomous clinical operating system serving patients and providers across the U.S. We don't just build software. We create proprietary platforms that reshape how care is delivered.
+    </p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="case-study.html">See the Platform</a>
+      <a class="btn-ghost" href="contact.html">Start a Project</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="platform-card">
+      <div class="platform-card-label">Flagship Platform — Live</div>
+      <div class="platform-card-title">Aesthetics To Go™</div>
+      <div class="platform-card-desc">
+        AI-powered clinical operating system. 100% mobile delivery. Smart scheduling &amp; route optimization. Provider credentialing &amp; NPI verification. Procedure simulation engine. Medical AI assistant. Autonomous 7-agent marketing system. AWS HIPAA-architecture. Patent Pending #63970174.
+      </div>
+    </div>
+    <div class="stat-row">
+      <div class="stat-item">
+        <div class="stat-num">2+</div>
+        <div class="stat-label">Years in Development</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">7</div>
+        <div class="stat-label">AI Agents Deployed</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">3</div>
+        <div class="stat-label">IP Filings</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE BUILD -->
+<section id="what">
+  <div class="section-eyebrow">Capabilities</div>
+  <h2>What we <em>build</em></h2>
+  <p class="section-lead">We specialize in clinical and healthcare SaaS platforms that require deep AI integration, regulatory awareness, and multi-stakeholder architecture — systems where getting it wrong has real consequences.</p>
+
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-num">01</div>
+      <div class="service-title">Clinical Platform Architecture</div>
+      <div class="service-desc">Multi-sided platforms connecting patients, providers, and administrators. HIPAA-aware data architecture. Role-based access. Credentialing and consent workflows built from the ground up.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">02</div>
+      <div class="service-title">AI &amp; Medical Intelligence Systems</div>
+      <div class="service-desc">Treatment recommendation engines. Procedure simulation with real-time visual output. Medical AI assistants trained on clinical context. Predictive scheduling. Inventory intelligence. LLM integration via Claude and custom model pipelines.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">03</div>
+      <div class="service-title">Mobile-First Patient &amp; Provider Apps</div>
+      <div class="service-desc">React Native applications for iOS and Android. Provider scheduling, charting, consent management, and payments in a single interface. Patient-facing apps designed for trust and clinical clarity.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">04</div>
+      <div class="service-title">Route &amp; Operations Optimization</div>
+      <div class="service-desc">Smart scheduling engines that optimize provider routes in real time. Territory planning. Dispatch logic. Inventory tracking tied to scheduled procedures — so providers arrive equipped, every time.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">05</div>
+      <div class="service-title">Autonomous Agent Systems</div>
+      <div class="service-desc">AI agent pipelines that replace full operational teams. Provider acquisition, outreach, lead qualification, response monitoring, and demo booking — all autonomous. Built with Claude, ManyChat, Brevo, and custom orchestration layers.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">06</div>
+      <div class="service-title">Provider Credentialing &amp; Compliance</div>
+      <div class="service-desc">NPI verification against NPPES. License validation workflows. Independent contractor agreement management. Medical director oversight structures. HIPAA BAAs and consent management built into the data layer.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDY -->
+<section id="casestudy">
+  <div class="section-eyebrow">Flagship Case Study</div>
+  <h2>Aesthetics <em>To Go</em> — a clinical OS built from scratch</h2>
+  <p class="section-lead">Two years. One platform. Zero physical locations. This is what an AI-powered clinical operating system looks like when built by engineers who also understand healthcare operations, regulatory compliance, and provider economics.</p>
+
+  <div class="case-layout">
+    <div class="case-meta">
+      <div class="case-meta-item">
+        <div class="case-meta-label">Platform Type</div>
+        <div class="case-meta-value">AI-Powered Clinical Operating System — 100% Mobile Delivery</div>
+      </div>
+      <div class="divider-rule"></div>
+      <div class="case-meta-item">
+        <div class="case-meta-label">How It Works</div>
+        <div class="case-meta-value">Vetted independent aesthetic providers travel to patients — homes, offices, anywhere. No physical clinic required.</div>
+      </div>
+      <div class="divider-rule"></div>
+      <div class="case-meta-item">
+        <div class="case-meta-label">Services Delivered</div>
+        <div class="case-meta-value">Botox, dermal fillers, hair restoration — and expanding. All under one clinical brand.</div>
+      </div>
+      <div class="divider-rule"></div>
+      <div class="case-meta-item">
+        <div class="case-meta-label">IP Status</div>
+        <div class="case-meta-value">Provisional Patent #63970174 · Trademark Classes 44 &amp; 9 · Copyright Deposits Filed · All IP owned by Infotech Inc.</div>
+      </div>
+      <div class="divider-rule"></div>
+      <div class="case-meta-item">
+        <div class="case-meta-label">Infrastructure</div>
+        <div class="case-meta-value">AWS (HIPAA-architecture) · .NET Backend · React Native · Python · GitHub Pages CMS</div>
+      </div>
+    </div>
+
+    <div class="case-features">
+      <div class="case-feature">
+        <div class="case-feature-icon">AI Engine</div>
+        <div class="case-feature-title">Procedure Simulation</div>
+        <div class="case-feature-desc">Patients see their treatment results in 3 seconds using a facial AI simulation engine — before a single unit is injected. The #1 conversion tool in provider demos.</div>
+      </div>
+      <div class="case-feature">
+        <div class="case-feature-icon">Scheduling</div>
+        <div class="case-feature-title">Smart Route Optimization</div>
+        <div class="case-feature-desc">Real-time scheduling engine that routes providers across territories, minimizing drive time and maximizing daily treatment capacity.</div>
+      </div>
+      <div class="case-feature">
+        <div class="case-feature-icon">Clinical</div>
+        <div class="case-feature-title">Medical AI Assistant</div>
+        <div class="case-feature-desc">Context-aware AI assistant embedded in the platform — answering provider and patient queries with clinical accuracy within defined medical protocols.</div>
+      </div>
+      <div class="case-feature">
+        <div class="case-feature-icon">Operations</div>
+        <div class="case-feature-title">Inventory Control</div>
+        <div class="case-feature-desc">Procedure-linked inventory management. The platform knows what's scheduled and what supplies are needed — before the provider leaves for the appointment.</div>
+      </div>
+      <div class="case-feature">
+        <div class="case-feature-icon">Automation</div>
+        <div class="case-feature-title">7-Agent Autonomous System</div>
+        <div class="case-feature-desc">Scout · Intel · Forge · Dispatch · Sentinel · Closer · Command — a complete AI agent team that prospects, personalizes outreach, sends across all channels, and books demos with zero human intervention.</div>
+      </div>
+      <div class="case-feature">
+        <div class="case-feature-icon">Compliance</div>
+        <div class="case-feature-title">Provider Credentialing</div>
+        <div class="case-feature-desc">NPI verification, license validation, HIPAA BAAs, independent contractor agreements, and consent workflows — all managed within the platform data layer.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TECH STACK -->
+<section id="stack">
+  <div class="section-eyebrow">Technology</div>
+  <h2>The <em>stack</em> behind the platform</h2>
+  <p class="section-lead">Every technology choice is deliberate. We build for scale, HIPAA-awareness, and long-term maintainability — not for trend cycles.</p>
+
+  <div class="stack-grid">
+    <div class="stack-item">
+      <div class="stack-category">Mobile</div>
+      <div class="stack-name">React Native</div>
+      <div class="stack-detail">iOS &amp; Android from a single codebase. Provider and patient apps in one framework.</div>
+    </div>
+    <div class="stack-item">
+      <div class="stack-category">Backend</div>
+      <div class="stack-name">.NET / C#</div>
+      <div class="stack-detail">Enterprise-grade API layer. HIPAA-conscious data handling. Role-based access control.</div>
+    </div>
+    <div class="stack-item">
+      <div class="stack-category">AI &amp; Agents</div>
+      <div class="stack-name">Claude API</div>
+      <div class="stack-detail">LLM backbone for the medical AI assistant, autonomous agents, and treatment recommendation engine.</div>
+    </div>
+    <div class="stack-item">
+      <div class="stack-category">Infrastructure</div>
+      <div class="stack-name">AWS</div>
+      <div class="stack-detail">HIPAA-architecture deployment. EC2, S3, RDS. Multi-region redundancy. Separate environments for agent systems.</div>
+    </div>
+    <div class="stack-item">
+      <div class="stack-category">Intelligence</div>
+      <div class="stack-name">Python / Flask</div>
+      <div class="stack-detail">AI simulation engines, NPI verification pipelines, data enrichment agents, and analytics layers.</div>
+    </div>
+    <div class="stack-item">
+      <div class="stack-category">Database</div>
+      <div class="stack-name">PostgreSQL / MongoDB</div>
+      <div class="stack-detail">Relational data for clinical records and provider accounts. Document store for agent state and outreach logs.</div>
+    </div>
+    <div class="stack-item">
+      <div class="stack-category">Automation</div>
+      <div class="stack-name">Node.js + Zapier</div>
+      <div class="stack-detail">Agent orchestration, webhook pipelines, Brevo email automation, ManyChat SMS, PhantomBuster outreach.</div>
+    </div>
+    <div class="stack-item">
+      <div class="stack-category">Web &amp; CMS</div>
+      <div class="stack-name">GitHub Pages / HTML</div>
+      <div class="stack-detail">SEO-optimized static sites with full schema markup, Open Graph, sitemap, and Search Console integration.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CREDENTIALS -->
+<section id="ip">
+  <div class="section-eyebrow">Credentials</div>
+  <h2>Proof of work,<br/><em>not just promises.</em></h2>
+  <div class="ip-layout">
+    <div class="ip-text">
+      <p>We're a development firm, not a consulting practice. That means we're accountable for what we ship — and we can show you a live, production platform as the evidence. Aesthetics To Go isn't a demo or a case study writeup. It's a working clinical operating system we built from scratch over two years and continue to operate and improve.</p>
+      <p>The filings below document the depth of that investment. A provisional patent requires a detailed technical specification of novel inventions. Trademark registrations require active commercial use. Copyright deposits require finished, production-quality work. These aren't marketing claims — they're government-filed records.</p>
+      <p>When you engage Spire Group Inc. to build your platform, you're working with a team that has navigated every layer of clinical SaaS development — architecture, AI integration, provider credentialing, compliance, and go-to-market — and protected every layer along the way.</p>
+    </div>
+    <div class="ip-protections">
+      <div class="ip-item">
+        <div class="ip-badge">Patent</div>
+        <div>
+          <div class="ip-item-title">Provisional Patent #63970174</div>
+          <div class="ip-item-desc">Filed with the USPTO covering the AI-powered clinical scheduling, route optimization, and treatment simulation inventions in the ATG platform.</div>
+        </div>
+      </div>
+      <div class="ip-item">
+        <div class="ip-badge">Trademark</div>
+        <div>
+          <div class="ip-item-title">Classes 44 &amp; 9 — Filed</div>
+          <div class="ip-item-desc">Trademark applications for the Aesthetics To Go brand in healthcare services (Class 44) and software &amp; technology (Class 9).</div>
+        </div>
+      </div>
+      <div class="ip-item">
+        <div class="ip-badge">Copyright</div>
+        <div>
+          <div class="ip-item-title">Copyright Deposits Filed</div>
+          <div class="ip-item-desc">Source code, UI designs, documentation, and creative assets for the ATG platform registered through the U.S. Copyright Office.</div>
+        </div>
+      </div>
+      <div class="ip-item">
+        <div class="ip-badge">Live</div>
+        <div>
+          <div class="ip-item-title">Production Platform — aestheticstogo.com</div>
+          <div class="ip-item-desc">The platform is live, actively marketed, and continuing to evolve. Not a prototype. Not a concept. A real clinical operating system in operation.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-eyebrow">About Spire Group Inc.</div>
+  <h2>Built by an engineer<br/>who <em>operates</em> what he builds.</h2>
+  <div class="about-layout">
+    <div class="about-text">
+      <p>Infotech Inc. is a technology development company based in Las Vegas, Nevada. We specialize in AI-powered clinical and healthcare SaaS platforms — complex, multi-stakeholder systems that require deep technical architecture, regulatory awareness, and real operational understanding.</p>
+      <p>Our president and CTO brings a full-stack background across <strong>React Native, .NET, Node.js, Python, AWS, and Claude AI</strong>, with hands-on experience deploying production systems at every layer — from mobile app to cloud infrastructure to autonomous AI agent pipelines.</p>
+      <p>We don't consult on what to build. <strong>We build it, own it, and operate it.</strong> Aesthetics To Go is the proof of concept — a two-year investment in proprietary clinical technology that is now a live, protected, scalable platform.</p>
+      <p>If you're developing a clinical or healthcare SaaS application and need a partner who understands the full stack — from HIPAA-conscious architecture to AI-driven patient engagement to provider credentialing workflows — we'd like to talk.</p>
+    </div>
+    <div class="about-numbers">
+      <div class="about-num-item">
+        <div class="about-num">2+</div>
+        <div class="about-num-label">Years building clinical AI platforms</div>
+      </div>
+      <div class="about-num-item">
+        <div class="about-num">5+</div>
+        <div class="about-num-label">Production platforms deployed</div>
+      </div>
+      <div class="about-num-item">
+        <div class="about-num">3</div>
+        <div class="about-num-label">Active IP filings (patent, TM, ©)</div>
+      </div>
+      <div class="about-num-item">
+        <div class="about-num">7</div>
+        <div class="about-num-label">AI agents in autonomous operation</div>
+      </div>
+      <div class="about-num-item">
+        <div class="about-num">100%</div>
+        <div class="about-num-label">Mobile-first architecture on ATG</div>
+      </div>
+      <div class="about-num-item">
+        <div class="about-num">AWS</div>
+        <div class="about-num-label">HIPAA-architecture infrastructure</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-eyebrow">Start a Project</div>
+  <h2>Building something <em>complex?</em> Let's talk.</h2>
+  <p class="section-lead">We take on a small number of client engagements for clinical and healthcare SaaS development. If you're building in this space and need a development partner with a proven, live platform as proof — reach out.</p>
+  <a class="btn-primary" href="/cdn-cgi/l/email-protection#3e575058517e57505851134a5b5d56134d5b4c48575d5b4d105d5153" style="display:inline-block; margin-bottom:1rem;"><span class="__cf_email__" data-cfemail="771e191118371e1911185a0312141f5a041205011e1412045914181a">[email&#160;protected]</span></a>
+  <div class="contact-info">
+    <div class="contact-item">
+      <div class="contact-label">Email</div>
+      <div class="contact-value"><a href="/cdn-cgi/l/email-protection#1a73747c755a73747c75376e7f797237697f686c73797f6934797577"><span class="__cf_email__" data-cfemail="80e9eee6efc0e9eee6efadf4e5e3e8adf3e5f2f6e9e3e5f3aee3efed">[email&#160;protected]</span></a></div>
+    </div>
+    <div class="contact-item">
+      <div class="contact-label">Phone</div>
+      <div class="contact-value"><a href="tel:7022788005">(702) 278-8005</a></div>
+    </div>
+    <div class="contact-item">
+      <div class="contact-label">Location</div>
+      <div class="contact-value">Las Vegas, Nevada</div>
+    </div>
+    <div class="contact-item">
+      <div class="contact-label">Flagship Platform</div>
+      <div class="contact-value"><a href="https://aestheticstogo.com" target="_blank" rel="noopener">aestheticstogo.com</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-copy">© 2025 Spire Group Inc. — Las Vegas, Nevada.</div>
+  <div class="footer-note">Patent Pending · Trademark Filed · Copyrights Registered</div>
+</footer>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Spire Group Inc.",
+  "url": "https://spiregroupinc.com",
+  "description": "Clinical SaaS and AI healthcare platform development firm. Builders of Aesthetics To Go — a fully autonomous AI-powered clinical operating system.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Las Vegas",
+    "addressRegion": "NV",
+    "addressCountry": "US"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+1-702-278-8005",
+    "email": "info@spiregroupinc.com",
+    "contactType": "Business Inquiries"
+  },
+  "sameAs": [
+    "https://aestheticstogo.com"
+  ]
+}
+</script>
+
+</body>
+</html>
