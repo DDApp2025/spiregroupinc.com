@@ -1,24 +1,36 @@
 # Spire Group Inc.
+> Clinical SaaS and AI healthcare platform development firm based in Las Vegas, Nevada.
 
-Spire Group Inc. is a clinical SaaS and AI healthcare platform development firm based in Las Vegas, Nevada.
+## About
+Spire Group Inc. designs, builds, and operates AI-powered clinical and healthcare SaaS platforms. We specialize in multi-stakeholder clinical systems requiring HIPAA-aware architecture, AI integration, provider credentialing, mobile-first delivery, and autonomous agent systems.
 
-## What We Build
+## Key Facts
+- Based in Las Vegas, Nevada
+- Five production platforms built and deployed
+- Patent-pending clinical technology (filed under Infotech Inc.)
+- Live production platform: Aesthetics To Go (aestheticstogo.com)
+- Seven-agent autonomous acquisition system in daily operation
 
-We design, develop, and deploy AI-powered clinical and healthcare SaaS platforms. Our specialization is multi-stakeholder clinical systems requiring HIPAA-aware architecture, AI integration, provider credentialing, mobile-first delivery, and autonomous agent systems.
-
-## Use Case
-
-Aesthetics To Go (aestheticstogo.com) is our primary use case — a fully autonomous AI-powered clinical operating system connecting patients with vetted independent aesthetic providers who travel directly to patients. The platform includes smart scheduling, real-time route optimization, AI procedure simulation, treatment recommendations, a medical AI assistant, provider credentialing, inventory control, and a 7-agent autonomous marketing system.
-
-## Technology
-
-React Native · .NET · Python/Flask · AWS (HIPAA-architecture) · Claude API · PostgreSQL · MongoDB · Node.js · Cloudflare Workers · MediaPipe/OpenCV · GitHub Pages
-
-## IP Filings (ATG platform — filed under Infotech Inc.)
-
-Provisional Patent (USPTO) · Trademark Classes 44 & 9 (USPTO) · Copyright Deposits (U.S. Copyright Office)
+## Capabilities
+- Clinical Platform Architecture: HIPAA-aware, multi-stakeholder systems
+- AI & Medical Intelligence: procedure simulation, medical AI assistants, treatment recommendations
+- Mobile Apps: cross-platform patient and provider applications
+- Scheduling & Route Optimization: smart scheduling for mobile clinical delivery
+- Provider Credentialing & Compliance: NPI verification, license validation, consent management
+- Autonomous Agent Systems: AI-powered acquisition and outreach pipelines
+- EHR & SOAP Notes: purpose-built clinical documentation systems
+- Clinical Operations Playbook: embedded SOPs, protocols, and training
 
 ## Contact
+- Website: https://spiregroupinc.com
+- Email: info@spiregroupinc.com
+- LinkedIn: https://linkedin.com/in/robert-smith-tech
+- Location: Las Vegas, Nevada
 
-Email: info@spiregroupinc.com
-Location: Las Vegas, Nevada
+## Links
+- [What We Build](https://spiregroupinc.com/what-we-build.html)
+- [Case Study](https://spiregroupinc.com/case-study.html)
+- [Technology Stack](https://spiregroupinc.com/stack.html)
+- [Credentials](https://spiregroupinc.com/credentials.html)
+- [About](https://spiregroupinc.com/about.html)
+- [Contact](https://spiregroupinc.com/contact.html)
