@@ -173,7 +173,7 @@
       min-height: 100vh;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      padding-top: 5rem;
+      padding-top: 7rem;
       overflow: hidden;
     }
     .hero-left {
@@ -724,9 +724,17 @@
       .case-feature:nth-child(2n) { border-right: 1px solid rgba(255,255,255,0.08); }
       .about-numbers { grid-template-columns: 1fr 1fr; }
     }
+    .announcement-bar { background: var(--ink); padding: 0.6rem 2rem; text-align: center; font-family: var(--mono); font-size: 0.69rem; color: rgba(245,243,238,0.85); letter-spacing: 0.05em; position: relative; z-index: 101; }
+    .announcement-bar a { color: rgba(230,120,60,0.95); text-decoration: none; font-weight: 600; margin-left: 0.5rem; }
+    .announcement-bar a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
+
+<div class="announcement-bar">
+  Now accepting new development partnerships for 2026 — limited availability.
+  <a href="contact.html">Start a conversation →</a>
+</div>
 
 <!-- NAV -->
 <nav>
@@ -737,6 +745,7 @@
     <li><a href="stack.html">Stack</a></li>
     <li><a href="credentials.html">Credentials</a></li>
     <li><a href="about.html">About</a></li>
+    <li><a href="blog/">Blog</a></li>
     <li><a href="contact.html">Contact Us</a></li>
   </ul>
   <button class="nav-hamburger" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('nav-open')">

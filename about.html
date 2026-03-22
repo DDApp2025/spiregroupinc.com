@@ -95,7 +95,7 @@
     .nav-cta:hover { background: var(--accent); }
 
     /* HERO */
-    .page-hero { padding: 10rem 5rem 6rem; background: var(--cream); border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: end; }
+    .page-hero { padding: 12rem 5rem 6rem; background: var(--cream); border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: end; }
     .eyebrow { font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.8rem; }
     .eyebrow::before { content: ''; display: inline-block; width: 1.5rem; height: 1px; background: var(--accent); }
     h1 { font-family: var(--serif); font-size: clamp(2.5rem, 4vw, 3.8rem); font-weight: 300; line-height: 1.1; color: var(--ink); }
@@ -186,7 +186,7 @@
       }
       .nav-links.nav-open { display: flex; }
       .nav-hamburger { display: flex; }
-      .page-hero { padding: 8rem 2.5rem 4rem; grid-template-columns: 1fr; gap: 3rem; }
+      .page-hero { padding: 10rem 2.5rem 4rem; grid-template-columns: 1fr; gap: 3rem; }
       .profile { padding: 5rem 2.5rem; }
       .profile-layout { grid-template-columns: 1fr; gap: 3rem; }
       .different { padding: 5rem 2.5rem; }
@@ -198,9 +198,17 @@
       .page-cta { padding: 5rem 2.5rem; }
       footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 2rem 1.5rem; }
     }
+    .announcement-bar { background: var(--ink); padding: 0.6rem 2rem; text-align: center; font-family: var(--mono); font-size: 0.69rem; color: rgba(245,243,238,0.85); letter-spacing: 0.05em; position: relative; z-index: 101; }
+    .announcement-bar a { color: rgba(230,120,60,0.95); text-decoration: none; font-weight: 600; margin-left: 0.5rem; }
+    .announcement-bar a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
+
+<div class="announcement-bar">
+  Now accepting new development partnerships for 2026 — limited availability.
+  <a href="contact.html">Start a conversation →</a>
+</div>
 
 <nav>
   <a class="nav-logo" href="index.html"><img src="sgi-logo.png" alt="SGI" /><span>Spire</span> Group Inc.</a>
@@ -210,6 +218,7 @@
     <li><a href="stack.html">Stack</a></li>
     <li><a href="credentials.html">Credentials</a></li>
     <li><a href="about.html" class="active">About</a></li>
+    <li><a href="blog/">Blog</a></li>
     <li><a href="contact.html">Contact Us</a></li>
   </ul>
   <button class="nav-hamburger" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('nav-open')">

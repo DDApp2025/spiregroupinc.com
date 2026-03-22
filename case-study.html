@@ -83,7 +83,7 @@
     /* DARK HERO */
     .cs-hero {
       background: var(--steel);
-      padding: 10rem 5rem 6rem;
+      padding: 12rem 5rem 6rem;
       position: relative;
       overflow: hidden;
     }
@@ -205,7 +205,7 @@
       }
       .nav-links.nav-open { display: flex; }
       .nav-hamburger { display: flex; }
-      .cs-hero { padding: 8rem 2.5rem 4rem; }
+      .cs-hero { padding: 10rem 2.5rem 4rem; }
       .cs-hero-meta { grid-template-columns: 1fr 1fr; }
       .cs-meta-item:nth-child(2) { border-right: none; }
       .narrative { padding: 4rem 2.5rem; }
@@ -226,9 +226,17 @@
       .timeline-item { grid-template-columns: 1fr; }
       .timeline-period { border-right: none; border-bottom: 1px solid var(--rule); }
     }
+    .announcement-bar { background: var(--ink); padding: 0.6rem 2rem; text-align: center; font-family: var(--mono); font-size: 0.69rem; color: rgba(245,243,238,0.85); letter-spacing: 0.05em; position: relative; z-index: 101; }
+    .announcement-bar a { color: rgba(230,120,60,0.95); text-decoration: none; font-weight: 600; margin-left: 0.5rem; }
+    .announcement-bar a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
+
+<div class="announcement-bar">
+  Now accepting new development partnerships for 2026 — limited availability.
+  <a href="contact.html">Start a conversation →</a>
+</div>
 
 <nav>
   <a class="nav-logo" href="index.html"><img src="sgi-logo.png" alt="SGI" /><span>Spire</span> Group Inc.</a>
@@ -238,6 +246,7 @@
     <li><a href="stack.html">Stack</a></li>
     <li><a href="credentials.html">Credentials</a></li>
     <li><a href="about.html">About</a></li>
+    <li><a href="blog/">Blog</a></li>
     <li><a href="contact.html">Contact Us</a></li>
   </ul>
   <button class="nav-hamburger" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('nav-open')">

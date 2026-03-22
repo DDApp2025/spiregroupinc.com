@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Blog — Spire Group Inc.</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!-- Primary SEO Meta Tags -->
+  <meta name="description" content="Perspectives on building AI-powered platforms for aesthetic medical practices. Insights on medspa software, clinical technology, HIPAA compliance, and custom development for aesthetic practice owners." />
+  <meta name="keywords" content="aesthetic practice technology blog, medspa software insights, AI aesthetic medicine, custom medspa software, HIPAA aesthetic platform, clinical technology blog" />
+  <meta name="author" content="Spire Group Inc." />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <link rel="canonical" href="https://spiregroupinc.com/blog/" />
+
+  <!-- Open Graph / Facebook / LinkedIn -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://spiregroupinc.com/blog/" />
+  <meta property="og:title" content="Blog — Spire Group Inc." />
+  <meta property="og:description" content="Perspectives on building AI-powered platforms for aesthetic medical practices. Insights on medspa software, clinical technology, HIPAA compliance, and custom development." />
+  <meta property="og:image" content="https://spiregroupinc.com/og-image.png" />
+  <meta property="og:site_name" content="Spire Group Inc." />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Blog — Spire Group Inc." />
+  <meta name="twitter:description" content="Perspectives on building AI-powered platforms for aesthetic medical practices. Insights on medspa software, clinical technology, HIPAA compliance, and custom development." />
+  <meta name="twitter:image" content="https://spiregroupinc.com/og-image.png" />
+
+  <!-- Structured Data: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://spiregroupinc.com/"},
+      {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://spiregroupinc.com/blog/"}
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@400;500;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink: #0a0a0f; --paper: #f5f3ee; --cream: #ede9e0;
+      --steel: #1c2333; --accent: #b8470b; --accent2: #2a4a6b;
+      --muted: #3d3a34; --rule: rgba(10,10,15,0.12);
+      --mono: 'Montserrat', sans-serif; --serif: 'Cormorant Garamond', Georgia, serif; --sans: 'Syne', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--paper); color: var(--ink); font-family: var(--serif); font-size: 18px; line-height: 1.6; overflow-x: hidden; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 3rem; background: rgba(245,243,238,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--rule); }
+    .nav-logo { font-family: var(--mono); font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; }
+    .nav-logo img { height: 28px; width: auto; }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--ink); }
+    .nav-cta { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--paper); background: var(--ink); padding: 0.55rem 1.2rem; text-decoration: none; transition: background 0.2s; }
+    .nav-cta:hover { background: var(--accent); }
+
+    .page-hero { padding: 10rem 5rem 5rem; background: var(--ink); position: relative; overflow: hidden; }
+    .page-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 75% 30%, rgba(43,74,107,0.4) 0%, transparent 55%); }
+    .page-hero-inner { position: relative; z-index: 1; }
+    .eyebrow { font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(230,120,60,0.95); margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.8rem; }
+    .eyebrow::before { content: ''; display: inline-block; width: 1.5rem; height: 1px; background: rgba(230,120,60,0.95); }
+    h1 { font-family: var(--serif); font-size: clamp(2.5rem, 4vw, 3.8rem); font-weight: 300; line-height: 1.1; color: var(--paper); margin-bottom: 1.5rem; }
+    h1 em { font-style: italic; color: rgba(230,120,60,0.9); }
+    .lead { font-size: 1.05rem; font-weight: 300; color: rgba(245,243,238,0.75); line-height: 1.8; max-width: 65ch; }
+
+    /* Article Cards */
+    .blog-listing { padding: 5rem 5rem 6rem; }
+    .article-card { border-bottom: 1px solid var(--rule); padding: 3rem 0; display: block; text-decoration: none; color: inherit; transition: background 0.2s; }
+    .article-card:first-child { padding-top: 0; }
+    .article-card:last-child { border-bottom: none; }
+    .article-date { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem; }
+    .article-title { font-family: var(--serif); font-size: clamp(1.5rem, 2.5vw, 2rem); font-weight: 400; color: var(--ink); margin-bottom: 0.75rem; line-height: 1.25; }
+    .article-excerpt { font-size: 1rem; font-weight: 300; color: var(--muted); line-height: 1.75; max-width: 65ch; margin-bottom: 1rem; }
+    .article-link { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); text-decoration: none; transition: color 0.2s; }
+    .article-link:hover { color: var(--ink); }
+
+    /* CTA */
+    .page-cta { background: var(--paper); padding: 6rem 5rem; text-align: center; border-top: 1px solid var(--rule); }
+    .page-cta h2 { font-family: var(--serif); font-size: clamp(2rem, 3vw, 2.8rem); font-weight: 300; color: var(--ink); margin-bottom: 1rem; }
+    .page-cta h2 em { font-style: italic; color: var(--accent2); }
+    .page-cta p { font-family: var(--mono); font-size: 0.7rem; color: var(--muted); margin-bottom: 2.5rem; }
+    .btn-primary { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--paper); background: var(--ink); padding: 0.85rem 2rem; text-decoration: none; display: inline-block; }
+    .btn-primary:hover { background: var(--accent); }
+
+    footer { background: var(--ink); padding: 2rem 5rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.05); }
+    .footer-copy { font-family: var(--mono); font-size: 0.69rem; color: rgba(255,255,255,0.5); }
+    .footer-note { font-family: var(--mono); font-size: 0.69rem; color: rgba(255,255,255,0.5); }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .page-hero .eyebrow { animation: fadeUp 0.6s ease 0.1s both; }
+    .page-hero h1 { animation: fadeUp 0.6s ease 0.2s both; }
+    .page-hero .lead { animation: fadeUp 0.6s ease 0.35s both; }
+
+    .nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; flex-direction: column; gap: 4px; }
+    .nav-hamburger span { display: block; width: 20px; height: 2px; background: var(--ink); transition: 0.2s; }
+
+    @media (max-width: 1024px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(245,243,238,0.98);
+        backdrop-filter: blur(12px);
+        flex-direction: column;
+        padding: 1.5rem 2rem;
+        gap: 1.25rem;
+        border-bottom: 1px solid var(--rule);
+      }
+      .nav-links.nav-open { display: flex; }
+      .nav-hamburger { display: flex; }
+      .page-hero { padding: 8rem 2.5rem 4rem; }
+      .blog-listing { padding: 3rem 2.5rem 4rem; }
+      .page-cta { padding: 5rem 2.5rem; }
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/index.html"><img src="/sgi-logo.png" alt="SGI" /><span>Spire</span> Group Inc.</a>
+  <ul class="nav-links">
+    <li><a href="/what-we-build.html">What We Build</a></li>
+    <li><a href="/case-study.html">Case Study</a></li>
+    <li><a href="/stack.html">Stack</a></li>
+    <li><a href="/credentials.html">Credentials</a></li>
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/blog/" class="active">Blog</a></li>
+    <li><a href="/contact.html">Contact Us</a></li>
+  </ul>
+  <button class="nav-hamburger" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('nav-open')">
+    <span></span><span></span><span></span>
+  </button>
+  <a class="nav-cta" href="/contact.html">Start a Project</a>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="eyebrow">Insights</div>
+    <h1>Thinking about <em>clinical technology</em></h1>
+    <p class="lead">Perspectives on building AI-powered platforms for aesthetic medical practices.</p>
+  </div>
+</div>
+
+<div class="blog-listing">
+
+  <div class="article-card">
+    <div class="article-date">March 2026</div>
+    <div class="article-title">Why AI in Aesthetic Medicine Isn't What You Think</div>
+    <p class="article-excerpt">Most aesthetic practice owners hear "AI" and picture chatbots or generic automation. Real AI in aesthetics means procedure simulation, intelligent scheduling, and treatment recommendations built into the clinical workflow from day one.</p>
+    <a class="article-link" href="/blog/ai-in-aesthetic-medicine.html">Read &rarr;</a>
+  </div>
+
+  <div class="article-card">
+    <div class="article-date">March 2026</div>
+    <div class="article-title">Build vs. Buy: When Your Medspa Needs Custom Software</div>
+    <p class="article-excerpt">Off-the-shelf medspa software handles the basics. But when your business model outgrows their limitations — mobile delivery, AI integration, multi-location complexity — the real cost isn't development. It's what you lose by forcing your model into someone else's box.</p>
+    <a class="article-link" href="/blog/build-vs-buy-medspa-software.html">Read &rarr;</a>
+  </div>
+
+  <div class="article-card">
+    <div class="article-date">March 2026</div>
+    <div class="article-title">What HIPAA Actually Means for Your Aesthetic Practice Technology</div>
+    <p class="article-excerpt">Most aesthetic practices know they need to be "HIPAA compliant" but don't understand what that means for their technology stack. HIPAA isn't a certification you buy — it's an architecture decision that touches every layer of your platform.</p>
+    <a class="article-link" href="/blog/what-hipaa-means-for-your-aesthetic-platform.html">Read &rarr;</a>
+  </div>
+
+</div>
+
+<div class="page-cta">
+  <h2>Ready to build your <em>clinical platform?</em></h2>
+  <p>We build AI-powered technology for aesthetic medical practices. Let's talk about yours.</p>
+  <a class="btn-primary" href="/contact.html">Start a Conversation</a>
+</div>
+
+<footer>
+  <div class="footer-copy">&copy; 2026 Spire Group Inc. All rights reserved. — Las Vegas, Nevada.</div>
+  <div class="footer-note">Patent Pending &middot; Trademark Filed &middot; Copyrights Registered</div>
+  <div class="footer-links" style="font-family:var(--mono);font-size:0.62rem;margin-top:0.5rem;">
+    <a href="/terms.html" style="color:rgba(255,255,255,0.35);text-decoration:none;margin-right:1.5rem;">Terms of Service</a>
+    <a href="/privacy.html" style="color:rgba(255,255,255,0.35);text-decoration:none;">Privacy Policy</a>
+  </div>
+  <div class="footer-social" style="display:flex;gap:1.25rem;align-items:center;">
+    <a href="https://linkedin.com/in/robert-smith-tech" target="_blank" rel="noopener" style="color:rgba(255,255,255,0.5);transition:color 0.2s;" aria-label="LinkedIn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+    </a>
+    <a href="mailto:info@spiregroupinc.com" style="color:rgba(255,255,255,0.5);transition:color 0.2s;" aria-label="Email">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4l-10 8L2 4"/></svg>
+    </a>
+  </div>
+</footer>
+
+</body>
+</html>
