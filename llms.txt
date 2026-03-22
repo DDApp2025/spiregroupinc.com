@@ -16,10 +16,9 @@ React Native · .NET · Python/Flask · AWS (HIPAA-architecture) · Claude API �
 
 ## IP Filings (ATG platform — filed under Infotech Inc.)
 
-Provisional Patent #63970174 (USPTO) · Trademark Classes 44 & 9 (USPTO) · Copyright Deposits (U.S. Copyright Office)
+Provisional Patent (USPTO) · Trademark Classes 44 & 9 (USPTO) · Copyright Deposits (U.S. Copyright Office)
 
 ## Contact
 
 Email: info@spiregroupinc.com
-Phone: (702) 278-8005
 Location: Las Vegas, Nevada
