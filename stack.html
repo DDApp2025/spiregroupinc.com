@@ -179,8 +179,8 @@
     <div class="stack-item">
       <div class="stack-item-name">Node.js</div>
       <div class="stack-item-role">Agent Orchestration & Webhooks</div>
-      <div class="stack-item-desc">Agent pipeline orchestration, real-time webhook processing, and lightweight API services. Used extensively in the ATG autonomous agent system and the vehicle wholesale platform.</div>
-      <span class="stack-item-atg">ATG Agents · Vehicle System · FriendLinq</span>
+      <div class="stack-item-desc">Agent pipeline orchestration, real-time webhook processing, and lightweight API services. Used extensively in the ATG autonomous agent system.</div>
+      <span class="stack-item-atg">ATG Agents · FriendLinq</span>
     </div>
     <div class="stack-item">
       <div class="stack-item-name">Python / Flask</div>
@@ -201,14 +201,14 @@
     <div class="stack-item">
       <div class="stack-item-name">AWS</div>
       <div class="stack-item-role">Primary Cloud Infrastructure</div>
-      <div class="stack-item-desc">EC2, S3, RDS across N. Virginia and Ohio regions. HIPAA-eligible service configuration for ATG. Separate environments for clinical data and agent automation workloads. PM2 process management for persistent services.</div>
-      <span class="stack-item-atg">ATG · FriendLinq · Protoscent · Vehicle Agent</span>
+      <div class="stack-item-desc">Multi-region deployment using HIPAA-eligible AWS services for clinical and operational workloads.</div>
+      <span class="stack-item-atg">ATG · FriendLinq · Protoscent</span>
     </div>
     <div class="stack-item">
       <div class="stack-item-name">Cloudflare Workers</div>
       <div class="stack-item-role">Edge Proxy & API Security</div>
-      <div class="stack-item-desc">CORS proxy for the ATG AI chat widget — keeping API keys server-side and away from the browser. Lightweight edge functions for rate limiting and request routing.</div>
-      <span class="stack-item-atg">ATG Chat Proxy (atg-chat-proxy)</span>
+      <div class="stack-item-desc">Edge computing layer for API management and performance optimization.</div>
+      <span class="stack-item-atg">Custom edge proxy for the AI chat widget</span>
     </div>
     <div class="stack-item">
       <div class="stack-item-name">GitHub Pages</div>
@@ -229,7 +229,7 @@
     <div class="stack-item">
       <div class="stack-item-name">Claude API</div>
       <div class="stack-item-role">LLM Backbone</div>
-      <div class="stack-item-desc">Powers the ATG medical AI assistant, the Forge agent's personalized message generation, the Intel agent's prospect research, and the Closer agent's lead handling. Custom system prompting with clinical guardrails.</div>
+      <div class="stack-item-desc">Powers the platform's medical AI assistant, intelligent automation, and natural language processing across clinical and operational workflows.</div>
       <span class="stack-item-atg">ATG Medical AI · All 7 Agents</span>
     </div>
     <div class="stack-item">
@@ -239,9 +239,9 @@
       <span class="stack-item-atg">ATG Procedure Simulation</span>
     </div>
     <div class="stack-item">
-      <div class="stack-item-name">DALL-E 3 / Stability AI</div>
+      <div class="stack-item-name">Generative Image AI</div>
       <div class="stack-item-role">Generative Image Creation</div>
-      <div class="stack-item-desc">The Forge agent uses both for autonomous marketing asset generation — creating provider-facing and patient-facing visual content without human creative intervention.</div>
+      <div class="stack-item-desc">AI-generated marketing visuals and creative assets for platform campaigns.</div>
       <span class="stack-item-atg">ATG Forge Agent · Media Generation</span>
     </div>
   </div>
@@ -258,7 +258,7 @@
       <div class="stack-item-name">PostgreSQL</div>
       <div class="stack-item-role">Relational Clinical Data</div>
       <div class="stack-item-desc">Clinical records, provider profiles, appointment data, credentialing status, and financial transactions — structured relational data where integrity and auditability are requirements, not preferences.</div>
-      <span class="stack-item-atg">ATG Core Data · Vehicle System</span>
+      <span class="stack-item-atg">ATG Core Data</span>
     </div>
     <div class="stack-item">
       <div class="stack-item-name">MongoDB</div>
@@ -269,7 +269,7 @@
     <div class="stack-item">
       <div class="stack-item-name">Excel / CSV Pipelines</div>
       <div class="stack-item-role">Agent Data Exchange</div>
-      <div class="stack-item-desc">Deliberate choice for the agent system's shared data layer — keeping the pipeline auditable, human-readable, and debuggable. Agents read and write shared workbooks; the Command agent surfaces results as dashboard reports.</div>
+      <div class="stack-item-desc">Structured data pipelines for reporting and operational analytics.</div>
       <span class="stack-item-atg">ATG Agent Pipeline (all 7 agents)</span>
     </div>
   </div>
@@ -283,22 +283,22 @@
   </div>
   <div class="stack-items">
     <div class="stack-item">
-      <div class="stack-item-name">Brevo</div>
-      <div class="stack-item-role">Email Automation</div>
-      <div class="stack-item-desc">Transactional and sequence email for ATG provider outreach. Integrated with the Dispatch agent for scheduled send, rate limiting, and deliverability management.</div>
-      <span class="stack-item-atg">ATG Dispatch Agent</span>
+      <div class="stack-item-name">Email Automation</div>
+      <div class="stack-item-role">Transactional & Sequence Email</div>
+      <div class="stack-item-desc">Email automation platform for provider outreach, scheduled sends, rate limiting, and deliverability management.</div>
+      <span class="stack-item-atg">ATG Provider Outreach</span>
     </div>
     <div class="stack-item">
-      <div class="stack-item-name">ManyChat</div>
-      <div class="stack-item-role">Instagram DM Automation</div>
-      <div class="stack-item-desc">Instagram direct message automation for the Dispatch agent's Instagram outreach channel. Rule-based flows for initial contact and response routing.</div>
-      <span class="stack-item-atg">ATG Dispatch Agent</span>
+      <div class="stack-item-name">Social Messaging Automation</div>
+      <div class="stack-item-role">Direct Message Outreach</div>
+      <div class="stack-item-desc">Social messaging automation for Instagram and other channels. Rule-based flows for initial contact and response routing.</div>
+      <span class="stack-item-atg">ATG Social Outreach</span>
     </div>
     <div class="stack-item">
-      <div class="stack-item-name">Zapier + Formspree</div>
-      <div class="stack-item-role">Webhook Orchestration</div>
-      <div class="stack-item-desc">Connects inbound provider applications (via Formspree on the ATG website) to the Sentinel agent's monitoring pipeline. Triggers alerts for hot leads and routes to Excel tracking sheets.</div>
-      <span class="stack-item-atg">ATG Sentinel Agent · Provider Applications</span>
+      <div class="stack-item-name">Webhook Orchestration</div>
+      <div class="stack-item-role">Form Intake & Event Routing</div>
+      <div class="stack-item-desc">Webhook orchestration and form intake for inbound provider applications. Triggers alerts and routes submissions to the appropriate processing pipelines.</div>
+      <span class="stack-item-atg">ATG Provider Applications</span>
     </div>
   </div>
 </div>
