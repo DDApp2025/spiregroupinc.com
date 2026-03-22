@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /deck/
 
 Sitemap: https://spiregroupinc.com/sitemap.xml

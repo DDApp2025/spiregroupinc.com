@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <title>Spire Group Inc. — Presentation Deck</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@400;500;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:       #0a0a0f;
+      --paper:     #f5f3ee;
+      --cream:     #ede9e0;
+      --steel:     #1c2333;
+      --accent:    #b8470b;
+      --accent2:   #2a4a6b;
+      --muted:     #3d3a34;
+      --rule:      rgba(10,10,15,0.12);
+      --mono: 'Montserrat', sans-serif;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Syne', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--ink);
+      color: var(--paper);
+      font-family: var(--serif);
+      font-size: 18px;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.25rem 3rem;
+      background: rgba(10,10,15,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(245,243,238,0.08);
+    }
+    .nav-logo {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--paper);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .nav-logo img { height: 28px; width: auto; }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(245,243,238,0.6);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--paper); }
+
+    /* ─── GATE ─── */
+    .gate-wrapper {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6rem 2rem 3rem;
+    }
+
+    .gate-card {
+      background: var(--steel);
+      border: 1px solid rgba(245,243,238,0.08);
+      border-radius: 6px;
+      padding: 3rem 2.5rem;
+      max-width: 420px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .gate-card img {
+      height: 48px;
+      width: auto;
+      margin-bottom: 1.5rem;
+    }
+
+    .gate-card h1 {
+      font-family: var(--sans);
+      font-size: 1.25rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      margin-bottom: 0.5rem;
+      color: var(--paper);
+    }
+
+    .gate-card p {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: rgba(245,243,238,0.5);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+    }
+
+    .gate-card input[type="password"] {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      font-family: var(--mono);
+      font-size: 0.9rem;
+      color: var(--paper);
+      background: rgba(10,10,15,0.5);
+      border: 1px solid rgba(245,243,238,0.15);
+      border-radius: 4px;
+      outline: none;
+      margin-bottom: 1rem;
+      transition: border-color 0.2s;
+    }
+    .gate-card input[type="password"]:focus {
+      border-color: var(--accent);
+    }
+    .gate-card input[type="password"]::placeholder {
+      color: rgba(245,243,238,0.3);
+    }
+
+    .gate-card button {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--paper);
+      background: var(--accent);
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .gate-card button:hover { background: #9a3b08; }
+
+    .error-msg {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: #e05555;
+      margin-top: 1rem;
+      display: none;
+    }
+
+    /* ─── MENU ─── */
+    .menu-wrapper {
+      flex: 1;
+      display: none;
+      padding: 7rem 2rem 3rem;
+      max-width: 720px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .menu-wrapper h1 {
+      font-family: var(--sans);
+      font-size: 1.6rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      margin-bottom: 0.5rem;
+      color: var(--paper);
+    }
+
+    .menu-wrapper .subtitle {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: rgba(245,243,238,0.5);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 2.5rem;
+    }
+
+    .deck-links {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .deck-link {
+      display: block;
+      background: var(--steel);
+      border: 1px solid rgba(245,243,238,0.08);
+      border-radius: 6px;
+      padding: 1.5rem 2rem;
+      text-decoration: none;
+      transition: border-color 0.2s, transform 0.15s;
+    }
+    .deck-link:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .deck-link h2 {
+      font-family: var(--sans);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--paper);
+      margin-bottom: 0.3rem;
+    }
+
+    .deck-link p {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: rgba(245,243,238,0.5);
+      letter-spacing: 0.03em;
+    }
+
+    .deck-link .arrow {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--accent);
+      margin-top: 0.5rem;
+      display: inline-block;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 600px) {
+      nav { padding: 1rem 1.5rem; }
+      .gate-card { padding: 2rem 1.5rem; }
+      .menu-wrapper { padding: 6rem 1.5rem 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="/">
+      <img src="/sgi-logo.png" alt="SGI" />
+      Spire Group <span>Inc.</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/">Back to Site</a></li>
+    </ul>
+  </nav>
+
+  <!-- Password Gate -->
+  <div class="gate-wrapper" id="gate">
+    <div class="gate-card">
+      <img src="/sgi-logo.png" alt="Spire Group Inc." />
+      <h1>Spire Group Inc.</h1>
+      <p>Technical Presentation</p>
+      <input type="password" id="pw" placeholder="Enter password" autocomplete="off" />
+      <button id="enter-btn">Enter</button>
+      <div class="error-msg" id="error">Incorrect password. Please try again.</div>
+    </div>
+  </div>
+
+  <!-- Deck Menu (hidden until authenticated) -->
+  <div class="menu-wrapper" id="menu">
+    <h1>Presentation Deck</h1>
+    <p class="subtitle">Select a section to view</p>
+    <div class="deck-links">
+      <a class="deck-link" href="agents.html">
+        <h2>Agent System Architecture</h2>
+        <p>Seven specialized agents handling acquisition, engagement, and clinical operations</p>
+        <span class="arrow">View &rarr;</span>
+      </a>
+      <a class="deck-link" href="systems.html">
+        <h2>Platform Systems Breakdown</h2>
+        <p>Eight integrated subsystems powering the Aesthetics To Go platform</p>
+        <span class="arrow">View &rarr;</span>
+      </a>
+      <a class="deck-link" href="architecture.html">
+        <h2>Technology &amp; Infrastructure</h2>
+        <p>Full technical stack — mobile, backend, cloud, AI, and data</p>
+        <span class="arrow">View &rarr;</span>
+      </a>
+      <a class="deck-link" href="timeline.html">
+        <h2>Development Phases</h2>
+        <p>Foundation through launch — the complete build timeline</p>
+        <span class="arrow">View &rarr;</span>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    const HASH = '960c5732cd784fcc1d3b6390dac07371ffe84a50fc597d8fcd67bac4192676eb';
+
+    // If already authenticated, show menu immediately
+    if (document.cookie.split(';').some(c => c.trim().startsWith('deck_auth=1'))) {
+      document.getElementById('gate').style.display = 'none';
+      document.getElementById('menu').style.display = 'block';
+    }
+
+    async function sha256(message) {
+      const encoder = new TextEncoder();
+      const data = encoder.encode(message);
+      const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    async function authenticate() {
+      const pw = document.getElementById('pw').value;
+      const hash = await sha256(pw);
+      if (hash === HASH) {
+        document.cookie = 'deck_auth=1; path=/deck; SameSite=Strict';
+        document.getElementById('gate').style.display = 'none';
+        document.getElementById('menu').style.display = 'block';
+        document.getElementById('error').style.display = 'none';
+      } else {
+        document.getElementById('error').style.display = 'block';
+      }
+    }
+
+    document.getElementById('enter-btn').addEventListener('click', authenticate);
+    document.getElementById('pw').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') authenticate();
+    });
+  </script>
+
+</body>
+</html>

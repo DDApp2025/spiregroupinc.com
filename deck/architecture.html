@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <title>Technology &amp; Infrastructure — Spire Group Inc.</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@400;500;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:       #0a0a0f;
+      --paper:     #f5f3ee;
+      --cream:     #ede9e0;
+      --steel:     #1c2333;
+      --accent:    #b8470b;
+      --accent2:   #2a4a6b;
+      --muted:     #3d3a34;
+      --rule:      rgba(10,10,15,0.12);
+      --mono: 'Montserrat', sans-serif;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Syne', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--serif);
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.25rem 3rem;
+      background: rgba(245,243,238,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--rule);
+    }
+    .nav-logo {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .nav-logo img { height: 28px; width: auto; }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--ink); }
+
+    .content {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 7rem 2rem 4rem;
+    }
+
+    .back-link {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      text-decoration: none;
+      display: inline-block;
+      margin-bottom: 2rem;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: #9a3b08; }
+
+    h1 {
+      font-family: var(--sans);
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      margin-bottom: 2.5rem;
+      color: var(--ink);
+    }
+
+    h2 {
+      font-family: var(--sans);
+      font-size: 1.15rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      margin-top: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--ink);
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 0.5rem;
+    }
+
+    .stack-section {
+      margin-bottom: 2rem;
+    }
+
+    .stack-label {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .stack-detail {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    .stack-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .stack-card {
+      background: var(--cream);
+      border-radius: 6px;
+      padding: 1.5rem;
+    }
+
+    .stack-card .stack-label {
+      margin-bottom: 0.75rem;
+    }
+
+    .stack-card .stack-detail {
+      font-size: 0.92rem;
+    }
+
+    .bottom-nav {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--rule);
+    }
+
+    @media (max-width: 600px) {
+      nav { padding: 1rem 1.5rem; }
+      .content { padding: 6rem 1.5rem 3rem; }
+      h1 { font-size: 1.5rem; }
+      .stack-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <script>
+    if (!document.cookie.split(';').some(c => c.trim().startsWith('deck_auth=1'))) {
+      window.location.href = '/deck/index.html';
+    }
+  </script>
+
+  <nav>
+    <a class="nav-logo" href="/">
+      <img src="/sgi-logo.png" alt="SGI" />
+      Spire Group <span>Inc.</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/deck/">Deck Menu</a></li>
+      <li><a href="/">Back to Site</a></li>
+    </ul>
+  </nav>
+
+  <div class="content">
+    <a class="back-link" href="/deck/">&larr; Back to Deck Menu</a>
+
+    <h1>Technology &amp; Infrastructure</h1>
+
+    <div class="stack-grid">
+      <div class="stack-card">
+        <div class="stack-label">Mobile</div>
+        <div class="stack-detail">React Native for iOS and Android &mdash; a single codebase powering both patient and provider applications with native performance and platform-specific UX.</div>
+      </div>
+
+      <div class="stack-card">
+        <div class="stack-label">Backend</div>
+        <div class="stack-detail">.NET/C# core API handling clinical data, auth, and business logic. Node.js agent orchestration layer. Python/Flask AI engines for simulation and ML pipelines.</div>
+      </div>
+
+      <div class="stack-card">
+        <div class="stack-label">Cloud</div>
+        <div class="stack-detail">AWS multi-region deployment on HIPAA-eligible infrastructure. Cloudflare Workers edge proxy for global low-latency routing, caching, and DDoS protection.</div>
+      </div>
+
+      <div class="stack-card">
+        <div class="stack-label">AI</div>
+        <div class="stack-detail">Claude API powering the medical assistant and all 7 marketing agents. Computer vision pipeline for procedure simulation. Generative image AI for treatment previews.</div>
+      </div>
+
+      <div class="stack-card">
+        <div class="stack-label">Data</div>
+        <div class="stack-detail">PostgreSQL for clinical and transactional data. MongoDB for agent state and workflow tracking. Structured data pipelines for analytics and reporting.</div>
+      </div>
+
+      <div class="stack-card">
+        <div class="stack-label">Automation</div>
+        <div class="stack-detail">Email automation for patient and provider communications. Social messaging automation across platforms. Webhook orchestration connecting all systems and external services.</div>
+      </div>
+    </div>
+
+    <div class="bottom-nav">
+      <a class="back-link" href="/deck/">&larr; Back to Deck Menu</a>
+    </div>
+  </div>
+
+</body>
+</html>
