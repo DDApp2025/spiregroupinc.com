@@ -304,7 +304,7 @@
     }
     .stat-row {
       position: relative; z-index: 1;
-      display: grid; grid-template-columns: 1fr 1fr 1fr;
+      display: grid; grid-template-columns: 1fr 1fr;
       border: 1px solid rgba(255,255,255,0.1);
       border-top: none;
     }
@@ -729,9 +729,8 @@
       .site-tagline { font-size: 0.45rem; }
       .hero-left { padding: 5rem 2rem 3rem; }
       .hero-right { padding: 3rem 2rem; }
-      .stat-row { grid-template-columns: 1fr; }
-      .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
-      .stat-item:last-child { border-bottom: none; }
+      .stat-row { grid-template-columns: 1fr 1fr; }
+      .stat-item { padding: 1rem; }
       .platform-card { padding: 1.5rem; }
       .platform-card-title { font-size: 1.2rem; }
       footer { flex-direction: column; gap: 0.5rem; text-align: center; }
@@ -807,6 +806,10 @@
       <div class="stat-item">
         <div class="stat-num">3</div>
         <div class="stat-label">IP Filings</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">8</div>
+        <div class="stat-label">Integrated Subsystems</div>
       </div>
     </div>
   </div>
