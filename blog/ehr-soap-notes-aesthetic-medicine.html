@@ -89,6 +89,7 @@
     .nav-links a:hover, .nav-links a.active { color: var(--ink); }
     .nav-cta { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--paper); background: var(--ink); padding: 0.55rem 1.2rem; text-decoration: none; transition: background 0.2s; }
     .nav-cta:hover { background: var(--accent); }
+    .site-tagline { font-size: 0.55rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; display: block; margin-top: -2px; color: var(--muted); }
 
     .page-hero { padding: 10rem 5rem 5rem; background: var(--ink); position: relative; overflow: hidden; }
     .page-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 75% 30%, rgba(43,74,107,0.4) 0%, transparent 55%); }
@@ -150,6 +151,7 @@
       .nav-cta { padding: 0.45rem 0.8rem; font-size: 0.62rem; }
       .nav-logo { font-size: 0.68rem; }
       .nav-logo img { height: 22px; }
+      .site-tagline { font-size: 0.45rem; }
       .page-hero { padding: 8rem 2.5rem 4rem; }
       .article-body { padding: 3rem 1.5rem 4rem; }
       .page-cta { padding: 4rem 2.5rem; }
@@ -160,7 +162,7 @@
 <body>
 
 <nav>
-  <a class="nav-logo" href="/index.html"><img src="/sgi-logo.png" alt="SGI" /><span>Spire</span> Group Inc.</a>
+  <a class="nav-logo" href="/index.html"><img src="/sgi-logo.png" alt="SGI" /><div><span>Spire</span> Group Inc.<span class="site-tagline">Developing AI Driven Platforms</span></div></a>
   <ul class="nav-links">
     <li><a href="/what-we-build.html">What We Build</a></li>
     <li><a href="/case-study.html">Case Study</a></li>
