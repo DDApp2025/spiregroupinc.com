@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Page Not Found — Spire Group Inc.</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@400;500;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink: #0a0a0f; --paper: #f5f3ee; --cream: #ede9e0;
+      --steel: #1c2333; --accent: #b8470b; --accent2: #2a4a6b;
+      --muted: #3d3a34; --rule: rgba(10,10,15,0.12);
+      --mono: 'Montserrat', sans-serif; --serif: 'Cormorant Garamond', Georgia, serif; --sans: 'Syne', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--ink); color: var(--paper); font-family: var(--serif); font-size: 18px; line-height: 1.6; overflow-x: hidden; min-height: 100vh; display: flex; flex-direction: column; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 3rem; background: rgba(245,243,238,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--rule); }
+    .nav-logo { font-family: var(--mono); font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; }
+    .nav-logo img { height: 28px; width: auto; }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-cta { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--paper); background: var(--ink); padding: 0.55rem 1.2rem; text-decoration: none; transition: background 0.2s; }
+    .nav-cta:hover { background: var(--accent); }
+
+    .error-content { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 8rem 2rem 4rem; position: relative; }
+    .error-content::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 40%, rgba(43,74,107,0.25) 0%, transparent 60%); pointer-events: none; }
+    .error-code { font-family: var(--serif); font-size: 8rem; font-weight: 300; line-height: 1; color: var(--paper); margin-bottom: 1.5rem; position: relative; z-index: 1; }
+    .error-title { font-family: var(--serif); font-size: 1.8rem; font-weight: 300; color: var(--paper); margin-bottom: 0.75rem; position: relative; z-index: 1; }
+    .error-desc { font-family: var(--mono); font-size: 0.78rem; color: rgba(245,243,238,0.5); margin-bottom: 3rem; position: relative; z-index: 1; }
+    .error-actions { display: flex; gap: 1rem; position: relative; z-index: 1; }
+    .btn-primary { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink); background: var(--paper); padding: 0.85rem 2rem; text-decoration: none; display: inline-block; transition: background 0.2s; }
+    .btn-primary:hover { background: var(--cream); }
+    .btn-ghost { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--paper); background: transparent; padding: 0.85rem 2rem; text-decoration: none; display: inline-block; border: 1px solid rgba(245,243,238,0.3); transition: border-color 0.2s, color 0.2s; }
+    .btn-ghost:hover { border-color: var(--paper); color: var(--paper); }
+
+    .nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; flex-direction: column; gap: 4px; }
+    .nav-hamburger span { display: block; width: 20px; height: 2px; background: var(--ink); transition: 0.2s; }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .error-code { animation: fadeUp 0.6s ease 0.1s both; }
+    .error-title { animation: fadeUp 0.6s ease 0.2s both; }
+    .error-desc { animation: fadeUp 0.6s ease 0.3s both; }
+    .error-actions { animation: fadeUp 0.6s ease 0.4s both; }
+
+    @media (max-width: 1024px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(245,243,238,0.98);
+        backdrop-filter: blur(12px);
+        flex-direction: column;
+        padding: 1.5rem 2rem;
+        gap: 1.25rem;
+        border-bottom: 1px solid var(--rule);
+      }
+      .nav-links.nav-open { display: flex; }
+      .nav-hamburger { display: flex; }
+      .error-code { font-size: 5rem; }
+      .error-title { font-size: 1.4rem; }
+      .error-actions { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html"><img src="sgi-logo.png" alt="SGI" /><span>Spire</span> Group Inc.</a>
+  <ul class="nav-links">
+    <li><a href="what-we-build.html">What We Build</a></li>
+    <li><a href="case-study.html">Case Study</a></li>
+    <li><a href="stack.html">Stack</a></li>
+    <li><a href="credentials.html">Credentials</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="blog/">Blog</a></li>
+    <li><a href="contact.html">Contact Us</a></li>
+  </ul>
+  <button class="nav-hamburger" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('nav-open')">
+    <span></span><span></span><span></span>
+  </button>
+  <a class="nav-cta" href="contact.html">Start a Project</a>
+</nav>
+
+<div class="error-content">
+  <div class="error-code">404</div>
+  <div class="error-title">Page not found.</div>
+  <div class="error-desc">The page you're looking for doesn't exist or has been moved.</div>
+  <div class="error-actions">
+    <a class="btn-primary" href="index.html">Back to Homepage</a>
+    <a class="btn-ghost" href="contact.html">Contact Us</a>
+  </div>
+</div>
+
+</body>
+</html>
