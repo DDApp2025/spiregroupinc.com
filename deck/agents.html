@@ -200,7 +200,7 @@
 
     <h1>Agent System Architecture</h1>
 
-    <p class="intro">Seven specialized agents handle acquisition, engagement, and clinical operations autonomously &mdash; across both the provider and patient sides of the platform. The system is designed for reliability and auditability, with human oversight built into the workflow.</p>
+    <p class="intro">Seven specialized agents handle acquisition, engagement, and clinical operations autonomously &mdash; across both the provider and patient sides of the platform. Built as a core layer of our cloud-native SaaS architecture, the agent system is designed for reliability and auditability, with human oversight built into the workflow.</p>
 
     <table class="agent-table">
       <thead>
@@ -212,7 +212,7 @@
       <tbody>
         <tr>
           <td>Scout</td>
-          <td>Discover and verify providers, patients, and prospective customers across multiple data sources</td>
+          <td>Discover and verify providers, patients, and prospective customers across multiple data sources integrated into the SaaS platform</td>
         </tr>
         <tr>
           <td>Intel</td>
@@ -236,14 +236,14 @@
         </tr>
         <tr>
           <td>Command</td>
-          <td>Orchestrate all agents, aggregate operational data, generate reports, and surface decisions for review</td>
+          <td>Orchestrate all agents within the SaaS platform, aggregate operational data, generate reports, and surface decisions for review</td>
         </tr>
       </tbody>
     </table>
 
     <h2>Architecture Pattern</h2>
 
-    <p class="section-text">Agents communicate through shared data infrastructure, not direct agent-to-agent messaging &mdash; keeping the system auditable, debuggable, and reliable. Command surfaces results to a daily dashboard requiring approximately 30&ndash;60 minutes of human review per day.</p>
+    <p class="section-text">Agents communicate through the SaaS platform's shared data infrastructure, not direct agent-to-agent messaging &mdash; keeping the system auditable, debuggable, and reliable. API development follows a service-oriented pattern, and Command surfaces results to a daily dashboard requiring approximately 30&ndash;60 minutes of human review per day.</p>
 
     <div class="bottom-nav">
       <a class="back-link" href="/deck/">&larr; Back to Deck Menu</a>
