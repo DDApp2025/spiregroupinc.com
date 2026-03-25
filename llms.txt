@@ -7,7 +7,7 @@ Spire Group Inc. designs, builds, and operates AI-powered clinical and healthcar
 ## Key Facts
 - Based in Las Vegas, Nevada
 - Five production platforms built and deployed
-- Patent-pending clinical technology (filed under Infotech Inc.)
+- Patent-pending clinical technology (filed with USPTO)
 - Live production platform: Aesthetics To Go (aestheticstogo.com)
 - Seven-agent autonomous acquisition system in daily operation
 
