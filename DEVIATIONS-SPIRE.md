@@ -142,3 +142,21 @@ index.html only. Two changes, CSS-only compaction plus a single header-link reta
 - 375x812: overflow 0 (no horizontal scroll); paragraph wraps to 8 lines and chips fall below the mobile fold, which is expected on mobile.
 - Header CTA reads "Meet Ariel" and href `ariel.html#walkthrough` == hero chip href at 1366 and 1440.
 - Dash sweep: zero em-dashes and zero en-dashes (and zero &mdash;/&ndash; entities) in index.html.
+
+## Hero H1 downsizing to fit above the fold (autonomous session, 2026-07-04)
+
+index.html only, CSS-only. Follow-up to the prior compaction: the H1 was still clamping to 120px (2 lines = ~240px), which pushed the paragraph and chip row below the laptop fold. Reduced the H1 (and its line-height) and nudged the subhead down to hold the hierarchy. No wording, structure, graphic, or color change; "Platforms." stays on its own line in the accent em color.
+
+### Before -> after (CSS)
+- `h1 { font-size: clamp(2.6rem, 9vw, 7.5rem); line-height: 1.0 }` -> `font-size: clamp(2.5rem, 5.5vw, 5rem); line-height: 0.95`. On laptops the middle 5.5vw governs, giving ~75px at 1366, ~79px at 1440, ~80px at 1536 (capped at 5rem = 80px for wider screens). Still a responsive clamp, so mobile scales to ~40px at 375 and ~42px at 768 (min 2.5rem = 40px). H1 remains the dominant element (roughly 4x body size).
+- `.hero-h1-line { font-size: clamp(1.05rem, 2vw, 1.7rem) }` -> `clamp(1.05rem, 1.7vw, 1.5rem)` (the "We build intelligent systems, and operate them." subhead, nudged down proportionally to keep H1 clearly dominant).
+
+### Iterated measurement (Playwright, system Chrome; screenshots in scratchpad/heroshots2)
+Target: bottom of the three-chip row within the viewport height at all three laptop sizes. Final result (chips.bottom / viewport height):
+- 1366x768: chips 575 / 768 FIT (H1 75px), "Platforms." on its own line, horizontal overflow 0.
+- 1440x900: chips 589 / 900 FIT (H1 79px), overflow 0.
+- 1536x864: chips 594 / 864 FIT (H1 80px), overflow 0.
+- 768x1024: chips 562 / 1024 FIT (H1 42px), overflow 0.
+- 375x812: horizontal overflow 0; H1 40px scales down sensibly; the chip row sits ~6px below the mobile fold, which is expected on mobile (vertical scroll).
+Final H1 font-size landed on: clamp(2.5rem, 5.5vw, 5rem), line-height 0.95.
+- Dash sweep: zero em-dashes and zero en-dashes (and zero entity dashes) in index.html.
