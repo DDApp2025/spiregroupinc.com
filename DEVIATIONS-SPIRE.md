@@ -245,3 +245,13 @@ it carries the required visible text and aria-label. Verified by DOM sweep at al
 - The spire-sales Retell voice speed was lowered 0.95 -> 0.90 the same day; that change and its
   verification are logged in atg-agent DEVIATIONS.md D28 (Retell config only, no service
   deploy). Not part of this repo's diff.
+
+## Call Ariel Now chip: desktop-readable phone number (autonomous session, 2026-07-04)
+
+index.html only, additive. The "Call Ariel Now: (702) 707-4919" chip is a tel: link (`href="tel:+17027074919"`, plus `onclick="talkToAriel()"` which sets `window.location='tel:+17027074919'`). On mobile it dials; on desktop the tel: handler shows a "pick an app" dialog and the number looks broken. The chip is kept live and unchanged.
+- Fix (additive, chip untouched): added a small selectable readout line directly under the actions row so desktop visitors can read/copy the number and dial manually.
+  - Markup added after `.ariel-actions`: `<p class="ariel-call-note">On a computer? Dial <span class="ariel-phone">(702) 707-4919</span> from your phone.</p>`
+  - CSS added: `.ariel-call-note` (mono, small, muted) and `.ariel-phone` (accent, bold, `white-space: nowrap`, `user-select: all` / `-webkit-user-select: all` so a single click selects the whole number to copy). The number is real text in a `<span>` (not an image, not a link), so it never triggers the desktop tel: dialog.
+- Before: chip only; the number lived only inside the tel: anchor, awkward to select on desktop (clicking fires the OS dialog).
+- After: chip unchanged (still tel:+17027074919 for mobile) + a plain, selectable (702) 707-4919 readout beneath it with "On a computer? ... from your phone." microcopy.
+- Verify: chip href still `tel:+17027074919`; `.ariel-phone` is a `<span>` with computed `user-select: all` and selectable text captured as "(702) 707-4919"; zero horizontal overflow at 375, 768, 1366. Number, chip position, and live status unchanged. Zero em/en dashes.

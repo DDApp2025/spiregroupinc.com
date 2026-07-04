@@ -454,6 +454,24 @@ nav {
       font-weight: 400;
     }
     .ariel-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2.5rem; }
+    /* Desktop-friendly readout of the phone number. The chip stays a tel: link so
+       mobile taps dial; this line gives desktop visitors a number they can read
+       and one-click select to copy, since tel: does nothing useful on a desktop. */
+    .ariel-call-note {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.02em;
+      color: var(--muted);
+      line-height: 1.5;
+      margin-top: 1rem;
+    }
+    .ariel-phone {
+      color: var(--accent);
+      font-weight: 700;
+      white-space: nowrap;
+      -webkit-user-select: all;
+      user-select: all;
+    }
     .ariel-pills { display: flex; flex-direction: column; gap: 0; margin-top: 2.5rem; border-top: 1px solid var(--rule); }
     .ariel-pill {
       display: grid;
@@ -1034,6 +1052,7 @@ nav {
         <a class="btn-primary" href="ariel.html#walkthrough">Book a walkthrough</a>
         <a class="btn-ghost" href="tel:+17027074919" onclick="talkToAriel(); return false;" aria-label="Call Ariel, the AI receptionist, at (702) 707-4919">Call Ariel Now: (702) 707-4919</a>
       </div>
+      <p class="ariel-call-note">On a computer? Dial <span class="ariel-phone">(702) 707-4919</span> from your phone.</p>
       <div class="ariel-pills">
         <div class="ariel-pill"><span class="ariel-pill-mark">01</span><span class="ariel-pill-text">Every call answered in 2 rings, 24/7</span></div>
         <div class="ariel-pill"><span class="ariel-pill-mark">02</span><span class="ariel-pill-text">Only quotes prices you approve</span></div>
