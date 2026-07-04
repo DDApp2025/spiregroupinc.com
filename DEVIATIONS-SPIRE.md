@@ -108,3 +108,37 @@ Albert supplied a real hero background image and directed that the prior CSS/SVG
 - Pixel sampling, 8 spread points per width: predominantly LIGHT luminous field (relative luminance mostly 0.5 to 0.94) with visible warm-orange regions at 6 to 7 of 8 points every width. Not dark/navy. The lone dark sample at 375 (rgb ~129,125,125) is the solid ink "Start a Project" button, not the background.
 - Contrast against actual sampled background regions: H1 15.6 to 17.7:1; subhead 10.9 to 13.7:1. All far above WCAG AA/AAA. No scrim or position change needed.
 - Dash sweep: zero em-dashes and zero en-dashes in index.html (verified in Python, not the locale-broken grep -P).
+
+## Hero above-the-fold compaction + header button retarget (autonomous session, 2026-07-04)
+
+index.html only. Two changes, CSS-only compaction plus a single header-link retarget. No wording, graphic, color, font, or structural change.
+
+### Recon (as-found)
+- Hero container: `.hero` with `min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 11rem 5rem 6rem;`. Top spacing below the fixed nav was the 11rem top padding; measured gap nav-bottom to eyebrow-top was 144px. Content wrapper `.hero-inner` (max-width 1180px, centered).
+- Vertical spacing between hero elements: `.hero-eyebrow { margin-bottom: 2rem }`, `h1 { margin-bottom: 2.2rem; max-width: 15ch }`, `.hero-h1-line { margin-top: 1.4rem; max-width: 34ch }` (the "We build intelligent systems..." line, a span inside h1), `.hero-sub { max-width: 46ch; margin-bottom: 3rem; line-height: 1.75 }` (the "Spire Group Inc. is a full-stack studio..." paragraph), `.hero-actions { gap: 0.9rem; flex-wrap: wrap }` (row of three chips).
+- Paragraph as-found: 6 lines at desktop (max-width 46ch, ~419px at 1366 / ~442px at 1440).
+- Lower hero "MEET ARIEL" chip markup: `<a class="btn-ghost" href="ariel.html#walkthrough" onclick="talkToAriel(); return false;">Meet Ariel</a>`. Its href attribute is `ariel.html#walkthrough`.
+- Header button (top-right nav): `<a class="nav-cta" href="contact.html">Start a Project</a>`.
+- Baseline fit: at 1366x768 and 1440x900 the three chips fell BELOW the fold (chips.bottom = 916px at both), so the hero did not fit above the fold.
+
+### Change 1 - compaction (CSS only, before -> after)
+- `.hero` `justify-content: center` -> `flex-start` (content starts near the top instead of vertically centered, so the hero starts higher).
+- `.hero` `padding: 11rem 5rem 6rem` -> `6.5rem 5rem 3rem` (reduced the empty band under the nav; still clears the ~69px fixed nav).
+- `.hero-eyebrow` `margin-bottom: 2rem` -> `1.1rem`.
+- `h1` `margin-bottom: 2.2rem` -> `1.2rem`.
+- `.hero-h1-line` `margin-top: 1.4rem` -> `0.9rem`.
+- `.hero-sub` `max-width: 46ch` -> `90ch` (paragraph reflows 6 lines -> 3 lines at desktop; ~820px at 1366, ~865px at 1440, inside the 1180px inner and clear of the ring motif), and `margin-bottom: 3rem` -> `1.6rem`.
+- Mobile untouched: the `@media (max-width: 1024px)` and `(max-width: 640px)` rules already override `.hero` padding and set `min-height: auto`, so only desktop (>1024px) is affected. The widened paragraph is width-constrained on narrow screens and wraps back to more lines (8 lines at 375), which is expected.
+
+### Change 2 - header button retarget
+- `<a class="nav-cta" href="contact.html">Start a Project</a>` -> `<a class="nav-cta" href="ariel.html#walkthrough">Meet Ariel</a>`.
+- Shared href: `ariel.html#walkthrough` (matches the lower hero chip's href attribute exactly; QA confirmed header CTA href === hero chip href). Text "Meet Ariel" in Title Case to match the other header items' source casing (rendered uppercase by the existing `text-transform: uppercase`).
+- Nuance (documented, not changed): the lower hero chip additionally carries `onclick="talkToAriel(); return false;"`, so JS-enabled clicks on the chip route to `ariel.html` (top of page) via the stub, while the header button, per the instruction to set only its href, navigates to `ariel.html#walkthrough`. Only the href was retargeted; the chip is unchanged and still present. Other pages' header buttons keep "Start a Project" -> contact.html (this change is homepage-only, as scoped).
+
+### QA (Playwright, system Chrome; screenshots in scratchpad/heroshots)
+- 1366x768: chips.bottom 683px (visible above the 768 fold), paragraph 3 lines, gap nav->eyebrow 72px (was 144), horizontal overflow 0.
+- 1440x900: chips.bottom 687px (visible), paragraph 3 lines, gap 72px, overflow 0.
+- 768x1024: chips visible (620px), overflow 0.
+- 375x812: overflow 0 (no horizontal scroll); paragraph wraps to 8 lines and chips fall below the mobile fold, which is expected on mobile.
+- Header CTA reads "Meet Ariel" and href `ariel.html#walkthrough` == hero chip href at 1366 and 1440.
+- Dash sweep: zero em-dashes and zero en-dashes (and zero &mdash;/&ndash; entities) in index.html.
