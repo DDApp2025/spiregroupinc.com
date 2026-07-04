@@ -175,3 +175,11 @@ index.html only, visual swap of two hero CTA chips via their shared classes. No 
 - "Meet Ariel": `btn-ghost` -> `btn-primary` (now filled black, white text). href `ariel.html#walkthrough` and its `onclick="talkToAriel()"` unchanged.
 - "Start a Project": `btn-primary` -> `btn-ghost` (now outlined, dark text). href `contact.html` unchanged.
 - "See the Platform" (`btn-ghost`, `case-study.html`): unchanged. Order unchanged.
+
+## Hero paragraph rewrite (autonomous session, 2026-07-04)
+
+index.html only, hero-sub paragraph text replaced. No H1, subhead, chip, graphic, or CSS change.
+- Before: "Spire Group Inc. is a full-stack studio that designs, builds, and operates SaaS platforms and AI systems across industries. Our flagship deployment, Aesthetics To Go, is a fully autonomous operating system that proves what we build in production. We don't just ship software. We build intelligent platforms and run them." (~62 words)
+- After: "Spire Group designs, builds, and operates SaaS and AI platforms across industries. Ariel, our AI receptionist, answers your calls and books appointments around the clock. We proved it running our own platform, Aesthetics To Go. We build intelligent systems and run them." (42 words)
+- Content checks: zero em/en dashes (and zero entity dashes); "first product" absent; "Aesthetics To Go" spelled exactly; no forbidden terms.
+- Fit re-verified (Playwright, reduced-motion; screenshots in scratchpad/heroshots3): chips above the fold at 1366x768 (575), 1440x900 (589), 1536x864 (594); paragraph renders 3 lines at desktop; horizontal overflow 0 at 375 and 768. Layout unchanged from the prior pass (still 3 lines at the 90ch measure), so no other adjustment needed.
