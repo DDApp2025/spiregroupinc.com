@@ -1005,7 +1005,7 @@ nav {
     <div class="hero-actions">
       <a class="btn-ghost" href="contact.html">Start a Project</a>
       <a class="btn-ghost" href="case-study.html">See the Platform</a>
-      <a class="btn-primary" href="ariel.html#walkthrough" onclick="talkToAriel(); return false;">Meet Ariel</a>
+      <a class="btn-primary" href="ariel.html">Meet Ariel</a>
     </div>
   </div>
 </section>
@@ -1022,8 +1022,8 @@ nav {
           <source srcset="meet-ariel-hero.webp" type="image/webp" />
           <img class="hero-image" src="meet-ariel-hero.png" width="1200" height="1200" loading="eager" alt="Meet Ariel, the 24/7 AI receptionist by Spire Group." />
         </picture>
-        <!-- Dark click-to-talk hotspot over the SCHEDULE A DEMO region of the image. Routes through talkToAriel(). -->
-        <a class="hero-hotspot" href="ariel.html#walkthrough" onclick="talkToAriel(); return false;" aria-label="Talk to Ariel"></a>
+        <!-- Hotspot over the baked-in SCHEDULE A DEMO region of the image. Routes to the walkthrough form (schedule); never dials. -->
+        <a class="hero-hotspot" href="ariel.html#walkthrough" aria-label="Schedule a demo walkthrough"></a>
       </div>
       <figcaption class="ariel-caption"><span class="ariel-fig">Fig. 01</span> Ariel answers every call within two rings, 24 hours a day.</figcaption>
     </figure>
@@ -1032,9 +1032,7 @@ nav {
       <p class="ariel-close">Built for medical practices, service businesses, and every team that answers phones.</p>
       <div class="ariel-actions">
         <a class="btn-primary" href="ariel.html#walkthrough">Book a walkthrough</a>
-        <!-- Secondary demo-number CTA. PENDING LIVE-FIRE GO 2026-07
-        <a class="btn-ghost" href="tel:+10000000000">Call the live demo line</a>
-        -->
+        <a class="btn-ghost" href="tel:+17027074919" onclick="talkToAriel(); return false;" aria-label="Call Ariel, the AI receptionist, at (702) 707-4919">Call Ariel Now: (702) 707-4919</a>
       </div>
       <div class="ariel-pills">
         <div class="ariel-pill"><span class="ariel-pill-mark">01</span><span class="ariel-pill-text">Every call answered in 2 rings, 24/7</span></div>
@@ -1362,13 +1360,11 @@ nav {
 </footer>
 
 <script>
-// Click-to-talk entry point. Shared by the "Meet Ariel" hero button and the
-// hotspot over the SCHEDULE A DEMO region of the hero image.
+// Dial entry point for the "Call Ariel Now" button in the Ariel section.
+// GO-SPIRE 2026-07 (Albert's decision): the site's "talk to Ariel" experience is a
+// phone call to the live demo line. The in-browser web-call path is deferred (not built).
 function talkToAriel() {
-  // PENDING GO-SPIRE + WEB-CALL DECISION 2026-07
-  // When the in-browser web-call path is approved, activate the live call on the
-  // line below (a one-line swap). Until then this preserves the walkthrough route.
-  window.location.href = 'ariel.html';
+  window.location.href = 'tel:+17027074919';
 }
 </script>
 

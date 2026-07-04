@@ -183,3 +183,65 @@ index.html only, hero-sub paragraph text replaced. No H1, subhead, chip, graphic
 - After: "Spire Group designs, builds, and operates SaaS and AI platforms across industries. Ariel, our AI receptionist, answers your calls and books appointments around the clock. We proved it running our own platform, Aesthetics To Go. We build intelligent systems and run them." (42 words)
 - Content checks: zero em/en dashes (and zero entity dashes); "first product" absent; "Aesthetics To Go" spelled exactly; no forbidden terms.
 - Fit re-verified (Playwright, reduced-motion; screenshots in scratchpad/heroshots3): chips above the fold at 1366x768 (575), 1440x900 (589), 1536x864 (594); paragraph renders 3 lines at desktop; horizontal overflow 0 at 375 and 768. Layout unchanged from the prior pass (still 3 lines at the 90ch measure), so no other adjustment needed.
+
+## Call-button GO-LIVE: demo-number CTA activated, talkToAriel dials the live line (2026-07-04)
+
+Albert's decision (GO): the site's "talk to Ariel" experience is a phone call to the live
+demo line, shipped now. The in-browser web-call version is deferred to post-GO and was NOT
+built. index.html only. Live demo line: +1 (702) 707-4919 (tel:+17027074919).
+
+### Marker dispositions (both homepage GO markers resolved)
+- **PENDING LIVE-FIRE GO 2026-07** (secondary demo-number CTA, #ariel section): RESOLVED.
+  Uncommented and set to the live number. It is now the sole call button: visible text
+  "Call Ariel Now: (702) 707-4919", aria-label "Call Ariel, the AI receptionist, at
+  (702) 707-4919", href="tel:+17027074919" with onclick="talkToAriel(); return false;" as the
+  JS dial path (the tel: href is the no-JS fallback, same number). The placeholder
+  tel:+10000000000 is gone. Marker removed.
+- **PENDING GO-SPIRE + WEB-CALL DECISION 2026-07** (talkToAriel() in the page script):
+  RESOLVED. The web-call decision is made: phone call now, in-browser web-call deferred (not
+  built). talkToAriel() now runs window.location.href='tel:+17027074919'. The PENDING marker
+  and the web-call stub comment are removed and replaced with a note recording the decision.
+
+No PENDING GO marker remains in index.html.
+
+### Label rule (every dialer says so) and the two decouplings it forced
+talkToAriel() was previously the shared click handler for the hero "Meet Ariel" chip and the
+SCHEDULE A DEMO hotspot. Making it dial would have turned both into dialers. To satisfy the
+label rule ("no button that dials may carry a label implying anything else") and to keep the
+hotspot scheduling, both were decoupled from talkToAriel():
+- **Hero "Meet Ariel" chip** (hero-actions): per Albert's explicit choice, kept as "Meet
+  Ariel" navigation, not a call button. Its onclick="talkToAriel()" was removed and its href
+  set to ariel.html (matching the header "Meet Ariel" button's destination). It navigates,
+  never dials; label unchanged.
+- **SCHEDULE A DEMO hotspot** (over the baked-in image region): its onclick="talkToAriel()"
+  was removed; it now routes purely via href="ariel.html#walkthrough" (schedule), never dials,
+  per the instruction that the region says SCHEDULE so it must schedule. Its aria-label was
+  corrected from "Talk to Ariel" to "Schedule a demo walkthrough" so the accessible label
+  matches the behavior.
+
+After the change there is exactly ONE tel: link on the page (the Call Ariel Now button), and
+it carries the required visible text and aria-label. Verified by DOM sweep at all three widths.
+
+### Untouched (still gated)
+- The Ariel-page walkthrough form's Formspree action (SWAP TO ARIEL WEBHOOK AT GO 2026-07) was
+  NOT touched; that swap stays gated on GO-SPIRE. This change is index.html-only; ariel.html
+  was not edited.
+- Head content, JSON-LD, nav/footer, the homepage #contact Formspree form, and all other body
+  copy: unchanged (the diff is the four edits only).
+
+### QA (Playwright, bundled Chromium 1228, local http server; screenshots in scratchpad)
+- Horizontal overflow: 0 at 1280, 768, and 375 (scrollWidth == innerWidth == body width each).
+- Call Ariel Now button: rendered and visible, fully within the viewport (right edge
+  1153/569/328 px at 1280/768/375), text/href/aria-label exactly as specified.
+- Hero "Meet Ariel": href ariel.html, no onclick, not a tel. Hotspot: href
+  ariel.html#walkthrough, aria "Schedule a demo walkthrough", not a tel. Exactly one tel: link.
+- Dash sweep: zero em-dashes (U+2014), zero en-dashes (U+2013), zero &mdash;/&ndash; entities
+  in index.html (Python scan; grep -P is locale-broken here).
+- Forbidden-term gate: clean. Only "store" appears, in the pre-existing "Document store"
+  database phrase (kept per the body-copy fence). No marketplace/med spa/medspa/DoorDash/
+  DivaDash/DD-Bank/retired-people matches; no new forbidden term introduced.
+
+### Related (other repo)
+- The spire-sales Retell voice speed was lowered 0.95 -> 0.90 the same day; that change and its
+  verification are logged in atg-agent DEVIATIONS.md D28 (Retell config only, no service
+  deploy). Not part of this repo's diff.
