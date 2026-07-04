@@ -160,3 +160,10 @@ Target: bottom of the three-chip row within the viewport height at all three lap
 - 375x812: horizontal overflow 0; H1 40px scales down sensibly; the chip row sits ~6px below the mobile fold, which is expected on mobile (vertical scroll).
 Final H1 font-size landed on: clamp(2.5rem, 5.5vw, 5rem), line-height 0.95.
 - Dash sweep: zero em-dashes and zero en-dashes (and zero entity dashes) in index.html.
+
+## Header Meet Ariel button retargeted to Ariel page top (autonomous session, 2026-07-04)
+
+index.html only, single href change. The top-right header nav button (`.nav-cta`, "Meet Ariel") linked to the walkthrough anchor; changed it to load the Ariel page at the top.
+- File changed: index.html (line 988). Before: `<a class="nav-cta" href="ariel.html#walkthrough">Meet Ariel</a>`. After: `<a class="nav-cta" href="ariel.html">Meet Ariel</a>`.
+- Template check: the nav is hardcoded inline per page (no shared template/partial/build step in this repo), and only index.html's header CTA carries the "Meet Ariel" label (other pages' `.nav-cta` reads "Start a Project" -> contact.html), so no other page needed the change and none is left stale.
+- Left unchanged: the lower hero "MEET ARIEL" chip (`.btn-ghost`, line 1008) still `href="ariel.html#walkthrough"` with its `onclick="talkToAriel()"`, and all other links.
