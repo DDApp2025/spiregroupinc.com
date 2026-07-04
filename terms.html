@@ -62,16 +62,104 @@
     html { scroll-behavior: smooth; }
     body { background: var(--paper); color: var(--ink); font-family: var(--serif); font-size: 18px; line-height: 1.6; overflow-x: hidden; }
 
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 3rem; background: rgba(245,243,238,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--rule); }
-    .nav-logo { font-family: var(--mono); font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; }
-    .nav-logo img { height: 28px; width: auto; }
+nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 1.25rem;
+      padding: 0.9rem 2.75rem;
+      background: rgba(245,243,238,0.86);
+      -webkit-backdrop-filter: saturate(150%) blur(16px);
+      backdrop-filter: saturate(150%) blur(16px);
+      border-bottom: 1px solid transparent;
+      transition: padding 0.28s ease, background 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+    }
+    /* Slight elevation and a hairline rule once the page scrolls past the fold. */
+    nav.nav-scrolled {
+      padding-top: 0.62rem; padding-bottom: 0.62rem;
+      background: rgba(245,243,238,0.95);
+      border-bottom-color: var(--rule);
+      box-shadow: 0 10px 30px -22px rgba(10,10,15,0.55);
+    }
+    .nav-logo {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+      display: flex; align-items: center; gap: 0.5rem;
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+    .nav-logo img { height: 26px; width: auto; display: block; }
     .nav-logo span { color: var(--accent); }
-    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-    .nav-links a { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
-    .nav-links a:hover, .nav-links a.active { color: var(--ink); }
-    .nav-cta { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--paper); background: var(--ink); padding: 0.55rem 1.2rem; text-decoration: none; transition: background 0.2s; }
-    .nav-cta:hover { background: var(--accent); }
     .site-tagline { font-size: 0.55rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; display: block; margin-top: -2px; color: var(--muted); }
+    .nav-links { display: flex; align-items: center; gap: 1.6rem; list-style: none; margin: 0; flex-wrap: nowrap; }
+    .nav-links a {
+      position: relative;
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      white-space: nowrap;
+      padding: 0.35rem 0;
+      transition: color 0.2s ease;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute; left: 0; right: 0; bottom: -1px;
+      height: 1.5px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left center;
+      transition: transform 0.28s ease;
+    }
+    .nav-links a:hover, .nav-links a:focus-visible, .nav-links a.active { color: var(--ink); }
+    .nav-links a:hover::after, .nav-links a:focus-visible::after, .nav-links a.active::after { transform: scaleX(1); }
+    .nav-cta {
+      flex-shrink: 0;
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      color: var(--paper);
+      background: var(--ink);
+      border: 1px solid var(--ink);
+      padding: 0.6rem 1.25rem;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    }
+    .nav-cta:hover, .nav-cta.active { background: var(--accent); border-color: var(--accent); color: var(--paper); }
+    .nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; flex-direction: column; gap: 4px; }
+    .nav-hamburger span { display: block; width: 20px; height: 2px; background: var(--ink); transition: 0.2s; }
+    /* Collapse to an accessible hamburger wherever the full link row cannot fit. */
+    @media (max-width: 1240px) {
+      nav { padding: 0.85rem 1.75rem; }
+      .nav-links {
+        display: none;
+        position: absolute; top: 100%; left: 0; right: 0;
+        flex-direction: column; align-items: flex-start;
+        gap: 1.15rem;
+        margin: 0;
+        padding: 1.4rem 1.75rem 1.6rem;
+        background: rgba(245,243,238,0.96);
+        -webkit-backdrop-filter: saturate(150%) blur(16px);
+        backdrop-filter: saturate(150%) blur(16px);
+        border-bottom: 1px solid var(--rule);
+        box-shadow: 0 18px 30px -24px rgba(10,10,15,0.6);
+      }
+      .nav-links.nav-open { display: flex; }
+      .nav-links a::after { display: none; }
+      .nav-hamburger { display: flex; }
+      .nav-cta { padding: 0.5rem 1rem; font-size: 0.64rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      nav, .nav-links a, .nav-links a::after, .nav-cta { transition: none; }
+    }
 
     .page-hero { padding: 10rem 5rem 5rem; background: var(--ink); position: relative; overflow: hidden; }
     .page-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 75% 30%, rgba(43,74,107,0.4) 0%, transparent 55%); }
@@ -113,7 +201,7 @@
 
 <nav>
   <a class="nav-logo" href="index.html"><img src="sgi-logo.png" alt="SGI" /><div><span>Spire</span> Group Inc.<span class="site-tagline">Developing AI Driven Platforms</span></div></a>
-  <ul class="nav-links">
+  <ul class="nav-links" id="navLinks">
     <li><a href="what-we-build.html">What We Build</a></li>
     <li><a href="ariel.html">Ariel</a></li>
     <li><a href="case-study.html">Case Study</a></li>
@@ -123,7 +211,7 @@
     <li><a href="blog/">Blog</a></li>
     <li><a href="contact.html">Contact Us</a></li>
   </ul>
-  <button class="nav-hamburger" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('nav-open')">
+  <button class="nav-hamburger" aria-label="Menu" aria-expanded="false" aria-controls="navLinks" onclick="toggleNav(this)">
     <span></span><span></span><span></span>
   </button>
   <a class="nav-cta" href="contact.html">Start a Project</a>
@@ -163,7 +251,7 @@
 
 <footer>
   <div class="footer-top">
-    <div class="footer-copy">&copy; 2026 Spire Group Inc. All rights reserved. Las Vegas, Nevada.</div>
+    <div class="footer-copy">&copy; 2026 Spire Group Inc. All rights reserved.</div>
     <div class="footer-note">Patent Pending &middot; Trademark Filed &middot; Copyrights Registered</div>
   </div>
   <div class="footer-links" style="font-family:var(--mono);font-size:0.62rem;margin-top:0.5rem;">
@@ -173,5 +261,18 @@
   </div>
 </footer>
 
+<script>
+/* Header behavior: scroll elevation, accessible hamburger toggle, close on nav click or Escape. */
+function toggleNav(btn){var n=document.getElementById('navLinks');if(!n)return;var open=n.classList.toggle('nav-open');btn.setAttribute('aria-expanded',open?'true':'false');}
+(function(){
+  var nav=document.querySelector('nav');
+  if(nav){var onScroll=function(){nav.classList.toggle('nav-scrolled',window.scrollY>24);};window.addEventListener('scroll',onScroll,{passive:true});onScroll();}
+  var links=document.getElementById('navLinks');
+  var burger=document.querySelector('.nav-hamburger');
+  function closeNav(){if(links)links.classList.remove('nav-open');if(burger)burger.setAttribute('aria-expanded','false');}
+  if(links){links.addEventListener('click',function(e){if(e.target.closest('a'))closeNav();});}
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeNav();});
+})();
+</script>
 </body>
 </html>
