@@ -78,3 +78,33 @@ The Meet Ariel image (meet-ariel-hero.png/webp) was moved out of the hero and in
 - Dash sweep: zero em-dashes (U+2014) and zero en-dashes (U+2013), including CSS comments. Remaining non-ASCII are pre-existing and benign: one right-arrow in the announcement bar, middots, and copyright signs.
 - Forbidden-term gate: clean. Only "store" appears, in the pre-existing "Document store" database phrase (kept per body-copy fence). No marketplace/med spa/medspa/DoorDash/DivaDash/retired-people/DD-Bank matches.
 - Lighthouse-sane: image loading attributes and explicit dimensions preserved; the hero is CSS/SVG only (no new image, no layout-shift regression).
+
+## Hero background swapped to Albert's chosen image (autonomous session, 2026-07-04)
+
+Albert supplied a real hero background image and directed that the prior CSS/SVG dark hero be retired. The dark ink-to-steel field, the CSS/SVG glow layers, the two-rings inline SVG motif, the instrument grid, and the film-grain noise overlay were all removed from the hero. The hero is now a full-bleed light image.
+
+### Image pipeline
+- Source: spire_background.png (2752x1536, 5,910,340 bytes) from Albert's Downloads. Copied into the repo (never hotlinked).
+- Resized to 1920x1072 (LANCZOS). Primary deliverable: spire-hero-bg.webp, quality 82, method 6, 88,348 bytes (well under the ~400KB target). PNG fallback: spire-hero-bg.png, 256-color quantized (Floyd-Steinberg), 293,297 bytes; the fallback is only served to the rare browser without WebP support, so the quantization is acceptable. A straight 1920-wide PNG was 2,373,113 bytes, hence the quantized fallback.
+- Delivery: a picture element inside .hero-bg (source webp + img png fallback), mirroring the existing meet-ariel picture pattern. The img uses object-fit: cover with object-position for focal control.
+
+### Hero treatment
+- Background: full-bleed cover image. object-position 50% 50% at desktop; biased left (32% at <=1024, 24% at <=640) so the calm left zone stays under the text block and the text stays legible as the viewport narrows (the ring motif on the right may crop out on mobile, as expected).
+- Text bleeds directly on the image, no panel behind it: H1 in ink (--ink), the em accent word "Platforms." in --accent (#b8470b, was #ec8134), the H1 sub-line in --steel, the subhead in ink at 0.78, eyebrow in --accent per its existing style.
+- Legibility aid: a single soft LIGHT scrim (paper white radial, ~0.80 to 0 opacity, feathered) anchored behind the left text block via .hero::before; it fades to nothing on the right so the ring stays visible. Never a dark panel; text opacity untouched.
+- Buttons restyled for the light field: primary solid ink with paper text; the two ghost buttons use ink border + ink text on a faint paper backing (rgba(245,243,238,0.5)). All three on one row at 1280+, wrapping at mobile.
+- Nav: untouched. It already carries its own translucent paper background (rgba(245,243,238,0.92)) with ink logo/links, so it stays legible over the light image without change.
+
+### Hard fences (verified byte-identical against HEAD, git diff)
+- Demo-number CTA comment block (PENDING LIVE-FIRE GO 2026-07): not in diff, present in file.
+- talkToAriel() script (PENDING GO-SPIRE + WEB-CALL DECISION 2026-07): not in diff, present in file.
+- All head content (analytics, verification metas, SEO/OG/Twitter, all four JSON-LD blocks, canonical): not in diff.
+- Formspree form (action mvgkrwre, method, field names name/email/message, submit JS): not in diff.
+- All body copy, all non-hero sections, nav and footer structure: unchanged. The full diff is hero-only (CSS hero block + the hero markup picture swap).
+
+### QA gates (all pass; Playwright driving system Chrome)
+- Screenshots at 1440 / 1280 / 768 / 375: the image renders as a light colorful background at every width; H1, subhead, and buttons legible; ring motif visible on the right at 1440 and 1280.
+- Overflow: scrollWidth == innerWidth == body width at all four widths (1440, 1280, 768, 375). No horizontal overflow; body width equals viewport width at 375.
+- Pixel sampling, 8 spread points per width: predominantly LIGHT luminous field (relative luminance mostly 0.5 to 0.94) with visible warm-orange regions at 6 to 7 of 8 points every width. Not dark/navy. The lone dark sample at 375 (rgb ~129,125,125) is the solid ink "Start a Project" button, not the background.
+- Contrast against actual sampled background regions: H1 15.6 to 17.7:1; subhead 10.9 to 13.7:1. All far above WCAG AA/AAA. No scrim or position change needed.
+- Dash sweep: zero em-dashes and zero en-dashes in index.html (verified in Python, not the locale-broken grep -P).

@@ -194,54 +194,34 @@
       justify-content: center;
       padding: 11rem 5rem 6rem;
       overflow: hidden;
-      background: var(--ink);
-      color: var(--paper);
+      background: var(--paper);
+      color: var(--ink);
     }
+    /* Full-bleed hero background: Albert's chosen light color-field image covers
+       the whole hero. The calm left zone sits under the text; the warm ring motif
+       on the image right stays visible on wide screens. Served as WebP with a PNG
+       fallback through the picture element in the markup. */
     .hero-bg { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
-    /* Aurora color field: dark ink-to-steel canvas lit by large warm and cool
-       glows that bleed into each other. This must read as color, never navy. */
-    .hero-bg::before {
-      content: '';
-      position: absolute; inset: -8%;
-      filter: blur(6px);
-      background:
-        radial-gradient(60% 62% at 84% 4%, rgba(184,71,11,0.62) 0%, rgba(184,71,11,0.34) 30%, rgba(184,71,11,0) 66%),
-        radial-gradient(54% 58% at 6% 94%, rgba(74,122,181,0.54) 0%, rgba(42,74,107,0.30) 40%, rgba(42,74,107,0) 74%),
-        radial-gradient(48% 50% at 56% 64%, rgba(224,120,60,0.36) 0%, rgba(224,120,60,0.14) 38%, rgba(224,120,60,0) 66%),
-        radial-gradient(44% 46% at 34% 26%, rgba(237,233,224,0.20) 0%, rgba(237,233,224,0) 60%),
-        radial-gradient(50% 52% at 92% 74%, rgba(232,130,74,0.30) 0%, rgba(232,130,74,0) 64%),
-        linear-gradient(155deg, #0a0a0f 0%, #141c30 52%, #0a0a0f 100%);
-    }
-    /* Fine instrument grid, faded toward the edges. */
-    .hero-bg::after {
-      content: '';
+    .hero-bg picture { position: absolute; inset: 0; display: block; }
+    .hero-bg-img {
       position: absolute; inset: 0;
-      background-image:
-        linear-gradient(rgba(245,243,238,0.09) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(245,243,238,0.09) 1px, transparent 1px);
-      background-size: 78px 78px, 78px 78px;
-      -webkit-mask-image: radial-gradient(82% 82% at 50% 45%, #000 20%, transparent 100%);
-      mask-image: radial-gradient(82% 82% at 50% 45%, #000 20%, transparent 100%);
-    }
-    /* Large two-rings motif, cropped off the top-right corner, tinted so the
-       H1 visibly bleeds over the ring geometry on wide screens. */
-    .hero-rings {
-      position: absolute;
-      top: -20%; right: -14%;
-      width: min(1120px, 122vh);
-      height: auto;
-      opacity: 1;
-    }
-    /* Very subtle film-grain noise over the whole hero. */
-    .hero::after {
-      content: '';
-      position: absolute; inset: 0; z-index: 0;
-      pointer-events: none;
-      opacity: 0.05;
-      mix-blend-mode: overlay;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: 50% 50%;
+      display: block;
     }
     .hero-inner { position: relative; z-index: 2; max-width: 1180px; width: 100%; margin: 0 auto; }
+    /* Soft light scrim behind the text block only, feathered from the left, so any
+       bright streak under the copy stays legible. Paper white at low opacity, never
+       a dark panel, and it fades to nothing on the right so the ring color shows. */
+    .hero-inner::before {
+      content: '';
+      position: absolute;
+      inset: -2.5rem -3.5rem;
+      z-index: -1;
+      pointer-events: none;
+      background: radial-gradient(115% 100% at 18% 50%, rgba(245,243,238,0.6) 0%, rgba(245,243,238,0.38) 42%, rgba(245,243,238,0) 76%);
+    }
     .hero-eyebrow {
       font-family: var(--mono);
       font-size: 0.72rem;
@@ -262,20 +242,20 @@
       font-weight: 300;
       line-height: 1.0;
       letter-spacing: -0.02em;
-      color: var(--paper);
+      color: var(--ink);
       margin-bottom: 2.2rem;
       max-width: 15ch;
     }
     h1 em {
       font-style: italic;
-      color: #ec8134;
+      color: var(--accent);
     }
     .hero-h1-line {
       display: block;
       font-family: var(--serif);
       font-size: clamp(1.05rem, 2vw, 1.7rem);
       font-weight: 300;
-      color: rgba(245,243,238,0.72);
+      color: var(--steel);
       line-height: 1.3;
       letter-spacing: 0;
       margin-top: 1.4rem;
@@ -284,7 +264,7 @@
     .hero-sub {
       font-size: clamp(1rem, 1.2vw, 1.12rem);
       font-weight: 300;
-      color: rgba(245,243,238,0.72);
+      color: rgba(10,10,15,0.78);
       line-height: 1.75;
       max-width: 46ch;
       margin-bottom: 3rem;
@@ -298,13 +278,13 @@
       white-space: nowrap;
     }
     .hero-actions .btn-primary {
-      background: var(--paper); color: var(--ink); border: 1px solid var(--paper);
+      background: var(--ink); color: var(--paper); border: 1px solid var(--ink);
     }
     .hero-actions .btn-primary:hover { background: var(--accent); border-color: var(--accent); color: var(--paper); }
     .hero-actions .btn-ghost {
-      background: transparent; color: var(--paper); border: 1px solid rgba(245,243,238,0.42);
+      background: transparent; color: var(--ink); border: 1px solid var(--ink);
     }
-    .hero-actions .btn-ghost:hover { background: var(--paper); color: var(--ink); border-color: var(--paper); }
+    .hero-actions .btn-ghost:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
 
     .btn-primary {
       font-family: var(--mono);
@@ -884,6 +864,8 @@
 
     @media (max-width: 1024px) {
       .hero { padding: 9rem 2.5rem 5rem; min-height: auto; }
+      /* Favor the calm left/center of the image as the viewport narrows. */
+      .hero-bg-img { object-position: 32% 50%; }
       section { padding: 5rem 2.5rem; }
       .folio { top: 1.6rem; right: 1.8rem; }
       .services-grid { grid-template-columns: 1fr; column-gap: 0; }
@@ -919,6 +901,7 @@
     }
     @media (max-width: 640px) {
       .hero { padding: 8rem 1.5rem 4rem; }
+      .hero-bg-img { object-position: 24% 50%; }
       .stack-grid { grid-template-columns: 1fr 1fr; }
       .case-features { grid-template-columns: 1fr; }
       .case-feature:nth-child(2n) { border-right: 1px solid rgba(255,255,255,0.08); }
@@ -963,14 +946,10 @@
 <!-- HERO -->
 <section class="hero" id="home">
   <div class="hero-bg" aria-hidden="true">
-    <svg class="hero-rings" viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="300" cy="300" r="292" stroke="rgba(237,233,224,0.5)" stroke-width="1.2" />
-      <circle cx="300" cy="300" r="224" stroke="rgba(184,71,11,0.5)" stroke-width="1.3" />
-      <circle cx="300" cy="300" r="150" stroke="rgba(237,233,224,0.5)" stroke-width="1" stroke-dasharray="2 8" />
-      <path d="M300 46 A254 254 0 0 1 554 300" stroke="rgba(236,129,52,0.82)" stroke-width="2.4" />
-      <path d="M300 554 A254 254 0 0 1 46 300" stroke="rgba(122,160,205,0.62)" stroke-width="2" />
-      <circle cx="300" cy="300" r="4" fill="rgba(237,233,224,0.6)" />
-    </svg>
+    <picture>
+      <source srcset="spire-hero-bg.webp" type="image/webp" />
+      <img class="hero-bg-img" src="spire-hero-bg.png" width="1920" height="1072" alt="" loading="eager" fetchpriority="high" />
+    </picture>
   </div>
   <div class="hero-inner">
     <div class="hero-eyebrow">Software &middot; AI &middot; Autonomous agents</div>
