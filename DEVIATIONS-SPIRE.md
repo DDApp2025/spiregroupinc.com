@@ -167,3 +167,11 @@ index.html only, single href change. The top-right header nav button (`.nav-cta`
 - File changed: index.html (line 988). Before: `<a class="nav-cta" href="ariel.html#walkthrough">Meet Ariel</a>`. After: `<a class="nav-cta" href="ariel.html">Meet Ariel</a>`.
 - Template check: the nav is hardcoded inline per page (no shared template/partial/build step in this repo), and only index.html's header CTA carries the "Meet Ariel" label (other pages' `.nav-cta` reads "Start a Project" -> contact.html), so no other page needed the change and none is left stale.
 - Left unchanged: the lower hero "MEET ARIEL" chip (`.btn-ghost`, line 1008) still `href="ariel.html#walkthrough"` with its `onclick="talkToAriel()"`, and all other links.
+
+## Hero chip primary/secondary style swap (autonomous session, 2026-07-04)
+
+index.html only, visual swap of two hero CTA chips via their shared classes. No text, href, size, position, or order change.
+- Mechanism: shared classes scoped to `.hero-actions` - `.btn-primary` (filled: `background: var(--ink)`, `color: var(--paper)`) and `.btn-ghost` (outlined: transparent background, `color: var(--ink)`, border). Swapped which class each chip carries; no CSS rules changed.
+- "Meet Ariel": `btn-ghost` -> `btn-primary` (now filled black, white text). href `ariel.html#walkthrough` and its `onclick="talkToAriel()"` unchanged.
+- "Start a Project": `btn-primary` -> `btn-ghost` (now outlined, dark text). href `contact.html` unchanged.
+- "See the Platform" (`btn-ghost`, `case-study.html`): unchanged. Order unchanged.
