@@ -49,3 +49,32 @@ Screenshot filenames (untracked): shot-home-1280.png, shot-home-768.png, shot-ho
 ## medspa gate note
 
 "Document store" remains in the homepage stack section (a database term, benign false positive on the "store" forbidden term, not the retail concept). No action needed.
+
+## Homepage editorial redesign (autonomous session, 2026-07-04)
+
+Design-only redesign of index.html (no copy rewrite). Direction: magazine editorial meets high-tech, on the existing brand system (paper/cream/ink/steel, accent #b8470b, accent2 #2a4a6b, hairline rules, sharp corners, Helvetica + mono labels).
+
+### What changed
+- **Hero rebuilt as a full-bleed dark spread.** The prior two-column paper hero (image left, copy right) was replaced by a single dark ink-to-steel field with layered CSS/SVG only: a gradient mesh (ink base, steel wash, two restrained accent glows), a fine instrument grid faded with a radial mask, a large two-rings motif rendered as an inline SVG cropped off the top-right (thin low-opacity strokes plus one thin accent arc as the single warm signal), and a very subtle inline-SVG film-grain overlay. Over it: oversized editorial type in cream/paper, eyebrow ruled kicker, H1 at display scale (clamp up to 7.5rem) with the em word "Platforms." in --accent italic, narrower subhead, and the three hero actions as one row of editorial buttons (solid cream primary + two cream-hairline ghosts). No new image files were added; the rings are inline SVG.
+- **Magazine system applied to the body.** Oversized mono section folios 01-07 (ariel, what, casestudy, stack, ip, about, contact) set as faint page numerals; ruled kickers retained; alternating paper/cream/ink/steel section fields kept so the page reads as spreads.
+- **#what** converted from bordered boxes to an editorial index grid: two columns, accent numerals, hairline row separators, and a vertical column rule. No box hover fills.
+- **#casestudy** lead sentence elevated as an oversized italic pull quote with an accent left-rule (same words).
+- **#about** metrics restyled as instrument readouts: accent LED indicator per cell, tabular numerals, mono letter-spaced gauge labels.
+- **#contact** form restyled to editorial underline fields (transparent inputs, hairline bottom borders, accent focus). Formspree action (mvgkrwre), field names (name/email/message), form id, and the fetch submit JS are unchanged; only presentation and the button hover (moved from inline JS to CSS) changed.
+- **Modern-tech texture**: scroll-reveal via IntersectionObserver (progressive enhancement gated on an html.js-anim class set before first paint, so no-JS and reduced-motion users see content immediately); refined nav-scrolled state on scroll (structure unchanged); hero entrance keyframes retained under prefers-reduced-motion: no-preference.
+
+### Hero image relocation rationale
+The Meet Ariel image (meet-ariel-hero.png/webp) was moved out of the hero and into the #ariel section as the editorial feature image, because the new hero is a type-and-graphic dark spread (no photographic content) and the image is a purpose-built "Meet Ariel" promo that belongs with the Ariel narrative. The hero-image-wrap and the click-to-talk hotspot link were kept intact around the img (the hotspot percentages are tied to the image geometry, so the wrap was preserved verbatim; only its nesting depth changed). A mono figure caption ("Fig. 01 ...") was added under the image; its wording is drawn from the existing approved #ariel body copy ("every call within two rings, 24 hours a day") to avoid introducing any new claim. loading="eager" and the explicit 1200x1200 dimensions were preserved.
+
+### Hard fences (verified byte-identical against HEAD)
+- Demo-number CTA comment block (PENDING LIVE-FIRE GO 2026-07): present, byte-identical.
+- talkToAriel() script (PENDING GO-SPIRE + WEB-CALL DECISION 2026-07): present, byte-identical.
+- All head content (analytics, verification metas, SEO, OG/Twitter, all four JSON-LD blocks, canonical): lines 1-104 diff clean; the four ld+json blocks compare equal.
+- Contact form: Formspree action, method, id, and all three field names preserved; submit JS behavior unchanged.
+- Nav and footer link structure and hrefs unchanged (restyle only).
+
+### QA gates (all pass)
+- Playwright (bundled Chromium 1228, driven via the ATG-site diag playwright package) at 1280 / 768 / 375: zero horizontal overflow at all three widths; hero H1 and subhead never overflow the viewport and do not collide illegibly with the background layers (legibility held via layer opacity, not text shadows); text-first stacking on mobile (hero copy above the fold, #ariel single-column with heading then figure then body); the relocated hotspot is the top element at its center point at all three widths (hit-tested with elementFromPoint).
+- Dash sweep: zero em-dashes (U+2014) and zero en-dashes (U+2013), including CSS comments. Remaining non-ASCII are pre-existing and benign: one right-arrow in the announcement bar, middots, and copyright signs.
+- Forbidden-term gate: clean. Only "store" appears, in the pre-existing "Document store" database phrase (kept per body-copy fence). No marketplace/med spa/medspa/DoorDash/DivaDash/retired-people/DD-Bank matches.
+- Lighthouse-sane: image loading attributes and explicit dimensions preserved; the hero is CSS/SVG only (no new image, no layout-shift regression).
