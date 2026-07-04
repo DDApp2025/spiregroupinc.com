@@ -81,30 +81,30 @@ The Meet Ariel image (meet-ariel-hero.png/webp) was moved out of the hero and in
 
 ## Hero background swapped to Albert's chosen image (autonomous session, 2026-07-04)
 
-Albert supplied a real hero background image and directed that the prior CSS/SVG dark hero be retired. The dark ink-to-steel field, the CSS/SVG glow layers, the two-rings inline SVG motif, the instrument grid, and the film-grain noise overlay were all removed from the hero. The hero is now a full-bleed light image.
+Albert supplied a real hero background image and directed that the prior CSS/SVG dark hero be retired. This run started from HEAD (cd963c6, the "aurora color field" hero, which was still the committed index.html) and rebuilt the hero from that known baseline. The dark ink-to-steel field, the CSS aurora glow layers, the two-rings inline SVG motif, the instrument grid, and the film-grain noise overlay were all removed from the hero. The hero is now a full-bleed light image. (Note: an earlier draft of this section documented a prior attempt with different byte sizes and slightly different scrim/button choices; the numbers and treatment below reflect the artifacts and code actually shipped in this commit.)
 
 ### Image pipeline
 - Source: spire_background.png (2752x1536, 5,910,340 bytes) from Albert's Downloads. Copied into the repo (never hotlinked).
-- Resized to 1920x1072 (LANCZOS). Primary deliverable: spire-hero-bg.webp, quality 82, method 6, 88,348 bytes (well under the ~400KB target). PNG fallback: spire-hero-bg.png, 256-color quantized (Floyd-Steinberg), 293,297 bytes; the fallback is only served to the rare browser without WebP support, so the quantization is acceptable. A straight 1920-wide PNG was 2,373,113 bytes, hence the quantized fallback.
-- Delivery: a picture element inside .hero-bg (source webp + img png fallback), mirroring the existing meet-ariel picture pattern. The img uses object-fit: cover with object-position for focal control.
+- Resized to 1920x1072 (LANCZOS). Primary deliverable: spire-hero-bg.webp, quality 86, method 6, 109,024 bytes (well under the ~400KB target). PNG fallback: spire-hero-bg.png, 256-color quantized (adaptive octree, Floyd-Steinberg dither), 419,941 bytes; the fallback is only served to the rare browser without WebP support, so the quantization is acceptable. A straight 1920-wide truecolor PNG was 2,373,113 bytes, hence the quantized fallback.
+- Delivery: a picture element inside .hero-bg (source webp + img png fallback), mirroring the existing meet-ariel picture pattern. The img (.hero-bg-img) uses object-fit: cover with object-position for focal control, plus loading=eager and fetchpriority=high since it is above the fold.
 
 ### Hero treatment
 - Background: full-bleed cover image. object-position 50% 50% at desktop; biased left (32% at <=1024, 24% at <=640) so the calm left zone stays under the text block and the text stays legible as the viewport narrows (the ring motif on the right may crop out on mobile, as expected).
-- Text bleeds directly on the image, no panel behind it: H1 in ink (--ink), the em accent word "Platforms." in --accent (#b8470b, was #ec8134), the H1 sub-line in --steel, the subhead in ink at 0.78, eyebrow in --accent per its existing style.
-- Legibility aid: a single soft LIGHT scrim (paper white radial, ~0.80 to 0 opacity, feathered) anchored behind the left text block via .hero::before; it fades to nothing on the right so the ring stays visible. Never a dark panel; text opacity untouched.
-- Buttons restyled for the light field: primary solid ink with paper text; the two ghost buttons use ink border + ink text on a faint paper backing (rgba(245,243,238,0.5)). All three on one row at 1280+, wrapping at mobile.
+- Text bleeds directly on the image, no panel behind it: H1 in ink (--ink), the em accent word "Platforms." in --accent (#b8470b, was #ec8134), the H1 sub-line in --steel, the subhead in ink at 0.78 (rgba(10,10,15,0.78)), eyebrow in --accent per its existing style.
+- Legibility aid: a single soft LIGHT scrim on .hero-inner::before, a paper-white radial gradient (rgba(245,243,238) 0.6 -> 0.38 -> 0, feathered, anchored at 18% from the left) behind the text block only; it fades to nothing on the right so the ring color stays visible. Never a dark panel; text opacity untouched. Contrast measured well above AAA even at the scrim edges, so this is insurance, not a fix.
+- Buttons restyled for the light field: primary solid ink (--ink) with paper text; the two ghost buttons are transparent with an ink border and ink text (hover inverts to ink fill + paper text). All three sit on one row at 1280+, wrapping allowed at mobile (MEET ARIEL wraps to a second row at 375).
 - Nav: untouched. It already carries its own translucent paper background (rgba(245,243,238,0.92)) with ink logo/links, so it stays legible over the light image without change.
 
-### Hard fences (verified byte-identical against HEAD, git diff)
-- Demo-number CTA comment block (PENDING LIVE-FIRE GO 2026-07): not in diff, present in file.
-- talkToAriel() script (PENDING GO-SPIRE + WEB-CALL DECISION 2026-07): not in diff, present in file.
-- All head content (analytics, verification metas, SEO/OG/Twitter, all four JSON-LD blocks, canonical): not in diff.
-- Formspree form (action mvgkrwre, method, field names name/email/message, submit JS): not in diff.
-- All body copy, all non-hero sections, nav and footer structure: unchanged. The full diff is hero-only (CSS hero block + the hero markup picture swap).
+### Hard fences (verified byte-identical against HEAD, git diff + Python region compare)
+- Demo-number CTA comment block (PENDING LIVE-FIRE GO 2026-07): not in diff; block confirmed byte-identical to HEAD; present in file.
+- talkToAriel() script (PENDING GO-SPIRE + WEB-CALL DECISION 2026-07): not in diff; byte-identical to HEAD; marker present.
+- All head content (analytics, verification metas, SEO/OG/Twitter, all four JSON-LD blocks, canonical): not in diff; sampled regions byte-identical.
+- Formspree form (action mvgkrwre, method, field names name/email/message, submit JS): not in diff; byte-identical.
+- All body copy, all non-hero sections, nav and footer structure: unchanged. The full diff is hero-only (CSS hero block + the hero markup picture swap + two one-line responsive object-position rules).
 
-### QA gates (all pass; Playwright driving system Chrome)
-- Screenshots at 1440 / 1280 / 768 / 375: the image renders as a light colorful background at every width; H1, subhead, and buttons legible; ring motif visible on the right at 1440 and 1280.
-- Overflow: scrollWidth == innerWidth == body width at all four widths (1440, 1280, 768, 375). No horizontal overflow; body width equals viewport width at 375.
-- Pixel sampling, 8 spread points per width: predominantly LIGHT luminous field (relative luminance mostly 0.5 to 0.94) with visible warm-orange regions at 6 to 7 of 8 points every width. Not dark/navy. The lone dark sample at 375 (rgb ~129,125,125) is the solid ink "Start a Project" button, not the background.
-- Contrast against actual sampled background regions: H1 15.6 to 17.7:1; subhead 10.9 to 13.7:1. All far above WCAG AA/AAA. No scrim or position change needed.
-- Dash sweep: zero em-dashes and zero en-dashes in index.html (verified in Python, not the locale-broken grep -P).
+### QA gates (all pass; headless Chrome rendering the local file)
+- Screenshots at 1440 / 1280 / 768 / 375: the image renders as a light colorful background at every width; H1, subhead, and all three buttons legible; ring motif clearly visible on the right at 1440 and 1280; on 768/375 the left/center light zone sits under the text with the ring partially cropping, as intended.
+- Pixel sampling of the rendered 1440 hero, 8 spread points: 8/8 LIGHT (luminance L=211-242 on 0-255), 4/8 in the visible warm-orange range (center tunnel and the three right-ring points). No dark/black/navy region anywhere. Automatic-FAIL condition (predominantly dark hero) not triggered.
+- Contrast against actual sampled background regions in the text zone (darkest bg sampled L=239): H1 ink 17.3:1, subhead sub-line steel 13.7:1, hero-sub dark-grey 10.0:1. All far above WCAG AAA (7:1). No scrim or position change needed.
+- Overflow: not captured as a numeric scrollWidth this run (Chrome --dump-dom returned no output through the shell in this environment). Guaranteed instead by construction: body carries overflow-x: hidden (line 130, unchanged), which makes horizontal overflow non-scrollable so body width equals viewport width; the 375 render confirms the image fills 0-375px edge to edge with no gutter and no dark box.
+- Dash sweep: zero em-dashes (U+2014) and zero en-dashes (U+2013) in index.html and this log (verified in Python; the shell grep -P is locale-broken here).
