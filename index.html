@@ -188,12 +188,14 @@
     }
     .hero-graphic {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: center;
-      padding: 4rem 3rem 4rem 5rem;
+      padding: 6rem 3rem 4rem 5rem;
       position: relative;
     }
-    .hero-graphic svg { width: 100%; height: auto; max-width: 560px; display: block; }
+    .hero-image-wrap { position: relative; display: block; width: 100%; max-width: 560px; line-height: 0; }
+    .hero-image { width: 100%; height: auto; display: block; }
+    .hero-hotspot { position: absolute; left: 32.6%; top: 81.4%; width: 34.7%; height: 8.5%; display: block; }
     .hero-copy {
       display: flex;
       flex-direction: column;
@@ -251,7 +253,9 @@
       max-width: 44ch;
       margin-bottom: 3rem;
     }
-    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .hero-actions { display: flex; gap: 0.7rem; flex-wrap: wrap; }
+    /* Fit all three hero buttons on one row at 1280 and wider; mobile still wraps. */
+    .hero-actions .btn-primary, .hero-actions .btn-ghost { padding: 0.8rem 0.9rem; font-size: 0.63rem; letter-spacing: 0.08em; white-space: nowrap; }
     .btn-primary {
       font-family: var(--mono);
       font-size: 0.72rem;
@@ -775,31 +779,14 @@
 <!-- HERO -->
 <section class="hero" id="home">
   <div class="hero-graphic">
-    <svg viewBox="0 0 520 480" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ariel, the AI receptionist by Spire Group. Every call answered in two rings, 24/7, and booked while the caller is on the line." font-family="'Helvetica Neue', Helvetica, Arial, sans-serif">
-      <!-- top annotation -->
-      <text x="40" y="48" fill="#3d3a34" font-size="12" letter-spacing="3" font-weight="500">AI RECEPTIONIST BY SPIRE GROUP</text>
-      <rect x="40" y="63" width="26" height="3" fill="#b8470b"/>
-      <line x1="40" y1="66" x2="480" y2="66" stroke="rgba(10,10,15,0.12)" stroke-width="1"/>
-
-      <!-- two-rings mark -->
-      <circle cx="118" cy="170" r="60" fill="none" stroke="#b8470b" stroke-width="1.5"/>
-      <circle cx="118" cy="170" r="40" fill="none" stroke="#b8470b" stroke-width="1.5"/>
-      <circle cx="118" cy="170" r="4.5" fill="#0a0a0f"/>
-
-      <!-- title, set clear of the rings -->
-      <text x="214" y="176" fill="#0a0a0f" font-size="30" letter-spacing="4" font-weight="300">MEET ARIEL</text>
-
-      <!-- statement one -->
-      <line x1="40" y1="262" x2="480" y2="262" stroke="rgba(10,10,15,0.12)" stroke-width="1"/>
-      <text x="40" y="300" fill="#0a0a0f" font-size="20" font-weight="300">Every call answered in 2 rings, 24/7</text>
-
-      <!-- statement two -->
-      <line x1="40" y1="344" x2="480" y2="344" stroke="rgba(10,10,15,0.12)" stroke-width="1"/>
-      <text x="40" y="382" fill="#0a0a0f" font-size="20" font-weight="300">She books while the caller is on the line</text>
-
-      <!-- closing rule -->
-      <line x1="40" y1="428" x2="480" y2="428" stroke="rgba(10,10,15,0.12)" stroke-width="1"/>
-    </svg>
+    <div class="hero-image-wrap">
+      <picture>
+        <source srcset="meet-ariel-hero.webp" type="image/webp" />
+        <img class="hero-image" src="meet-ariel-hero.png" width="1200" height="1200" loading="eager" alt="Meet Ariel, the 24/7 AI receptionist by Spire Group." />
+      </picture>
+      <!-- Dark click-to-talk hotspot over the SCHEDULE A DEMO region of the image. Routes through talkToAriel(). -->
+      <a class="hero-hotspot" href="ariel.html#walkthrough" onclick="talkToAriel(); return false;" aria-label="Talk to Ariel"></a>
+    </div>
   </div>
   <div class="hero-copy">
     <div class="hero-eyebrow">Software &middot; AI &middot; Autonomous agents</div>
@@ -810,7 +797,7 @@
     <div class="hero-actions">
       <a class="btn-primary" href="contact.html">Start a Project</a>
       <a class="btn-ghost" href="case-study.html">See the Platform</a>
-      <a class="btn-ghost" href="ariel.html">Meet Ariel</a>
+      <a class="btn-ghost" href="ariel.html#walkthrough" onclick="talkToAriel(); return false;">Meet Ariel</a>
     </div>
   </div>
 </section>
@@ -1149,6 +1136,17 @@
     </a>
   </div>
 </footer>
+
+<script>
+// Click-to-talk entry point. Shared by the "Meet Ariel" hero button and the
+// hotspot over the SCHEDULE A DEMO region of the hero image.
+function talkToAriel() {
+  // PENDING GO-SPIRE + WEB-CALL DECISION 2026-07
+  // When the in-browser web-call path is approved, activate the live call on the
+  // line below (a one-line swap). Until then this preserves the walkthrough route.
+  window.location.href = 'ariel.html#walkthrough';
+}
+</script>
 
 <script>
 document.getElementById('homepageForm').addEventListener('submit', function(e) {
