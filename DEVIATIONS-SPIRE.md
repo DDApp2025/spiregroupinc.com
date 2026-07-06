@@ -378,3 +378,34 @@ blocked by the preflight. Added to the /intake router:
 - Dash sweep: zero em/en dashes in index.html and ariel.html (the folded separator is a middot
   U+00B7, not a dash). Forbidden-term gate clean. Both forms verified to use JSON (no FormData) and
   point to the intake URL; no formspree.io left in either form.
+
+## Hero layout: text right, Ariel messaging panel left (autonomous session, 2026-07-06)
+
+Albert's standing spec, finally implemented. index.html hero only.
+- Kept the full-bleed background image and the magazine type scale. Restructured .hero-inner into
+  a two-column CSS grid: the text block (.hero-copy: eyebrow, H1 "SaaS & AI Platforms.", subline,
+  paragraph, three CTAs - all copy unchanged) is placed in the RIGHT column (grid-column: 2,
+  justify-self: end, capped width) with a right-feathered light scrim for legibility; a framed
+  Ariel messaging panel (.hero-panel) is placed in the LEFT column (grid-column: 1).
+- The H1 stays FIRST in the DOM (accessibility / reading order); the panel is placed left purely
+  via CSS grid-column, so source order is text-then-panel and mobile stacks text-first naturally.
+- Panel is real HTML text (never baked into an image): mono kicker "Meet Ariel", heading
+  "The 24/7 AI receptionist by Spire Group", three proof lines ("Answers instantly, 24/7." /
+  "Books while the caller is on the line." / "Hands off to a human when needed."), and
+  "Call her now: (702) 707-4919" - a tel: link on coarse pointers, plain text on fine pointers
+  (same pointer-media pattern as the contact section). Brand-styled: hairline ink border, sharp
+  corners, semi-opaque paper field so it reads over the image.
+- HONESTY GATE: the panel carries exactly those lines. No "never misses a call", no "2 rings", no
+  unproven claims.
+- Mobile (<=1024px, incl. 375): grid collapses to one column, explicit column placement reset,
+  so it stacks TEXT first, panel second.
+
+QA (Playwright, cached Chromium, rendered at 1280 / 768 / 375; screenshots in scratchpad/pwqa):
+- 1280 (fine pointer): text block center in the right half (623-1200), MEET ARIEL panel in the
+  left half (80-572), panel entirely left of the text, fine (plain-text) call variant shown, zero
+  horizontal overflow.
+- 768 (mouse): stacked, text first, no overflow.
+- 375 (touch, coarse pointer): stacked text-first then panel, the coarse tel:+17027074919 call
+  variant shown, no overflow.
+- Dash sweep clean; forbidden gate clean. The contact section, both forms (Phase 5 intake action),
+  and all markers are untouched (git diff is hero-only).
