@@ -255,3 +255,76 @@ index.html only, additive. The "Call Ariel Now: (702) 707-4919" chip is a tel: l
 - Before: chip only; the number lived only inside the tel: anchor, awkward to select on desktop (clicking fires the OS dialog).
 - After: chip unchanged (still tel:+17027074919 for mobile) + a plain, selectable (702) 707-4919 readout beneath it with "On a computer? ... from your phone." microcopy.
 - Verify: chip href still `tel:+17027074919`; `.ariel-phone` is a `<span>` with computed `user-select: all` and selectable text captured as "(702) 707-4919"; zero horizontal overflow at 375, 768, 1366. Number, chip position, and live status unchanged. Zero em/en dashes.
+
+## Contact section rebuilt from scratch: unified three-channel section (autonomous session, 2026-07-06)
+
+This SUPERSEDES AND CANCELS all prior CTA redesign/amendment work, including the "Call Ariel
+Now chip: desktop-readable phone number" entry above and the earlier call-button GO-LIVE CTA
+cluster. The old cluster is deleted; a single unified contact section replaces it.
+
+### index.html
+- DELETED the CTA cluster in the #ariel section entirely: the "Book a walkthrough" button, the
+  "Call Ariel Now: (702) 707-4919" tel: chip, and the "On a computer? Dial ... from your phone."
+  helper line. Their CSS (.ariel-actions, .ariel-call-note, .ariel-phone) was removed.
+- BUILT one unified contact section in their place (still inside .ariel-body, above the feature
+  pills), on the existing brand system (paper field, hairline borders, sharp corners, mono
+  labels, accent kickers):
+  - HEADER: "Reach us any way you like. Ariel answers - that's the demo."
+  - SUBLINE: "Ariel is our AI receptionist, and she's the product. Whichever way you contact us,
+    she'll answer, take care of you, and set up a call with our team."
+  - THREE EQUAL CHANNEL CARDS (grid, same visual weight):
+    1. CALL - mobile (pointer: coarse) shows a button "Call (702) 707-4919" firing
+       tel:+17027074919; desktop (pointer: fine) shows the number large with a Copy button and an
+       inline "Copied" confirmation, NO tel: link. Both variants via CSS pointer-media queries
+       (default = desktop readout; @media (pointer: coarse) swaps to the tel button). Caption
+       "Ariel answers now, 24/7." aria-labels: call button "Call Ariel, our AI receptionist, at
+       (702) 707-4919"; copy button "Copy the phone number (702) 707-4919".
+    2. SEND A MESSAGE - scrolls to the existing homepage message form (href="#contact"); the form
+       (id homepageForm, action https://formspree.io/f/mvgkrwre, fields name/email/message) was
+       NOT touched. Caption "Ariel replies by email within minutes, day or night."
+    3. EMAIL - mailto:info@spiregroupinc.com, address shown in full. Caption "Reaches our team
+       directly." (deliberate: the inbox is human-answered; Ariel is not claimed here).
+- JS: the now-dead talkToAriel() (the old chip's dialer) was removed; a copyPhone() clipboard
+  helper (with an execCommand fallback and the "Copied" toggle) added. JS is used only for the
+  desktop clipboard copy; the mobile call is a native tel: link.
+- Hotspot aria-label over the baked-in image region aligned "Schedule a demo walkthrough" ->
+  "Schedule a demo" (drops the visitor-facing "walkthrough"); its href ariel.html#walkthrough
+  (an internal anchor to the ariel.html form section) is unchanged.
+
+### ariel.html consistency sweep (each change reported)
+- nav-cta (was `Book a Walkthrough` -> `#walkthrough`) -> label "Get in Touch" (href unchanged).
+- hero button (was `Book a walkthrough`) -> "Get in Touch" (href #walkthrough unchanged).
+- form section eyebrow "Book a walkthrough" -> "Send us a message" (the form-heading reframe).
+- form submit button "Book my walkthrough" -> "Send message".
+- form JS: success message dropped "to schedule your walkthrough" (now "Request received. We will
+  be in touch within one business day."); the two failure-path button resets "Book my
+  walkthrough" -> "Send message".
+- LEFT UNCHANGED (per fences): the form action (formspree mvgkrwre) and all field names, the
+  #walkthrough section id and its CSS selectors (internal anchor), the "SWAP TO ARIEL WEBHOOK AT
+  GO" comment, and body/SEO prose (h1 "someone else booked", section-lead "walk you through",
+  the "how it works"/pilot prose, FAQ "Book a walkthrough to begin", and all meta/OG/JSON-LD
+  describing the product). Body prose is allowed to keep its wording per the brief.
+
+### Rules honored
+- No "walkthrough" or "book" in any visitor-facing LABEL on either page (buttons, headings, aria,
+  JS button text). aria-labels state mechanism + number/address. CSS pointer-media for the call
+  variants; JS only for clipboard. Internal/system uses (form action, field names, section id,
+  comments, SEO/meta, product prose) untouched. There is no _subject on either form (nothing to
+  preserve there); form actions are unchanged.
+
+### QA (rendered, Playwright 1.61.1 driving cached Chromium 1228, local http server)
+- DESKTOP 1280 (fine pointer): shows ONLY the desktop call variant (number + Copy), zero visible
+  tel: links in the card; Copy writes "(702) 707-4919" to the clipboard and shows the inline
+  "Copied" confirmation; three equal cards side-by-side (180px each); Send -> #contact; Email ->
+  mailto; homepage form action still mvgkrwre; horizontal overflow 0.
+- DESKTOP 768 (mouse): desktop call variant only; cards stack (below the 820px breakpoint);
+  overflow 0.
+- MOBILE 375 (coarse pointer, touch): shows ONLY the mobile call variant; the button href is
+  tel:+17027074919 (fires the dialer on a real device); cards stacked; overflow 0.
+- Dash sweep: zero em-dashes and zero en-dashes in index.html and ariel.html (Python scan).
+- Forbidden-term gate: no marketplace/med spa/medspa/DoorDash/DivaDash/DD-Bank/retired-people
+  matches introduced. (The pre-existing "Document store" database phrase is out of this diff.)
+
+### Deploy
+- Commit by explicit path (index.html, ariel.html, DEVIATIONS-SPIRE.md); push to main; GitHub
+  Pages serves it. Verified live after push.

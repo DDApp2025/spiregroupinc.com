@@ -453,25 +453,32 @@ nav {
       color: var(--ink) !important;
       font-weight: 400;
     }
-    .ariel-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2.5rem; }
-    /* Desktop-friendly readout of the phone number. The chip stays a tel: link so
-       mobile taps dial; this line gives desktop visitors a number they can read
-       and one-click select to copy, since tel: does nothing useful on a desktop. */
-    .ariel-call-note {
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.02em;
-      color: var(--muted);
-      line-height: 1.5;
-      margin-top: 1rem;
+    /* Unified contact section: three equal channel cards on the paper field.
+       Brand system - hairline borders, sharp corners, mono labels, accent kickers. */
+    .contact-unified { margin-top: 2.5rem; }
+    .contact-h { font-size: clamp(1.35rem, 2.4vw, 1.95rem); line-height: 1.2; font-weight: 600; color: var(--ink); margin: 0 0 0.85rem; letter-spacing: -0.01em; }
+    .contact-sub { font-size: 1rem; line-height: 1.7; color: var(--ink); opacity: 0.82; max-width: 62ch; margin: 0 0 2rem; }
+    .contact-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; }
+    .contact-card { border: 1px solid var(--rule); background: rgba(255,255,255,0.4); padding: 1.5rem 1.35rem; display: flex; flex-direction: column; gap: 0.95rem; }
+    .contact-card-label { font-family: var(--mono); font-size: 0.64rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); }
+    .card-action { display: inline-flex; align-items: center; justify-content: center; text-align: center; padding: 0.72rem 1rem; background: var(--ink); color: var(--paper); text-decoration: none; font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.03em; border: 1px solid var(--ink); transition: background 0.2s, color 0.2s; word-break: break-word; }
+    .card-action:hover, .card-action:focus-visible { background: transparent; color: var(--ink); }
+    .contact-card-cap { font-family: var(--mono); font-size: 0.7rem; color: var(--muted); line-height: 1.55; margin-top: auto; }
+    /* Call card: mobile (coarse pointer) taps to dial; desktop (fine) reads + copies,
+       with no tel: link. Each device sees exactly one variant. */
+    .call-mobile { display: none; }
+    .call-desktop { display: flex; align-items: center; gap: 0.7rem; flex-wrap: wrap; }
+    @media (pointer: coarse) {
+      .call-mobile { display: block; }
+      .call-desktop { display: none; }
     }
-    .ariel-phone {
-      color: var(--accent);
-      font-weight: 700;
-      white-space: nowrap;
-      -webkit-user-select: all;
-      user-select: all;
-    }
+    .call-mobile .card-action { width: 100%; }
+    .call-number { font-family: var(--mono); font-size: 1.15rem; font-weight: 700; color: var(--ink); white-space: nowrap; -webkit-user-select: all; user-select: all; }
+    .card-copy { font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); background: transparent; border: 1px solid var(--rule); padding: 0.4rem 0.7rem; cursor: pointer; transition: border-color 0.2s; }
+    .card-copy:hover, .card-copy:focus-visible { border-color: var(--ink); }
+    .call-copied { font-family: var(--mono); font-size: 0.64rem; letter-spacing: 0.06em; color: var(--accent); opacity: 0; transition: opacity 0.2s; }
+    .call-copied.show { opacity: 1; }
+    @media (max-width: 820px) { .contact-cards { grid-template-columns: 1fr; } }
     .ariel-pills { display: flex; flex-direction: column; gap: 0; margin-top: 2.5rem; border-top: 1px solid var(--rule); }
     .ariel-pill {
       display: grid;
@@ -1041,18 +1048,41 @@ nav {
           <img class="hero-image" src="meet-ariel-hero.png" width="1200" height="1200" loading="eager" alt="Meet Ariel, the 24/7 AI receptionist by Spire Group." />
         </picture>
         <!-- Hotspot over the baked-in SCHEDULE A DEMO region of the image. Routes to the walkthrough form (schedule); never dials. -->
-        <a class="hero-hotspot" href="ariel.html#walkthrough" aria-label="Schedule a demo walkthrough"></a>
+        <a class="hero-hotspot" href="ariel.html#walkthrough" aria-label="Schedule a demo"></a>
       </div>
       <figcaption class="ariel-caption"><span class="ariel-fig">Fig. 01</span> Ariel answers every call within two rings, 24 hours a day.</figcaption>
     </figure>
     <div class="ariel-body reveal">
       <p>Ariel is the next generation of phone and email answering, built to do what voicemail, answering services, and web chat never could: pick up every call within two rings, 24 hours a day, answer real questions with answers you approved, and walk the caller all the way to a booked appointment. With Ariel on the line, a ringing phone is never a lost customer again.</p>
       <p class="ariel-close">Built for medical practices, service businesses, and every team that answers phones.</p>
-      <div class="ariel-actions">
-        <a class="btn-primary" href="ariel.html#walkthrough">Book a walkthrough</a>
-        <a class="btn-ghost" href="tel:+17027074919" onclick="talkToAriel(); return false;" aria-label="Call Ariel, the AI receptionist, at (702) 707-4919">Call Ariel Now: (702) 707-4919</a>
+      <div class="contact-unified reveal">
+        <h3 class="contact-h">Reach us any way you like. Ariel answers - that's the demo.</h3>
+        <p class="contact-sub">Ariel is our AI receptionist, and she's the product. Whichever way you contact us, she'll answer, take care of you, and set up a call with our team.</p>
+        <div class="contact-cards">
+          <div class="contact-card">
+            <div class="contact-card-label">Call</div>
+            <div class="call-mobile">
+              <a class="card-action" href="tel:+17027074919" aria-label="Call Ariel, our AI receptionist, at (702) 707-4919">Call (702) 707-4919</a>
+            </div>
+            <div class="call-desktop">
+              <span class="call-number">(702) 707-4919</span>
+              <button type="button" class="card-copy" onclick="copyPhone(this)" aria-label="Copy the phone number (702) 707-4919">Copy</button>
+              <span class="call-copied" role="status" aria-live="polite">Copied</span>
+            </div>
+            <p class="contact-card-cap">Ariel answers now, 24/7.</p>
+          </div>
+          <div class="contact-card">
+            <div class="contact-card-label">Send a Message</div>
+            <a class="card-action" href="#contact" aria-label="Go to the message form to send us a message; Ariel replies by email">Send a message</a>
+            <p class="contact-card-cap">Ariel replies by email within minutes, day or night.</p>
+          </div>
+          <div class="contact-card">
+            <div class="contact-card-label">Email</div>
+            <a class="card-action" href="mailto:info@spiregroupinc.com" aria-label="Email our team at info@spiregroupinc.com">info@spiregroupinc.com</a>
+            <p class="contact-card-cap">Reaches our team directly.</p>
+          </div>
+        </div>
       </div>
-      <p class="ariel-call-note">On a computer? Dial <span class="ariel-phone">(702) 707-4919</span> from your phone.</p>
       <div class="ariel-pills">
         <div class="ariel-pill"><span class="ariel-pill-mark">01</span><span class="ariel-pill-text">Every call answered in 2 rings, 24/7</span></div>
         <div class="ariel-pill"><span class="ariel-pill-mark">02</span><span class="ariel-pill-text">Only quotes prices you approve</span></div>
@@ -1379,11 +1409,24 @@ nav {
 </footer>
 
 <script>
-// Dial entry point for the "Call Ariel Now" button in the Ariel section.
-// GO-SPIRE 2026-07 (Albert's decision): the site's "talk to Ariel" experience is a
-// phone call to the live demo line. The in-browser web-call path is deferred (not built).
-function talkToAriel() {
-  window.location.href = 'tel:+17027074919';
+// Clipboard copy for the desktop Call card in the contact section. On mobile the
+// Call card is a native tel: link (no JS); on desktop (fine pointer) the number is
+// read and copied here, with an inline "Copied" confirmation.
+function copyPhone(btn) {
+  var num = '(702) 707-4919';
+  var note = btn.parentElement.querySelector('.call-copied');
+  var show = function() { if (note) { note.classList.add('show'); setTimeout(function() { note.classList.remove('show'); }, 1800); } };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(num).then(show, function() { fallbackCopy(num); show(); });
+  } else { fallbackCopy(num); show(); }
+}
+function fallbackCopy(text) {
+  var ta = document.createElement('textarea');
+  ta.value = text; ta.setAttribute('readonly', '');
+  ta.style.position = 'fixed'; ta.style.top = '-1000px';
+  document.body.appendChild(ta); ta.focus(); ta.select();
+  try { document.execCommand('copy'); } catch (e) {}
+  document.body.removeChild(ta);
 }
 </script>
 
