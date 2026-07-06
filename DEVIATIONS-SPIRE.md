@@ -409,3 +409,35 @@ QA (Playwright, cached Chromium, rendered at 1280 / 768 / 375; screenshots in sc
   variant shown, no overflow.
 - Dash sweep clean; forbidden gate clean. The contact section, both forms (Phase 5 intake action),
   and all markers are untouched (git diff is hero-only).
+
+## Hero: two-column layout CANCELLED, reverted to single-column left text minus one sentence and the CTAs (autonomous session, 2026-07-06)
+
+REVERSAL of the entry directly above. Albert reviewed the two-column hero (text right, MEET ARIEL
+panel left) live and rejected it. That spec is CANCELLED PERMANENTLY. No future session may
+reintroduce the two-column hero, the .hero-panel / .hero-copy / .hero-proof / .hero-call-* CSS, or
+the left-side Ariel messaging panel. The hero is the ORIGINAL single-column layout.
+
+What was done, index.html hero only:
+- Reverted the hero markup AND its CSS exactly to the pre-two-column parent state (commit 083bfca,
+  the parent of the two-column commit 1c5d838). This restored the single .hero-inner block with the
+  left-anchored text over the full-bleed background and the original left-feathered .hero-inner::before
+  scrim; it removed every two-column artifact (grid .hero-inner, .hero-copy, .hero-panel and its
+  kicker/heading/proof/call rules, the pointer-media call variants, and the mobile grid resets).
+- Then applied EXACTLY TWO surgical removals to the restored hero:
+  1. Removed the final sentence of the hero paragraph: "We build intelligent systems and run them."
+     The .hero-sub paragraph now ends at "... running our own platform, Aesthetics To Go."
+     The H1 subline "We build intelligent systems, and operate them." (comma + "operate") STAYS.
+  2. Removed the three CTA buttons (Start a Project / See the Platform / Meet Ariel) and their now
+     empty container, the .hero-actions div. (The orphaned .hero-actions CSS rules were left in
+     place, as they are harmless dead style and outside the two authorized removals.)
+- Nothing else on the page changed: kicker, H1 "SaaS & AI Platforms.", subline, remaining paragraph
+  text, left placement, background, and spacing are the original. The #ariel section, the contact
+  section, and both Phase 5 intake forms are untouched (git diff HEAD is hero-region-only).
+
+QA (Playwright, cached Chromium, rendered at 1280 / 768 / 375; screenshots revert-<w>.png in
+scratchpad/pwqa): all 27 assertions PASS. At every width the hero text starts in the LEFT half
+(h1.left 80 / 40 / 24), .hero-panel and .hero-copy are absent from the DOM, .hero-actions and the
+hero .btn-ghost/.btn-primary buttons are absent, the removed sentence is gone, the kept subline is
+present, and there is zero horizontal overflow. Whole-file dash sweep: zero em/en dashes. Forbidden
+gate clean on changed lines (the one "store" hit is the pre-existing "document store" database term
+in the untouched tech-stack section).
