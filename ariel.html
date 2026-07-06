@@ -684,8 +684,7 @@ nav {
   <div class="section-eyebrow">Send us a message</div>
   <h2>See Ariel answer <em>your</em> kind of call.</h2>
   <p class="section-lead">Tell us a little about your business and how you take calls today. We will walk you through exactly how Ariel would answer, educate, and book for you, and how to start a 30-day pilot.</p>
-  <!-- SWAP TO ARIEL WEBHOOK AT GO 2026-07 -->
-  <form id="arielForm" class="walk-form" action="https://formspree.io/f/mvgkrwre" method="POST">
+  <form id="arielForm" class="walk-form" action="https://agent.aestheticstogo.com/intake/spire-sales/b294a2a6fb1635f8606c91f014aab2cb0479a5ea42d7f1a4" method="POST">
     <div class="walk-row">
       <div class="walk-field">
         <label class="walk-label" for="name">Name</label>
@@ -781,7 +780,16 @@ document.getElementById('arielForm').addEventListener('submit', function(e) {
   var btn = form.querySelector('button');
   btn.textContent = 'Sending...';
   btn.disabled = true;
-  fetch(form.action, {method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}})
+  // Ariel intake takes JSON with email, name, and a free-text message. The endpoint
+  // has no structured fields for business name/type/phone, so fold them into the
+  // message losslessly so Ariel and the team see them.
+  var g = function(n) { var el = form.elements[n]; return el ? String(el.value).trim() : ''; };
+  var type = g('business_type') === 'Other' ? (g('business_type_other') || 'Other') : g('business_type');
+  var parts = [];
+  var how = g('message'); if (how) parts.push('How they handle calls today: ' + how);
+  parts.push('Business: ' + (g('business_name') || '(not given)') + ' · Type: ' + (type || '(not given)') + ' · Phone: ' + (g('phone') || '(not given)'));
+  var payload = { name: g('name'), email: g('email'), message: parts.join('\n') };
+  fetch(form.action, {method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(payload)})
   .then(function(r) {
     if (r.ok) { form.innerHTML = '<p style="text-align:center;font-family:var(--mono);font-size:0.82rem;color:var(--paper);padding:2rem 0;">Request received. We will be in touch within one business day.</p>'; }
     else { btn.textContent='Send message'; btn.disabled=false; window.location.href='mailto:info@spiregroupinc.com'; }

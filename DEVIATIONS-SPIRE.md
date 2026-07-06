@@ -328,3 +328,53 @@ cluster. The old cluster is deleted; a single unified contact section replaces i
 ### Deploy
 - Commit by explicit path (index.html, ariel.html, DEVIATIONS-SPIRE.md); push to main; GitHub
   Pages serves it. Verified live after push.
+
+## GO-SPIRE Phase 5 completion: forms swapped from Formspree to the Ariel intake webhook (autonomous session, 2026-07-06)
+
+The deferred GO-SPIRE Phase 5 form swap. Both site forms now post to Ariel's intake webhook, so
+the contact section's promise ("Ariel replies by email within minutes") is true.
+
+### Both forms repointed
+- Homepage #contact form and the ariel.html walkthrough form: action changed from
+  https://formspree.io/f/mvgkrwre to the token-gated intake URL
+  https://agent.aestheticstogo.com/intake/spire-sales/<secret> (secret injected from the
+  atg-agent .env, never printed; it is a semi-public endpoint token, like a Formspree form id).
+- The "SWAP TO ARIEL WEBHOOK AT GO" marker comment on the ariel form was removed.
+- Submit JS: both forms switched from FormData (multipart) to a JSON body, because the intake
+  endpoint parses application/json only (express.json). Fields sent: { name, email, message }.
+- Field-fold (ariel form): the endpoint has no structured fields for business_name, business_type
+  (+ business_type_other), or phone, so the submit JS folds them losslessly into the message body
+  ("Business: X · Type: Y · Phone: Z", preceded by "How they handle calls today: ..."). The
+  homepage form maps 1:1 (name/email/message). Form field names and ids are otherwise unchanged.
+
+### Enabling atg-agent change (cross-repo; logged in atg-agent commit 0dd01d0, task-def 27)
+The intake endpoint had no CORS, so a browser cross-origin POST from the site would have been
+blocked by the preflight. Added to the /intake router:
+- CORS ALLOWLIST (exactly, no wildcard): https://spiregroupinc.com and https://www.spiregroupinc.com;
+  methods POST + OPTIONS; allow-header Content-Type; 204 preflight answer. Verified live: allowed
+  origins get Access-Control-Allow-Origin; other origins get none.
+- NEW-INQUIRY founder notification: a first-touch web-form lead via /intake sends a "New website
+  inquiry" email (name, email, message excerpt, lead + conversation id) to the tenant notification
+  address (info@spiregroupinc.com), so swapping off Formspree (which notified on every submission)
+  does not reduce Albert's visibility. First turn only; scoped to the intake path (the formspree
+  path keeps Formspree's own notification). Booking/escalation alerts unchanged.
+
+### Live tests (from info@spiregroupinc.com, per the in-domain test-sender rule)
+- ARIEL FORM (booking request, folded fields): POST returned {ok, replied:true, form_submission}.
+  The caller message carried Business/Type/Phone (verified), and Ariel's reply read them back
+  ("book straight onto your calendar, so those after-hours calls at Bright Smiles Dental ...") and
+  offered walkthrough times. The new-inquiry founder notification fired (first touch). A threaded
+  follow-up ("the first time works") booked a real appointment (event:booked, appointment created);
+  the booking-completion alert is DEFERRED by the existing spire enrich-then-alert design until the
+  business type is captured, so immediate founder visibility comes from the new-inquiry notification.
+- HOMEPAGE FORM (generic inquiry): POST returned {ok, replied:true, form_submission}. Ariel answered
+  the question ("Spire Group builds and runs me, Ariel ...") and the new-inquiry notification fired.
+- No Brevo send failures in CloudWatch during the tests (AI replies and notifications dispatched).
+  Test leads and the test appointment were deleted afterward (leads 0, appointments 0). Actual
+  inbox arrival at info@spiregroupinc.com is Albert's to eyeball; dispatch and backend records were
+  verified here.
+
+### QA
+- Dash sweep: zero em/en dashes in index.html and ariel.html (the folded separator is a middot
+  U+00B7, not a dash). Forbidden-term gate clean. Both forms verified to use JSON (no FormData) and
+  point to the intake URL; no formspree.io left in either form.
