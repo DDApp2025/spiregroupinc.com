@@ -475,6 +475,9 @@ nav {
       outline: none;
     }
     .walk-textarea { min-height: 110px; resize: vertical; }
+    /* 2026-07-10 inline form-failure message (replaces the mailto fallback) */
+    .cf-fail { display: none; margin-top: 1rem; font-family: var(--mono); font-size: 0.82rem; line-height: 1.6; color: rgba(245,243,238,0.85); }
+    .cf-fail a { color: rgba(245,243,238,0.85); text-decoration: underline; }
     #otherField { display: none; }
     #otherField.show { display: flex; }
 
@@ -730,7 +733,14 @@ nav {
       <label class="walk-label" for="message">How do you handle calls today?</label>
       <textarea class="walk-textarea" id="message" name="message"></textarea>
     </div>
+    <!-- 2026-07-10 spam honeypot; field name pinned to the agent-side gate -->
+    <div style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;" aria-hidden="true">
+      <label for="company_website_ariel">Company website</label>
+      <input type="text" id="company_website_ariel" name="company_website" tabindex="-1" autocomplete="off" value="" />
+    </div>
     <button type="submit" class="btn-primary" style="align-self:flex-start;">Send message</button>
+    <!-- 2026-07-10 inline failure message (replaces the mailto fallback) -->
+    <p class="cf-fail" role="alert">Something went wrong sending your message. Please call <a href="tel:+17027074919">(702) 707-4919</a> or email <a href="mailto:info@spiregroupinc.com">info@spiregroupinc.com</a>.</p>
   </form>
 </section>
 
@@ -774,6 +784,8 @@ nav {
 </footer>
 
 <script>
+// 2026-07-10 spam signals: capture render time for the agent-side timing check.
+window.__formRenderedAt = Date.now();
 document.getElementById('arielForm').addEventListener('submit', function(e) {
   e.preventDefault();
   var form = this;
@@ -788,13 +800,22 @@ document.getElementById('arielForm').addEventListener('submit', function(e) {
   var parts = [];
   var how = g('message'); if (how) parts.push('How they handle calls today: ' + how);
   parts.push('Business: ' + (g('business_name') || '(not given)') + ' · Type: ' + (type || '(not given)') + ' · Phone: ' + (g('phone') || '(not given)'));
-  var payload = { name: g('name'), email: g('email'), message: parts.join('\n') };
+  // 2026-07-10 spam signals: honeypot + render timestamp for the agent-side gate.
+  var payload = { name: g('name'), email: g('email'), message: parts.join('\n'), company_website: g('company_website'), form_rendered_at: window.__formRenderedAt };
+  // 2026-07-10 inline failure (replaces the mailto fallback): re-enable, restore the
+  // label, and reveal the inline message below the button. No mail-client launch.
+  function showFailure() {
+    btn.textContent = 'Send message';
+    btn.disabled = false;
+    var fail = form.querySelector('.cf-fail');
+    if (fail) { fail.style.display = 'block'; }
+  }
   fetch(form.action, {method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(payload)})
   .then(function(r) {
     if (r.ok) { form.innerHTML = '<p style="text-align:center;font-family:var(--mono);font-size:0.82rem;color:var(--paper);padding:2rem 0;">Request received. We will be in touch within one business day.</p>'; }
-    else { btn.textContent='Send message'; btn.disabled=false; window.location.href='mailto:info@spiregroupinc.com'; }
+    else { showFailure(); }
   })
-  .catch(function() { btn.textContent='Send message'; btn.disabled=false; window.location.href='mailto:info@spiregroupinc.com'; });
+  .catch(function() { showFailure(); });
 });
 </script>
 

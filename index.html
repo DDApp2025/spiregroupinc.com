@@ -325,17 +325,24 @@ nav {
       color: var(--steel);
       line-height: 1.3;
       letter-spacing: 0;
-      margin-top: 0.4rem; /* 2026-07-09 round 2: was 0.9rem */
-      max-width: 34ch;
+      margin-top: 0.4rem;
+      max-width: none;
+      width: max-content; /* 2026-07-09 round 4: escape the h1 15ch cap; guarantees one line */
+      white-space: nowrap; /* 2026-07-09 round 4 */
+    }
+    @media (max-width: 900px) {
+      /* 2026-07-09 round 4: allow natural wrapping on narrow screens */
+      .hero-h1-line { width: auto; white-space: normal; max-width: 34ch; }
     }
     .hero-sub {
       font-size: clamp(1rem, 1.2vw, 1.12rem);
       font-weight: 300;
       color: rgba(10,10,15,0.78);
       line-height: 1.75;
-      max-width: 90ch;
+      max-width: none; /* 2026-07-09 round 4: was 90ch; sentences are hard-split into lines, cap no longer needed */
       margin-bottom: 0; /* 2026-07-09 round 2: was 1.6rem */
     }
+    .hero-sub-line { display: block; } /* 2026-07-09 round 4: one sentence per line */
     .hero-actions { display: flex; gap: 0.9rem; flex-wrap: wrap; }
     .hero-actions .btn-primary,
     .hero-actions .btn-ghost {
@@ -900,6 +907,9 @@ nav {
     .cf-input::placeholder { color: rgba(245,243,238,0.4); }
     .cf-input:focus { border-bottom-color: rgba(230,120,60,0.95); }
     .cf-textarea { min-height: 110px; resize: vertical; line-height: 1.6; }
+    /* 2026-07-10 inline form-failure message (replaces the mailto fallback) */
+    .cf-fail { display: none; margin-top: 1rem; font-family: var(--mono); font-size: 0.78rem; line-height: 1.6; color: rgba(245,243,238,0.85); }
+    .cf-fail a { color: rgba(245,243,238,0.85); text-decoration: underline; }
     .cf-submit {
       font-family: var(--mono);
       font-size: 0.72rem;
@@ -1056,7 +1066,9 @@ nav {
     <div class="hero-eyebrow">Software &middot; AI &middot; Autonomous agents</div>
     <h1>SaaS &amp; AI <em>Platforms.</em><span class="hero-h1-line">We build intelligent systems, and operate them.</span></h1>
     <p class="hero-sub">
-      Spire Group designs, builds, and operates SaaS and AI platforms across industries. Ariel, our AI receptionist, answers your calls and books appointments around the clock. We proved it running our own platform, Aesthetics To Go.
+      <span class="hero-sub-line">Spire Group designs, builds, and operates SaaS and AI platforms across industries.</span>
+      <span class="hero-sub-line">Ariel, our AI receptionist, answers your calls and books appointments around the clock.</span>
+      <span class="hero-sub-line">We proved it running our own platform, Aesthetics To Go.</span>
     </p>
   </div>
 </section>
@@ -1411,7 +1423,14 @@ nav {
       <label class="cf-label">Tell us about your project</label>
       <textarea class="cf-input cf-textarea" name="message" required></textarea>
     </div>
+    <!-- 2026-07-10 spam honeypot; field name pinned to the agent-side gate -->
+    <div style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;" aria-hidden="true">
+      <label for="company_website_home">Company website</label>
+      <input type="text" id="company_website_home" name="company_website" tabindex="-1" autocomplete="off" value="" />
+    </div>
     <button type="submit" class="cf-submit">Send Inquiry</button>
+    <!-- 2026-07-10 inline failure message (replaces the mailto fallback) -->
+    <p class="cf-fail" role="alert">Something went wrong sending your message. Please call <a href="tel:+17027074919">(702) 707-4919</a> or email <a href="mailto:info@spiregroupinc.com">info@spiregroupinc.com</a>.</p>
   </form>
 </section>
 
@@ -1485,6 +1504,8 @@ function fallbackCopy(text) {
 </script>
 
 <script>
+// 2026-07-10 spam signals: capture render time for the agent-side timing check.
+window.__formRenderedAt = Date.now();
 document.getElementById('homepageForm').addEventListener('submit', function(e) {
   e.preventDefault();
   var form = this;
@@ -1493,13 +1514,22 @@ document.getElementById('homepageForm').addEventListener('submit', function(e) {
   btn.disabled = true;
   // Ariel intake takes JSON with email, name, and message (matches this form's fields).
   var g = function(n) { var el = form.elements[n]; return el ? String(el.value).trim() : ''; };
-  var payload = { name: g('name'), email: g('email'), message: g('message') };
+  // 2026-07-10 spam signals: honeypot + render timestamp for the agent-side gate.
+  var payload = { name: g('name'), email: g('email'), message: g('message'), company_website: g('company_website'), form_rendered_at: window.__formRenderedAt };
+  // 2026-07-10 inline failure (replaces the mailto fallback): re-enable, restore the
+  // label, and reveal the inline message below the button. No mail-client launch.
+  function showFailure() {
+    btn.textContent = 'Send Inquiry';
+    btn.disabled = false;
+    var fail = form.querySelector('.cf-fail');
+    if (fail) { fail.style.display = 'block'; }
+  }
   fetch(form.action, {method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(payload)})
   .then(function(r) {
     if (r.ok) { form.innerHTML = '<p style="text-align:center;font-family:var(--mono);font-size:0.78rem;color:var(--ink);padding:2rem 0;">Inquiry received. We\'ll be in touch within one business day.</p>'; }
-    else { btn.textContent='Send Inquiry'; btn.disabled=false; window.location.href='mailto:info@spiregroupinc.com'; }
+    else { showFailure(); }
   })
-  .catch(function() { btn.textContent='Send Inquiry'; btn.disabled=false; window.location.href='mailto:info@spiregroupinc.com'; });
+  .catch(function() { showFailure(); });
 });
 </script>
 
