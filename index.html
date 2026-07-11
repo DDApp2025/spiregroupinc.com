@@ -164,7 +164,25 @@ nav {
     .nav-logo img { height: 26px; width: auto; display: block; }
     .nav-logo span { color: var(--accent); }
     .site-tagline { font-size: 0.55rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; display: block; margin-top: -2px; color: var(--muted); }
-    .nav-links { display: flex; align-items: center; gap: 1.6rem; list-style: none; margin: 0; flex-wrap: nowrap; }
+    /* 2026-07-09 nav: hamburger at all widths. The horizontal link row is collapsed
+       into a dropdown panel on every viewport; it shows only when the hamburger adds
+       .nav-open. This mirrors the former max-width:1240px behavior, now the default. */
+    .nav-links {
+      display: none;
+      position: absolute; top: 100%; left: 0; right: 0;
+      flex-direction: column; align-items: flex-start;
+      gap: 1.15rem;
+      list-style: none;
+      margin: 0;
+      padding: 1.4rem 1.75rem 1.6rem;
+      background: rgba(245,243,238,0.96);
+      -webkit-backdrop-filter: saturate(150%) blur(16px);
+      backdrop-filter: saturate(150%) blur(16px);
+      border-bottom: 1px solid var(--rule);
+      box-shadow: 0 18px 30px -24px rgba(10,10,15,0.6);
+    }
+    .nav-links.nav-open { display: flex; }
+    .nav-links a::after { display: none; }
     .nav-links a {
       position: relative;
       font-family: var(--mono);
@@ -203,7 +221,9 @@ nav {
       transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
     }
     .nav-cta:hover, .nav-cta.active { background: var(--accent); border-color: var(--accent); color: var(--paper); }
-    .nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; flex-direction: column; gap: 4px; }
+    /* 2026-07-09 nav: hamburger shown at all widths. margin-left:auto keeps the
+       hamburger and the Meet Ariel CTA grouped at the right on every viewport. */
+    .nav-hamburger { display: flex; margin-left: auto; background: none; border: none; cursor: pointer; padding: 0.5rem; flex-direction: column; gap: 4px; }
     .nav-hamburger span { display: block; width: 20px; height: 2px; background: var(--ink); transition: 0.2s; }
     /* Collapse to an accessible hamburger wherever the full link row cannot fit. */
     @media (max-width: 1240px) {
@@ -231,13 +251,15 @@ nav {
     }
 
     /* HERO */
+    /* 2026-07-09 hero fold compression: min-height 100vh removed so the hero
+       shrinks to content height; bottom padding reduced from 3rem to 1.5rem.
+       Top padding unchanged (clears the fixed nav). */
     .hero {
       position: relative;
-      min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
-      padding: 6.5rem 5rem 3rem;
+      padding: 2rem 5rem 1rem; /* 2026-07-09 round 2: top was 6.5rem; the announcement bar hidden under the fixed nav supplies 40px, so 2rem still clears the ~56px nav */
       overflow: hidden;
       background: var(--paper);
       color: var(--ink);
@@ -273,7 +295,7 @@ nav {
       letter-spacing: 0.22em;
       text-transform: uppercase;
       color: var(--accent);
-      margin-bottom: 1.1rem;
+      margin-bottom: 0.5rem; /* 2026-07-09 round 2: was 1.1rem */
       display: flex; align-items: center; gap: 0.85rem;
     }
     .hero-eyebrow::before {
@@ -288,7 +310,7 @@ nav {
       line-height: 0.95;
       letter-spacing: -0.02em;
       color: var(--ink);
-      margin-bottom: 1.2rem;
+      margin-bottom: 0.5rem; /* 2026-07-09 round 2: was 1.2rem */
       max-width: 15ch;
     }
     h1 em {
@@ -303,7 +325,7 @@ nav {
       color: var(--steel);
       line-height: 1.3;
       letter-spacing: 0;
-      margin-top: 0.9rem;
+      margin-top: 0.4rem; /* 2026-07-09 round 2: was 0.9rem */
       max-width: 34ch;
     }
     .hero-sub {
@@ -312,7 +334,7 @@ nav {
       color: rgba(10,10,15,0.78);
       line-height: 1.75;
       max-width: 90ch;
-      margin-bottom: 1.6rem;
+      margin-bottom: 0; /* 2026-07-09 round 2: was 1.6rem */
     }
     .hero-actions { display: flex; gap: 0.9rem; flex-wrap: wrap; }
     .hero-actions .btn-primary,
@@ -407,12 +429,16 @@ nav {
     #casestudy .folio, #contact .folio { color: rgba(245,243,238,0.08); }
 
     /* ARIEL */
-    #ariel { background: var(--paper); border-top: 1px solid var(--rule); }
+    /* 2026-07-09 hero fold compression: padding-top override closes the 7rem
+       white band the base section rule created between the hero and this
+       section. ID specificity wins over the base rule and the mobile
+       media-query section rule at all widths. */
+    #ariel { background: var(--paper); border-top: 1px solid var(--rule); padding-top: 1.25rem; } /* 2026-07-09 round 2: was 2rem */
     .ariel-layout {
       display: grid;
       grid-template-columns: 0.9fr 1.1fr;
       gap: 4.5rem;
-      margin-top: 3rem;
+      margin-top: 1.5rem; /* 2026-07-09 hero fold compression: was 3rem */
       align-items: start;
       position: relative; z-index: 1;
     }
@@ -929,11 +955,15 @@ nav {
     }
 
     /* RESPONSIVE */
-    .nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; flex-direction: column; gap: 4px; }
+    /* 2026-07-09 nav: duplicate base rule kept in sync; hamburger shown at all widths. */
+    .nav-hamburger { display: flex; margin-left: auto; background: none; border: none; cursor: pointer; padding: 0.5rem; flex-direction: column; gap: 4px; }
     .nav-hamburger span { display: block; width: 20px; height: 2px; background: var(--ink); transition: 0.2s; }
 
     @media (max-width: 1024px) {
-      .hero { padding: 9rem 2.5rem 5rem; min-height: auto; }
+      /* 2026-07-09 hero fold compression: bottom padding reduced from 5rem to
+         2.5rem for consistency with the desktop compression. min-height was
+         already auto here. */
+      .hero { padding: 5rem 2.5rem 1.5rem; min-height: auto; } /* 2026-07-09 round 2: was 9rem top / 2.5rem bottom */
       /* Favor the calm left/center of the image as the viewport narrows. */
       .hero-bg-img { object-position: 32% 50%; }
       section { padding: 5rem 2.5rem; }
@@ -970,7 +1000,8 @@ nav {
       .announcement-bar { font-size: 0.6rem; padding: 0.5rem 1rem; }
     }
     @media (max-width: 640px) {
-      .hero { padding: 8rem 1.5rem 4rem; }
+      /* 2026-07-09 hero fold compression: bottom padding reduced from 4rem to 2rem. */
+      .hero { padding: 4.5rem 1.5rem 1.5rem; } /* 2026-07-09 round 2: was 8rem top / 2rem bottom */
       .hero-bg-img { object-position: 24% 50%; }
       .stack-grid { grid-template-columns: 1fr 1fr; }
       .case-features { grid-template-columns: 1fr; }
