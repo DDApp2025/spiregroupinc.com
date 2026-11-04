@@ -169,6 +169,9 @@ nav {
     .video-sum { font-size: 0.92rem; font-weight: 300; color: var(--muted); line-height: 1.6; margin-top: 0.25rem; }
     .video-link { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; padding: 0.45rem 0.9rem; white-space: nowrap; color: var(--paper); background: var(--accent2); border: 1px solid var(--accent2); }
     .video-link:hover { background: var(--ink); border-color: var(--ink); }
+    .video-links { display: flex; gap: 0.5rem; }
+    .video-link-alt { color: var(--accent2); background: transparent; }
+    .video-link-alt:hover { color: var(--paper); }
     .video-soon { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.45rem 0.9rem; white-space: nowrap; color: var(--muted); border: 1px solid var(--rule); }
 
     /* BIO */
@@ -200,7 +203,7 @@ nav {
     @media (max-width: 700px) {
       .video-row { grid-template-columns: 1fr; gap: 0.6rem; padding: 1.25rem 1.25rem; }
       .video-num { font-size: 0.72rem; }
-      .video-link, .video-soon { justify-self: start; }
+      .video-link, .video-soon, .video-links { justify-self: start; }
     }
 
     footer { background: var(--ink); padding: 2rem 5rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.05); }
@@ -237,7 +240,7 @@ nav {
   <div class="eyebrow">The Robert Builds With AI video channel</div>
   <h1>Watch real business tools <em>get built with AI.</em></h1>
   <p class="hero-sub">Every video in one place. Each one is a real project for a real business problem, explained in plain language, with lessons you can use in your own business.</p>
-  <div class="hero-links"><a class="btn-primary" href="/contact.html">Talk to Spire Group</a><a class="btn-ghost" href="https://rumble.com/c/RobertBuildsWithAI" target="_blank" rel="noopener">Follow on Rumble</a></div>
+  <div class="hero-links"><a class="btn-primary" href="/contact.html">Talk to Spire Group</a><a class="btn-ghost" href="https://rumble.com/c/RobertBuildsWithAI" target="_blank" rel="noopener">Follow on Rumble</a><a class="btn-ghost" href="https://www.youtube.com/@SpireGroupInc" target="_blank" rel="noopener">Subscribe on YouTube</a></div>
 </section>
 
 <section class="videos">
@@ -246,52 +249,52 @@ nav {
       <li class="video-row">
         <div class="video-num">01</div>
         <div><div class="video-title">How I Use AI as My Business Partner</div><div class="video-sum">Three real ways I use AI in my business, plus a live call with an AI receptionist.</div></div>
-        <a class="video-link" href="https://rumble.com/v7htzha-how-i-use-ai-as-my-business-partner.html" target="_blank" rel="noopener">Watch</a>
+        <div class="video-links"><a class="video-link" href="https://rumble.com/v7htzha-how-i-use-ai-as-my-business-partner.html" target="_blank" rel="noopener">Rumble</a><a class="video-link video-link-alt" href="https://www.youtube.com/watch?v=sknBB6pfqyg" target="_blank" rel="noopener">YouTube</a></div>
       </li>
       <li class="video-row">
         <div class="video-num">02</div>
         <div><div class="video-title">5 Lessons for Building an AI Receptionist</div><div class="video-sum">A live call with Ariel, then five lessons for building an AI receptionist callers actually like.</div></div>
-        <a class="video-link" href="https://rumble.com/v7htzu0-5-lessons-for-building-an-ai-receptionist-with-a-live-call.html" target="_blank" rel="noopener">Watch</a>
+        <div class="video-links"><a class="video-link" href="https://rumble.com/v7htzu0-5-lessons-for-building-an-ai-receptionist-with-a-live-call.html" target="_blank" rel="noopener">Rumble</a><a class="video-link video-link-alt" href="https://www.youtube.com/watch?v=PTUKSEV4cSQ" target="_blank" rel="noopener">YouTube</a></div>
       </li>
       <li class="video-row">
         <div class="video-num">03</div>
         <div><div class="video-title">AI Agents That Check Every Maintenance Work Order Before Scheduling</div><div class="video-sum">Five lessons for using AI agents to catch planning problems before they reach the field.</div></div>
-        <a class="video-link" href="https://rumble.com/v7huyyq-ai-agents-that-check-every-maintenance-work-order-before-scheduling.html" target="_blank" rel="noopener">Watch</a>
+        <div class="video-links"><a class="video-link" href="https://rumble.com/v7huyyq-ai-agents-that-check-every-maintenance-work-order-before-scheduling.html" target="_blank" rel="noopener">Rumble</a><a class="video-link video-link-alt" href="https://www.youtube.com/watch?v=SpPJ6JWLfw0" target="_blank" rel="noopener">YouTube</a></div>
       </li>
       <li class="video-row">
         <div class="video-num">04</div>
         <div><div class="video-title">From Blank Page to Live Website in One Session</div><div class="video-sum">This page, built from a written brief to live on the internet, on camera.</div></div>
-        <a class="video-link" href="https://rumble.com/v7huzgy-from-blank-page-to-live-website-in-one-session-with-ai.html" target="_blank" rel="noopener">Watch</a>
+        <div class="video-links"><a class="video-link" href="https://rumble.com/v7huzgy-from-blank-page-to-live-website-in-one-session-with-ai.html" target="_blank" rel="noopener">Rumble</a><a class="video-link video-link-alt" href="https://www.youtube.com/watch?v=ovbPRddYs4U" target="_blank" rel="noopener">YouTube</a></div>
       </li>
       <li class="video-row">
         <div class="video-num">05</div>
         <div><div class="video-title">Building a Startup Financial Model with AI</div><div class="video-sum">How to build a financial model you can trust, with AI doing the heavy lifting.</div></div>
-        <a class="video-link" href="https://rumble.com/v7huzha-building-a-startup-financial-model-with-ai.html" target="_blank" rel="noopener">Watch</a>
+        <div class="video-links"><a class="video-link" href="https://rumble.com/v7huzha-building-a-startup-financial-model-with-ai.html" target="_blank" rel="noopener">Rumble</a><a class="video-link video-link-alt" href="https://www.youtube.com/watch?v=lUcQo4cWxaI" target="_blank" rel="noopener">YouTube</a></div>
       </li>
       <li class="video-row">
         <div class="video-num">06</div>
         <div><div class="video-title">Fixing a Bug with AI: 5 Lessons for Debugging</div><div class="video-sum">A real bug, found and fixed step by step.</div></div>
-        <a class="video-link" href="https://rumble.com/v7hv2m2-fixing-a-bug-with-ai-5-lessons-for-debugging.html" target="_blank" rel="noopener">Watch</a>
+        <div class="video-links"><a class="video-link" href="https://rumble.com/v7hv2m2-fixing-a-bug-with-ai-5-lessons-for-debugging.html" target="_blank" rel="noopener">Rumble</a><a class="video-link video-link-alt" href="https://www.youtube.com/watch?v=Or0Hnt6XPZw" target="_blank" rel="noopener">YouTube</a></div>
       </li>
       <li class="video-row">
         <div class="video-num">07</div>
         <div><div class="video-title">Cutting Business Expenses with AI: The Subscription Audit</div><div class="video-sum">Finding the monthly charges a business no longer needs.</div></div>
-        <a class="video-link" href="https://rumble.com/v7hv3jm-cutting-business-expenses-with-ai-the-subscription-audit.html" target="_blank" rel="noopener">Watch</a>
+        <div class="video-links"><a class="video-link" href="https://rumble.com/v7hv3jm-cutting-business-expenses-with-ai-the-subscription-audit.html" target="_blank" rel="noopener">Rumble</a><a class="video-link video-link-alt" href="https://www.youtube.com/watch?v=SwQ69-4uKZs" target="_blank" rel="noopener">YouTube</a></div>
       </li>
       <li class="video-row">
         <div class="video-num">08</div>
         <div><div class="video-title">An AI Operator for Maintenance Scheduling with SAP</div><div class="video-sum">AI that recommends schedule and staffing changes inside a real maintenance system.</div></div>
-        <a class="video-link" href="https://rumble.com/v7hv39e-an-ai-operator-for-maintenance-scheduling-with-sap.html" target="_blank" rel="noopener">Watch</a>
+        <div class="video-links"><a class="video-link" href="https://rumble.com/v7hv39e-an-ai-operator-for-maintenance-scheduling-with-sap.html" target="_blank" rel="noopener">Rumble</a><a class="video-link video-link-alt" href="https://www.youtube.com/watch?v=gAXhvFwD36E" target="_blank" rel="noopener">YouTube</a></div>
       </li>
       <li class="video-row">
         <div class="video-num">09</div>
         <div><div class="video-title">Closing Two Businesses for Clients: What I Learned</div><div class="video-sum">How to decide when a business should close, and how to close it cleanly.</div></div>
-        <a class="video-link" href="https://rumble.com/v7hv39y-closing-two-businesses-for-clients-what-i-learned.html" target="_blank" rel="noopener">Watch</a>
+        <div class="video-links"><a class="video-link" href="https://rumble.com/v7hv39y-closing-two-businesses-for-clients-what-i-learned.html" target="_blank" rel="noopener">Rumble</a><a class="video-link video-link-alt" href="https://www.youtube.com/watch?v=A7Fpjn5r1b4" target="_blank" rel="noopener">YouTube</a></div>
       </li>
       <li class="video-row">
         <div class="video-num">10</div>
         <div><div class="video-title">Can AI Build Your App for Free? How the No-Upfront-Cost Offer Works</div><div class="video-sum">What it really takes to get an app built with no upfront build cost.</div></div>
-        <a class="video-link" href="https://rumble.com/v7hv3ai-can-ai-build-your-app-for-free-how-the-no-upfront-cost-offer-works.html" target="_blank" rel="noopener">Watch</a>
+        <div class="video-links"><a class="video-link" href="https://rumble.com/v7hv3ai-can-ai-build-your-app-for-free-how-the-no-upfront-cost-offer-works.html" target="_blank" rel="noopener">Rumble</a><a class="video-link video-link-alt" href="https://www.youtube.com/watch?v=echHJwCkk5U" target="_blank" rel="noopener">YouTube</a></div>
       </li>
   </ol>
 </section>
