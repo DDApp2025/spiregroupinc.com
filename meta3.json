@@ -1,0 +1,9 @@
+[
+ {
+  "title": "Embedding AI Agents in Healthcare: From First Call to Closed Chart",
+  "file": "Healthcare-Agents-Short.mp4",
+  "thumb": "Healthcare-Agents-Short-Thumbnail.jpg",
+  "desc": "In any practice, a patient's request moves through many steps: the call, intake, scheduling, consent, the visit note, billing and follow-up. Every handoff between people or systems is a place where something gets dropped.\n\nAI agents embedded in the health record can carry the work through, if they're built the right way. Five design principles:\n\n1. Give every agent one job. Intake, scheduling, documentation, billing and follow-up each get their own agent. One agent that does everything is hard to test and impossible to audit.\n2. The patient record is the handoff. Agents don't pass messages on the side. Each one reads from and writes to the EHR, so the next agent starts exactly where the last one stopped.\n3. Define \"done\" for every step. Intake isn't done until history and consent are complete. The visit note isn't done until the provider signs. If a step isn't done, the next agent waits and a person is told.\n4. Hand off to people on purpose. Anything clinical, anything unusual, and any patient who is upset goes to a person, with the full context attached.\n5. Watch the handoffs, not just the agents. Requests with no appointment, visits with no signed note, notes with no bill. The stall points show you where work gets dropped.\n\nGood AI in healthcare isn't one smart chatbot. It's a team of small agents handing work to each other inside the record, with people in charge of every clinical decision.\n\nWant an app or AI tool built for your business, with no upfront build cost? Talk to Spire Group: https://spiregroupinc.com\n\nAll the videos in one place: https://spiregroupinc.com/videos/",
+  "tags": "healthcare AI, AI agents, agentic AI, EHR, health tech, healthcare automation, patient experience, AI in medicine"
+ }
+]
